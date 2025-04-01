@@ -1,0 +1,364 @@
+[2025-03-01T05:58:28.980+0000] {processor.py:161} INFO - Started process (PID=188) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:58:28.981+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T05:58:28.984+0000] {logging_mixin.py:188} INFO - [2025-03-01T05:58:28.983+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:58:30.585+0000] {logging_mixin.py:188} INFO - [2025-03-01T05:58:30.581+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T05:58:30.586+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:58:30.602+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 1.629 seconds
+[2025-03-01T05:59:01.243+0000] {processor.py:161} INFO - Started process (PID=207) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:59:01.244+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T05:59:01.246+0000] {logging_mixin.py:188} INFO - [2025-03-01T05:59:01.246+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:59:01.588+0000] {logging_mixin.py:188} INFO - [2025-03-01T05:59:01.584+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T05:59:01.589+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:59:01.607+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.370 seconds
+[2025-03-01T05:59:32.514+0000] {processor.py:161} INFO - Started process (PID=224) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:59:32.514+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T05:59:32.515+0000] {logging_mixin.py:188} INFO - [2025-03-01T05:59:32.515+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:59:32.850+0000] {logging_mixin.py:188} INFO - [2025-03-01T05:59:32.847+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T05:59:32.852+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T05:59:32.867+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.357 seconds
+[2025-03-01T06:00:03.768+0000] {processor.py:161} INFO - Started process (PID=247) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:00:03.769+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:00:03.770+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:00:03.770+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:00:04.251+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:00:04.247+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:00:04.252+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:00:04.268+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.503 seconds
+[2025-03-01T06:00:35.010+0000] {processor.py:161} INFO - Started process (PID=264) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:00:35.011+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:00:35.011+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:00:35.011+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:00:35.491+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:00:35.487+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:00:35.492+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:00:35.508+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.502 seconds
+[2025-03-01T06:01:06.239+0000] {processor.py:161} INFO - Started process (PID=282) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:01:06.239+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:01:06.240+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:01:06.240+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:01:06.543+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:01:06.538+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:01:06.544+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:01:06.560+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.326 seconds
+[2025-03-01T06:01:37.489+0000] {processor.py:161} INFO - Started process (PID=299) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:01:37.490+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:01:37.491+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:01:37.491+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:01:37.795+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:01:37.790+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:01:37.796+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:01:37.819+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.333 seconds
+[2025-03-01T06:02:08.742+0000] {processor.py:161} INFO - Started process (PID=316) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:02:08.744+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:02:08.745+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:02:08.744+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:02:09.275+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:02:09.271+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:02:09.276+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:02:09.293+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.557 seconds
+[2025-03-01T06:02:39.971+0000] {processor.py:161} INFO - Started process (PID=333) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:02:39.972+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:02:39.972+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:02:39.972+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:02:40.370+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:02:40.366+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:02:40.371+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:02:40.387+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.419 seconds
+[2025-03-01T06:03:11.240+0000] {processor.py:161} INFO - Started process (PID=350) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:03:11.240+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:03:11.241+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:03:11.241+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:03:11.579+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:03:11.575+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:03:11.580+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:03:11.602+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.367 seconds
+[2025-03-01T06:03:42.568+0000] {processor.py:161} INFO - Started process (PID=367) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:03:42.569+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:03:42.570+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:03:42.570+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:03:42.886+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:03:42.883+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:03:42.887+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:03:42.903+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.340 seconds
+[2025-03-01T06:04:13.798+0000] {processor.py:161} INFO - Started process (PID=384) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:04:13.798+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:04:13.799+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:04:13.799+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:04:14.237+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:04:14.234+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:04:14.238+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:04:14.252+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.459 seconds
+[2025-03-01T06:04:45.037+0000] {processor.py:161} INFO - Started process (PID=401) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:04:45.038+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:04:45.039+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:04:45.039+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:04:45.539+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:04:45.535+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:04:45.540+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:04:45.556+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.523 seconds
+[2025-03-01T06:05:16.249+0000] {processor.py:161} INFO - Started process (PID=418) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:05:16.250+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:05:16.251+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:05:16.251+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:05:16.606+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:05:16.601+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:05:16.608+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:05:16.627+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.382 seconds
+[2025-03-01T06:05:47.467+0000] {processor.py:161} INFO - Started process (PID=435) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:05:47.468+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:05:47.469+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:05:47.469+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:05:47.955+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:05:47.951+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:05:47.956+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:05:47.972+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.509 seconds
+[2025-03-01T06:06:18.702+0000] {processor.py:161} INFO - Started process (PID=452) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:06:18.703+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:06:18.704+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:06:18.704+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:06:19.172+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:06:19.168+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:06:19.173+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:06:19.192+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.496 seconds
+[2025-03-01T06:06:49.923+0000] {processor.py:161} INFO - Started process (PID=469) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:06:49.924+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:06:49.925+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:06:49.925+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:06:50.411+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:06:50.407+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:06:50.413+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:06:50.428+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.510 seconds
+[2025-03-01T06:07:21.142+0000] {processor.py:161} INFO - Started process (PID=486) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:07:21.142+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:07:21.143+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:07:21.143+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:07:21.652+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:07:21.649+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:07:21.653+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:07:21.670+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.532 seconds
+[2025-03-01T06:07:52.378+0000] {processor.py:161} INFO - Started process (PID=503) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:07:52.378+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:07:52.379+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:07:52.379+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:07:52.811+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:07:52.807+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:07:52.812+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:07:52.826+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.453 seconds
+[2025-03-01T06:08:49.618+0000] {processor.py:161} INFO - Started process (PID=188) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:08:49.619+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:08:49.620+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:08:49.620+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:08:50.853+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:08:50.850+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:08:50.855+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:08:50.877+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 1.263 seconds
+[2025-03-01T06:09:20.932+0000] {processor.py:161} INFO - Started process (PID=207) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:09:20.933+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:09:20.935+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:09:20.935+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:09:21.263+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:09:21.258+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:09:21.265+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:09:21.290+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.361 seconds
+[2025-03-01T06:09:52.144+0000] {processor.py:161} INFO - Started process (PID=224) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:09:52.144+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:09:52.145+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:09:52.145+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:09:52.453+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:09:52.449+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:09:52.454+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:09:52.477+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.337 seconds
+[2025-03-01T06:10:23.409+0000] {processor.py:161} INFO - Started process (PID=241) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:10:23.411+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:10:23.414+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:10:23.413+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:10:23.864+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:10:23.861+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:10:23.865+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:10:23.885+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.480 seconds
+[2025-03-01T06:10:54.656+0000] {processor.py:161} INFO - Started process (PID=264) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:10:54.657+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:10:54.658+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:10:54.658+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:10:55.104+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:10:55.099+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:10:55.105+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:10:55.120+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.468 seconds
+[2025-03-01T06:11:25.909+0000] {processor.py:161} INFO - Started process (PID=281) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:11:25.909+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:11:25.911+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:11:25.911+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:11:26.222+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:11:26.217+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:11:26.223+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:11:26.242+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.337 seconds
+[2025-03-01T06:11:57.183+0000] {processor.py:161} INFO - Started process (PID=298) to work on /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:11:57.184+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_to_hdfs_minio.py for tasks to queue
+[2025-03-01T06:11:57.186+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:11:57.185+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:11:57.544+0000] {logging_mixin.py:188} INFO - [2025-03-01T06:11:57.540+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 9, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-01T06:11:57.546+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/crawl_data_to_hdfs_minio.py
+[2025-03-01T06:11:57.564+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_to_hdfs_minio.py took 0.387 seconds

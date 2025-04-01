@@ -10,7 +10,7 @@ import pandas as pd
 
 # Cấu hình Selenium
 options = Options()
-options.add_argument("--headless")  # Chạy ở chế độ ẩn (không mở trình duyệt)
+options.add_argument("--headless")
 options.add_argument("--disable-gpu")
 options.add_argument("--no-sandbox")
 options.add_argument("--disable-dev-shm-usage")
@@ -42,10 +42,10 @@ def save_to_csv(data):
     with open('./Data_LakeHouse/TamAnh_Hospital/all_url.csv', mode='w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         if file.tell() == 0:
-            writer.writerow(["field", "url"])
+            writer.writerow(["field","title", "url"])
 
-        for field, url in data:
-            writer.writerow([field, url])
+        for field, title, url in data:
+            writer.writerow([field, title, url])
 
 
 df = pd.read_csv('./Data_LakeHouse/TamAnh_Hospital/all_url.csv', encoding='utf-8')
@@ -63,14 +63,15 @@ for link in links:
     # Trích xuất 'field' từ URL
     field = re.search(r'/([a-zA-Z]+)-', link)
     field_name = field.group(1) if field else 'Unknown'
-
     # Lấy các liên kết từ các URL con
     links_cld = access_url_xml(link)
     for link_cld in links_cld:
         print(link_cld)
-        if link_cld not in unique_urls:
+        title = link_cld.rstrip("/").split("/")[-1]
+        if link_cld not in unique_urls and link_cld != 'https://tamanhhospital.vn/sitemap_index.xml':
             unique_urls.append(link_cld)  # Thêm vào set để tránh trùng
-            data_to_save.append((field_name, link_cld))  # Lưu dữ liệu
+            data_to_save.append((field_name, title, link_cld))  # Lưu dữ liệu
+
 
 
 save_to_csv(data_to_save)

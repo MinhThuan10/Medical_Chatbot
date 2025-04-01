@@ -1,0 +1,756 @@
+[2025-03-05T14:29:20.030+0000] {processor.py:161} INFO - Started process (PID=684) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:29:20.031+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:29:20.032+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:29:20.032+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:29:20.053+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:29:20.049+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:29:20.055+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:29:20.081+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.056 seconds
+[2025-03-05T14:29:50.333+0000] {processor.py:161} INFO - Started process (PID=712) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:29:50.334+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:29:50.336+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:29:50.336+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:29:50.350+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:29:50.347+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:29:50.351+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:29:50.370+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.041 seconds
+[2025-03-05T14:30:20.627+0000] {processor.py:161} INFO - Started process (PID=734) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:30:20.628+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:30:20.630+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:30:20.630+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:30:20.645+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:30:20.642+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:30:20.646+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:30:20.667+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.045 seconds
+[2025-03-05T14:30:50.905+0000] {processor.py:161} INFO - Started process (PID=756) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:30:50.906+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:30:50.908+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:30:50.908+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:30:50.921+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:30:50.918+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:30:50.922+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:30:50.945+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.044 seconds
+[2025-03-05T14:31:21.182+0000] {processor.py:161} INFO - Started process (PID=778) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:31:21.182+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:31:21.184+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:31:21.184+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:31:21.197+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:31:21.194+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:31:21.198+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:31:21.224+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.047 seconds
+[2025-03-05T14:31:51.467+0000] {processor.py:161} INFO - Started process (PID=800) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:31:51.468+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:31:51.470+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:31:51.470+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:31:51.483+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:31:51.480+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:31:51.484+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:31:51.505+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.042 seconds
+[2025-03-05T14:32:21.735+0000] {processor.py:161} INFO - Started process (PID=822) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:32:21.736+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:32:21.737+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:32:21.737+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:32:21.749+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:32:21.747+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:32:21.750+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:32:21.772+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.040 seconds
+[2025-03-05T14:32:52.008+0000] {processor.py:161} INFO - Started process (PID=844) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:32:52.009+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:32:52.010+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:32:52.010+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:32:52.024+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:32:52.021+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:32:52.026+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:32:52.046+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.043 seconds
+[2025-03-05T14:33:22.278+0000] {processor.py:161} INFO - Started process (PID=866) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:33:22.279+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:33:22.280+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:33:22.280+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:33:22.294+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:33:22.290+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:33:22.295+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:33:22.313+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.039 seconds
+[2025-03-05T14:33:52.547+0000] {processor.py:161} INFO - Started process (PID=888) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:33:52.548+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:33:52.550+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:33:52.550+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:33:52.562+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:33:52.559+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:33:52.564+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:33:52.580+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.037 seconds
+[2025-03-05T14:34:22.832+0000] {processor.py:161} INFO - Started process (PID=910) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:34:22.833+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:34:22.834+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:34:22.834+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:34:22.849+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:34:22.845+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:34:22.851+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:34:22.869+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.041 seconds
+[2025-03-05T14:34:53.140+0000] {processor.py:161} INFO - Started process (PID=933) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:34:53.141+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:34:53.142+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:34:53.142+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:34:53.157+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:34:53.153+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:34:53.158+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:34:53.180+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.045 seconds
+[2025-03-05T14:35:23.399+0000] {processor.py:161} INFO - Started process (PID=955) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:35:23.400+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:35:23.401+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:35:23.401+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:35:23.413+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:35:23.410+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:35:23.414+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:35:23.430+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.035 seconds
+[2025-03-05T14:35:53.672+0000] {processor.py:161} INFO - Started process (PID=977) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:35:53.673+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:35:53.675+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:35:53.675+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:35:53.690+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:35:53.686+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:35:53.691+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:35:53.710+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.042 seconds
+[2025-03-05T14:36:23.950+0000] {processor.py:161} INFO - Started process (PID=999) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:36:23.951+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:36:23.953+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:36:23.953+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:36:23.969+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:36:23.965+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:36:23.970+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:36:23.989+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.043 seconds
+[2025-03-05T14:36:54.229+0000] {processor.py:161} INFO - Started process (PID=1021) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:36:54.229+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:36:54.231+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:36:54.231+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:36:54.246+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:36:54.242+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:36:54.248+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:36:54.266+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.041 seconds
+[2025-03-05T14:37:24.512+0000] {processor.py:161} INFO - Started process (PID=1043) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:37:24.513+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:37:24.515+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:37:24.515+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:37:24.531+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:37:24.528+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:37:24.533+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:37:24.555+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.048 seconds
+[2025-03-05T14:37:54.805+0000] {processor.py:161} INFO - Started process (PID=1065) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:37:54.806+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:37:54.808+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:37:54.808+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:37:54.822+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:37:54.819+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:37:54.823+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:37:54.840+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.038 seconds
+[2025-03-05T14:38:25.087+0000] {processor.py:161} INFO - Started process (PID=1087) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:38:25.092+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:38:25.094+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:38:25.093+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:38:25.107+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:38:25.104+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:38:25.108+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:38:25.130+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.047 seconds
+[2025-03-05T14:38:55.374+0000] {processor.py:161} INFO - Started process (PID=1109) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:38:55.375+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:38:55.376+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:38:55.376+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:38:55.394+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:38:55.391+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:38:55.396+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:38:55.415+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.045 seconds
+[2025-03-05T14:39:25.711+0000] {processor.py:161} INFO - Started process (PID=1131) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:39:25.712+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:39:25.714+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:39:25.713+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:39:25.728+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:39:25.724+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:39:25.729+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:39:25.753+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.046 seconds
+[2025-03-05T14:39:56.011+0000] {processor.py:161} INFO - Started process (PID=1153) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:39:56.012+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:39:56.013+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:39:56.013+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:39:56.026+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:39:56.023+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:39:56.027+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:39:56.043+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.037 seconds
+[2025-03-05T14:40:26.290+0000] {processor.py:161} INFO - Started process (PID=1175) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:40:26.291+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:40:26.292+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:40:26.291+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:40:26.304+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:40:26.301+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:40:26.304+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:40:26.326+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.040 seconds
+[2025-03-05T14:40:56.582+0000] {processor.py:161} INFO - Started process (PID=1197) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:40:56.583+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:40:56.584+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:40:56.584+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:40:56.600+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:40:56.597+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:40:56.601+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:40:56.631+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.054 seconds
+[2025-03-05T14:41:26.839+0000] {processor.py:161} INFO - Started process (PID=1219) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:41:26.840+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:41:26.842+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:41:26.841+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:41:26.856+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:41:26.853+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:41:26.857+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:41:26.874+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.039 seconds
+[2025-03-05T14:41:57.123+0000] {processor.py:161} INFO - Started process (PID=1241) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:41:57.124+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:41:57.125+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:41:57.125+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:41:57.140+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:41:57.137+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:41:57.141+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:41:57.160+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.041 seconds
+[2025-03-05T14:42:27.392+0000] {processor.py:161} INFO - Started process (PID=1257) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:42:27.394+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:42:27.396+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:42:27.395+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:42:27.410+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:42:27.406+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:42:27.411+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:42:27.431+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.044 seconds
+[2025-03-05T14:42:57.676+0000] {processor.py:161} INFO - Started process (PID=1279) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:42:57.677+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:42:57.679+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:42:57.679+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:42:57.694+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:42:57.691+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:42:57.696+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:42:57.717+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.048 seconds
+[2025-03-05T14:43:27.959+0000] {processor.py:161} INFO - Started process (PID=1301) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:43:27.960+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:43:27.961+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:43:27.961+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:43:27.976+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:43:27.972+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:43:27.977+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:43:27.994+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.040 seconds
+[2025-03-05T14:43:58.236+0000] {processor.py:161} INFO - Started process (PID=1323) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:43:58.237+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:43:58.239+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:43:58.238+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:43:58.254+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:43:58.251+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:43:58.255+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:43:58.271+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.039 seconds
+[2025-03-05T14:44:28.560+0000] {processor.py:161} INFO - Started process (PID=1345) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:44:28.561+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:44:28.563+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:44:28.563+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:44:28.579+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:44:28.575+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:44:28.580+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:44:28.598+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.043 seconds
+[2025-03-05T14:44:58.845+0000] {processor.py:161} INFO - Started process (PID=1367) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:44:58.845+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:44:58.847+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:44:58.847+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:44:58.862+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:44:58.859+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:44:58.863+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:44:58.885+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.045 seconds
+[2025-03-05T14:45:29.131+0000] {processor.py:161} INFO - Started process (PID=1389) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:45:29.132+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:45:29.134+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:45:29.134+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:45:29.150+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:45:29.146+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:45:29.152+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:45:29.171+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.046 seconds
+[2025-03-05T14:45:59.433+0000] {processor.py:161} INFO - Started process (PID=1411) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:45:59.434+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:45:59.435+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:45:59.435+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:45:59.451+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:45:59.447+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:45:59.452+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:45:59.472+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.044 seconds
+[2025-03-05T14:46:29.691+0000] {processor.py:161} INFO - Started process (PID=1433) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:46:29.691+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:46:29.693+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:46:29.692+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:46:29.705+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:46:29.702+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:46:29.706+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:46:29.724+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.037 seconds
+[2025-03-05T14:46:59.990+0000] {processor.py:161} INFO - Started process (PID=1455) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:46:59.991+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:46:59.993+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:46:59.993+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:47:00.005+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:47:00.003+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:47:00.007+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:47:00.028+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.042 seconds
+[2025-03-05T14:47:30.322+0000] {processor.py:161} INFO - Started process (PID=1477) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:47:30.323+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:47:30.325+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:47:30.324+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:47:30.343+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:47:30.339+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:47:30.344+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:47:30.368+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.051 seconds
+[2025-03-05T14:48:00.598+0000] {processor.py:161} INFO - Started process (PID=1499) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:48:00.599+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:48:00.601+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:48:00.600+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:48:00.614+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:48:00.611+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:48:00.615+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:48:00.642+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.049 seconds
+[2025-03-05T14:48:30.882+0000] {processor.py:161} INFO - Started process (PID=1521) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:48:30.883+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:48:30.884+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:48:30.884+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:48:30.897+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:48:30.894+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:48:30.898+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:48:30.920+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.041 seconds
+[2025-03-05T14:50:09.455+0000] {processor.py:161} INFO - Started process (PID=185) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:50:09.456+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:50:09.458+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:50:09.458+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:50:09.474+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:50:09.470+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:50:09.476+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:50:09.502+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.054 seconds
+[2025-03-05T14:50:39.729+0000] {processor.py:161} INFO - Started process (PID=207) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:50:39.730+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:50:39.731+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:50:39.731+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:50:39.745+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:50:39.742+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:50:39.746+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:50:39.771+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.047 seconds
+[2025-03-05T14:51:00.572+0000] {processor.py:161} INFO - Started process (PID=185) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:51:00.573+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:51:00.575+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:51:00.574+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:51:00.591+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:51:00.587+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:51:00.592+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:51:00.613+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.047 seconds
+[2025-03-05T14:51:30.857+0000] {processor.py:161} INFO - Started process (PID=207) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:51:30.858+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:51:30.860+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:51:30.859+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:51:30.874+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:51:30.871+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:51:30.875+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:51:30.903+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.052 seconds
+[2025-03-05T14:52:01.122+0000] {processor.py:161} INFO - Started process (PID=229) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:52:01.123+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:52:01.124+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:52:01.124+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:52:01.137+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:52:01.134+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:52:01.139+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:52:01.163+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.045 seconds
+[2025-03-05T14:52:31.400+0000] {processor.py:161} INFO - Started process (PID=251) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:52:31.401+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:52:31.403+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:52:31.402+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:52:31.416+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:52:31.413+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:52:31.417+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:52:31.442+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.046 seconds
+[2025-03-05T14:53:01.676+0000] {processor.py:161} INFO - Started process (PID=273) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:53:01.677+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:53:01.679+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:53:01.678+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:53:01.692+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:53:01.689+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:53:01.694+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:53:01.719+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.048 seconds
+[2025-03-05T14:53:31.948+0000] {processor.py:161} INFO - Started process (PID=295) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:53:31.949+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:53:31.951+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:53:31.951+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:53:31.964+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:53:31.961+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:53:31.965+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:53:31.988+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.044 seconds
+[2025-03-05T14:54:02.227+0000] {processor.py:161} INFO - Started process (PID=317) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:54:02.228+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:54:02.230+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:54:02.230+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:54:02.244+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:54:02.241+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:54:02.245+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:54:02.262+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.040 seconds
+[2025-03-05T14:54:32.504+0000] {processor.py:161} INFO - Started process (PID=339) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:54:32.505+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:54:32.507+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:54:32.506+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:54:32.522+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:54:32.518+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:54:32.523+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:54:32.541+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.040 seconds
+[2025-03-05T14:59:13.431+0000] {processor.py:161} INFO - Started process (PID=185) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:59:13.432+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:59:13.434+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:59:13.433+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:59:13.449+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:59:13.445+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:59:13.451+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:59:13.472+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.047 seconds
+[2025-03-05T14:59:43.709+0000] {processor.py:161} INFO - Started process (PID=207) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T14:59:43.709+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T14:59:43.711+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:59:43.711+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:59:43.724+0000] {logging_mixin.py:188} INFO - [2025-03-05T14:59:43.721+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T14:59:43.725+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T14:59:43.753+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.047 seconds
+[2025-03-05T15:00:13.989+0000] {processor.py:161} INFO - Started process (PID=229) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T15:00:13.990+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T15:00:13.991+0000] {logging_mixin.py:188} INFO - [2025-03-05T15:00:13.991+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T15:00:14.005+0000] {logging_mixin.py:188} INFO - [2025-03-05T15:00:14.002+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T15:00:14.006+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T15:00:14.025+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.041 seconds
+[2025-03-05T15:00:36.354+0000] {processor.py:161} INFO - Started process (PID=185) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T15:00:36.355+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T15:00:36.357+0000] {logging_mixin.py:188} INFO - [2025-03-05T15:00:36.356+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T15:00:36.373+0000] {logging_mixin.py:188} INFO - [2025-03-05T15:00:36.369+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T15:00:36.375+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T15:00:36.402+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.054 seconds
+[2025-03-05T15:01:06.655+0000] {processor.py:161} INFO - Started process (PID=207) to work on /opt/airflow/dags/test_connect.py
+[2025-03-05T15:01:06.656+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/test_connect.py for tasks to queue
+[2025-03-05T15:01:06.658+0000] {logging_mixin.py:188} INFO - [2025-03-05T15:01:06.658+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/test_connect.py
+[2025-03-05T15:01:06.673+0000] {logging_mixin.py:188} INFO - [2025-03-05T15:01:06.669+0000] {dagbag.py:355} ERROR - Failed to import: /opt/airflow/dags/test_connect.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 351, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/test_connect.py", line 27, in <module>
+    from hdfs import InsecureClient
+ModuleNotFoundError: No module named 'hdfs'
+[2025-03-05T15:01:06.674+0000] {processor.py:842} WARNING - No viable dags retrieved from /opt/airflow/dags/test_connect.py
+[2025-03-05T15:01:06.702+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/test_connect.py took 0.053 seconds

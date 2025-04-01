@@ -3,3 +3,5 @@ Data_LakeHouse/HDFS_MiniO_Qdrant/hadoop_datanode1/
 Data_LakeHouse/HDFS_MiniO_Qdrant/hadoop_datanode2/
 Data_LakeHouse/HDFS_MiniO_Qdrant/hadoop_namenode/
 Data_LakeHouse/HDFS_MiniO_Qdrant/qdrant_data/
+Data_LakeHouse/HDFS_MiniO_Qdrant/dags/__pycache__
+Data_LakeHouse/HDFS_MiniO_Qdrant/logs

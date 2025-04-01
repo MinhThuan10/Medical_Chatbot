@@ -1,0 +1,111 @@
+[2025-02-28T15:03:45.384+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-02-28T15:03:45.408+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crawl_tamanh_split_storage.save_to_hdfs manual__2025-02-28T14:54:37.532537+00:00 [queued]>
+[2025-02-28T15:03:45.416+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crawl_tamanh_split_storage.save_to_hdfs manual__2025-02-28T14:54:37.532537+00:00 [queued]>
+[2025-02-28T15:03:45.417+0000] {taskinstance.py:2306} INFO - Starting attempt 3 of 4
+[2025-02-28T15:03:45.428+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): save_to_hdfs> on 2025-02-28 14:54:37.532537+00:00
+[2025-02-28T15:03:45.436+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=1930) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-02-28T15:03:45.437+0000] {standard_task_runner.py:63} INFO - Started process 1932 to run task
+[2025-02-28T15:03:45.437+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crawl_tamanh_split_storage', 'save_to_hdfs', 'manual__2025-02-28T14:54:37.532537+00:00', '--job-id', '63', '--raw', '--subdir', 'DAGS_FOLDER/crawl_data_to_hdfs_minio.py', '--cfg-path', '/tmp/tmp08fqis7f']
+[2025-02-28T15:03:45.438+0000] {standard_task_runner.py:91} INFO - Job 63: Subtask save_to_hdfs
+[2025-02-28T15:03:45.477+0000] {task_command.py:426} INFO - Running <TaskInstance: crawl_tamanh_split_storage.save_to_hdfs manual__2025-02-28T14:54:37.532537+00:00 [running]> on host 27ac4da571c3
+[2025-02-28T15:03:45.548+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crawl_tamanh_split_storage' AIRFLOW_CTX_TASK_ID='save_to_hdfs' AIRFLOW_CTX_EXECUTION_DATE='2025-02-28T14:54:37.532537+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-02-28T14:54:37.532537+00:00'
+[2025-02-28T15:03:45.549+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-02-28T15:03:45.568+0000] {client.py:192} INFO - Instantiated <InsecureClient(url='http://namenode:9870')>.
+[2025-02-28T15:03:45.569+0000] {client.py:496} INFO - Writing to '/tamanh_crawl/crawl_hdfs_20250228150345.json'.
+[2025-02-28T15:03:46.846+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-02-28T15:03:46.847+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 964, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -5] No address associated with hostname
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 793, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 496, in _make_request
+    conn.request(
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 400, in request
+    self.endheaders()
+  File "/usr/local/lib/python3.12/http/client.py", line 1331, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.12/http/client.py", line 1091, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.12/http/client.py", line 1035, in send
+    self.connect()
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 238, in connect
+    self.sock = self._new_conn()
+                ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connection.py", line 205, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPConnection object at 0x7fbb9bed2330>: Failed to resolve 'namenode' ([Errno -5] No address associated with hostname)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 486, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/connectionpool.py", line 847, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/util/retry.py", line 515, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='namenode', port=9870): Max retries exceeded with url: /webhdfs/v1/tamanh_crawl/crawl_hdfs_20250228150345.json?user.name=hdfs&overwrite=False&op=CREATE (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fbb9bed2330>: Failed to resolve 'namenode' ([Errno -5] No address associated with hostname)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_data_to_hdfs_minio.py", line 96, in save_to_hdfs
+    with client.write(hdfs_path, encoding="utf-8") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/hdfs/client.py", line 497, in write
+    res = self._create(
+          ^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/hdfs/client.py", line 125, in api_handler
+    raise err
+  File "/home/airflow/.local/lib/python3.12/site-packages/hdfs/client.py", line 102, in api_handler
+    res = client._request(
+          ^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/hdfs/client.py", line 209, in _request
+    return self._session.request(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='namenode', port=9870): Max retries exceeded with url: /webhdfs/v1/tamanh_crawl/crawl_hdfs_20250228150345.json?user.name=hdfs&overwrite=False&op=CREATE (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fbb9bed2330>: Failed to resolve 'namenode' ([Errno -5] No address associated with hostname)"))
+[2025-02-28T15:03:46.860+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=crawl_tamanh_split_storage, task_id=save_to_hdfs, run_id=manual__2025-02-28T14:54:37.532537+00:00, execution_date=20250228T145437, start_date=20250228T150345, end_date=20250228T150346
+[2025-02-28T15:03:46.873+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 63 for task save_to_hdfs (HTTPConnectionPool(host='namenode', port=9870): Max retries exceeded with url: /webhdfs/v1/tamanh_crawl/crawl_hdfs_20250228150345.json?user.name=hdfs&overwrite=False&op=CREATE (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7fbb9bed2330>: Failed to resolve 'namenode' ([Errno -5] No address associated with hostname)")); 1932)
+[2025-02-28T15:03:46.896+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-02-28T15:03:46.909+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-02-28T15:03:46.913+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
