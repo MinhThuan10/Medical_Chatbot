@@ -2,3 +2,5 @@ Data_LakeHouse/Qdrant/.docker/
 Data_LakeHouse/Qdrant/qdrant_data/
 Data_LakeHouse/Qdrant/dags/__pycache__
 Data_LakeHouse/Qdrant/logs
+Data_LakeHouse/Qdrant/dags/content.csv
+Data_LakeHouse/Qdrant/dags/all_url.csv
