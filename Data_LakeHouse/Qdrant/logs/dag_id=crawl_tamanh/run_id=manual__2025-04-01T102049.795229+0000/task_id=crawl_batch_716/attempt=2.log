@@ -1,0 +1,18 @@
+[2025-04-01T10:27:16.769+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-01T10:27:16.814+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crawl_tamanh.crawl_batch_716 manual__2025-04-01T10:20:49.795229+00:00 [queued]>
+[2025-04-01T10:27:16.848+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crawl_tamanh.crawl_batch_716 manual__2025-04-01T10:20:49.795229+00:00 [queued]>
+[2025-04-01T10:27:16.849+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 3
+[2025-04-01T10:27:16.864+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_batch_716> on 2025-04-01 10:20:49.795229+00:00
+[2025-04-01T10:27:16.879+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=7049) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-01T10:27:16.880+0000] {standard_task_runner.py:63} INFO - Started process 7058 to run task
+[2025-04-01T10:27:16.879+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crawl_tamanh', 'crawl_batch_716', 'manual__2025-04-01T10:20:49.795229+00:00', '--job-id', '2113', '--raw', '--subdir', 'DAGS_FOLDER/crawl_data_with_dag.py', '--cfg-path', '/tmp/tmp1wzlgaps']
+[2025-04-01T10:27:16.881+0000] {standard_task_runner.py:91} INFO - Job 2113: Subtask crawl_batch_716
+[2025-04-01T10:27:16.928+0000] {task_command.py:426} INFO - Running <TaskInstance: crawl_tamanh.crawl_batch_716 manual__2025-04-01T10:20:49.795229+00:00 [running]> on host a2df5b4b52f3
+[2025-04-01T10:27:17.027+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crawl_tamanh' AIRFLOW_CTX_TASK_ID='crawl_batch_716' AIRFLOW_CTX_EXECUTION_DATE='2025-04-01T10:20:49.795229+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-01T10:20:49.795229+00:00'
+[2025-04-01T10:27:17.029+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-01T10:27:24.934+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-04-01T10:27:24.935+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-01T10:27:24.945+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=crawl_tamanh, task_id=crawl_batch_716, run_id=manual__2025-04-01T10:20:49.795229+00:00, execution_date=20250401T102049, start_date=20250401T102716, end_date=20250401T102724
+[2025-04-01T10:27:24.993+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-04-01T10:27:25.007+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-01T10:27:25.009+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

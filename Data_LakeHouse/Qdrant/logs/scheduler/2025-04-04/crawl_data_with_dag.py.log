@@ -1,0 +1,669 @@
+[2025-04-04T07:33:35.063+0000] {processor.py:161} INFO - Started process (PID=185) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:33:35.064+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:33:35.066+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:33:35.065+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:33:36.838+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:33:37.057+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:33:37.056+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:33:37.065+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:33:37.065+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:33:37.088+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 2.029 seconds
+[2025-04-04T07:34:07.264+0000] {processor.py:161} INFO - Started process (PID=197) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:34:07.265+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:34:07.267+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:34:07.267+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:34:07.824+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:34:07.907+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:34:07.906+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:34:07.916+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:34:07.916+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:34:07.933+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.674 seconds
+[2025-04-04T07:34:38.126+0000] {processor.py:161} INFO - Started process (PID=209) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:34:38.127+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:34:38.129+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:34:38.129+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:34:38.662+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:34:38.727+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:34:38.727+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:34:38.738+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:34:38.737+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:34:38.759+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.639 seconds
+[2025-04-04T07:35:08.940+0000] {processor.py:161} INFO - Started process (PID=221) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:35:08.941+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:35:08.943+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:35:08.943+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:35:09.465+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:35:09.530+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:35:09.530+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:35:09.538+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:35:09.538+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:35:09.556+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.620 seconds
+[2025-04-04T07:35:39.708+0000] {processor.py:161} INFO - Started process (PID=239) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:35:39.708+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:35:39.710+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:35:39.709+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:35:40.198+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:35:40.258+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:35:40.258+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:35:40.267+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:35:40.267+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:35:40.288+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.583 seconds
+[2025-04-04T07:36:10.473+0000] {processor.py:161} INFO - Started process (PID=251) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:36:10.474+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:36:10.475+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:36:10.475+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:36:11.027+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:36:11.092+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:36:11.091+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:36:11.102+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:36:11.101+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:36:11.117+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.648 seconds
+[2025-04-04T07:36:41.309+0000] {processor.py:161} INFO - Started process (PID=263) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:36:41.310+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:36:41.311+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:36:41.311+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:36:41.872+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:36:41.933+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:36:41.933+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:36:41.942+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:36:41.942+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:36:41.961+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.658 seconds
+[2025-04-04T07:37:12.164+0000] {processor.py:161} INFO - Started process (PID=275) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:37:12.165+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:37:12.166+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:37:12.166+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:37:12.698+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:37:12.757+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:37:12.756+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:37:12.765+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:37:12.765+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:37:12.785+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.626 seconds
+[2025-04-04T07:37:42.962+0000] {processor.py:161} INFO - Started process (PID=287) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:37:42.962+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:37:42.964+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:37:42.964+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:37:43.456+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:37:43.517+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:37:43.517+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:37:43.526+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:37:43.526+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:37:43.546+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.590 seconds
+[2025-04-04T07:38:13.741+0000] {processor.py:161} INFO - Started process (PID=299) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:38:13.742+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:38:13.743+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:38:13.743+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:38:14.266+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:38:14.330+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:38:14.329+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:38:14.341+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:38:14.340+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:38:14.363+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.627 seconds
+[2025-04-04T07:38:44.533+0000] {processor.py:161} INFO - Started process (PID=311) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:38:44.533+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:38:44.535+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:38:44.535+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:38:45.037+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:38:45.104+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:38:45.103+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:38:45.112+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:38:45.112+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:38:45.129+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.600 seconds
+[2025-04-04T07:39:15.321+0000] {processor.py:161} INFO - Started process (PID=323) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:39:15.321+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:39:15.323+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:39:15.323+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:39:15.822+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:39:15.883+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:39:15.883+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:39:15.891+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:39:15.891+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:39:15.906+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.589 seconds
+[2025-04-04T07:39:46.086+0000] {processor.py:161} INFO - Started process (PID=335) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:39:46.087+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:39:46.088+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:39:46.088+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:39:46.624+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:39:46.687+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:39:46.687+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:39:46.696+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:39:46.696+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:39:46.717+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.636 seconds
+[2025-04-04T07:40:16.916+0000] {processor.py:161} INFO - Started process (PID=347) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:40:16.916+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:40:16.918+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:40:16.917+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:40:17.420+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:40:17.481+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:40:17.481+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:40:17.491+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:40:17.491+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:40:17.511+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.600 seconds
+[2025-04-04T07:40:47.686+0000] {processor.py:161} INFO - Started process (PID=359) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:40:47.687+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:40:47.689+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:40:47.689+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:40:48.209+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:40:48.270+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:40:48.270+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:40:48.279+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:40:48.279+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:40:48.299+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.617 seconds
+[2025-04-04T07:41:18.495+0000] {processor.py:161} INFO - Started process (PID=371) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:41:18.496+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:41:18.498+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:41:18.497+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:41:19.011+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:41:19.076+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:41:19.076+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:41:19.086+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:41:19.086+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:41:19.102+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.611 seconds
+[2025-04-04T07:41:49.275+0000] {processor.py:161} INFO - Started process (PID=383) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:41:49.276+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:41:49.278+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:41:49.278+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:41:49.749+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:41:49.813+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:41:49.812+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:41:49.821+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:41:49.821+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:41:49.835+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.565 seconds
+[2025-04-04T07:42:20.028+0000] {processor.py:161} INFO - Started process (PID=395) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:42:20.029+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:42:20.030+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:42:20.030+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:42:20.524+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:42:20.584+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:42:20.584+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:42:20.593+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:42:20.593+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:42:20.606+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.582 seconds
+[2025-04-04T07:42:50.783+0000] {processor.py:161} INFO - Started process (PID=407) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:42:50.783+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:42:50.785+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:42:50.785+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:42:51.267+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:42:51.334+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:42:51.334+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:42:51.344+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:42:51.344+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:42:51.361+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.582 seconds
+[2025-04-04T07:43:21.549+0000] {processor.py:161} INFO - Started process (PID=419) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:43:21.550+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:43:21.551+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:43:21.551+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:43:22.050+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:43:22.114+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:43:22.113+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:43:22.122+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:43:22.122+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:43:22.142+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.597 seconds
+[2025-04-04T07:43:52.354+0000] {processor.py:161} INFO - Started process (PID=431) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:43:52.355+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:43:52.356+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:43:52.356+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:43:52.836+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:43:52.896+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:43:52.896+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:43:52.904+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:43:52.904+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:43:52.921+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.571 seconds
+[2025-04-04T07:44:23.106+0000] {processor.py:161} INFO - Started process (PID=443) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:44:23.107+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:44:23.108+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:44:23.108+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:44:23.570+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:44:23.635+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:44:23.634+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:44:23.643+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:44:23.643+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:44:23.661+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.560 seconds
+[2025-04-04T07:44:53.831+0000] {processor.py:161} INFO - Started process (PID=455) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:44:53.832+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:44:53.834+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:44:53.834+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:44:54.333+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:44:54.396+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:44:54.396+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:44:54.406+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:44:54.406+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:44:54.421+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.597 seconds
+[2025-04-04T07:45:24.603+0000] {processor.py:161} INFO - Started process (PID=467) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:45:24.604+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:45:24.605+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:45:24.605+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:45:25.166+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:45:25.230+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:45:25.230+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:45:25.239+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:45:25.239+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:45:25.317+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.720 seconds
+[2025-04-04T07:45:55.494+0000] {processor.py:161} INFO - Started process (PID=479) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:45:55.495+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:45:55.497+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:45:55.497+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:45:56.108+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:45:56.175+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:45:56.174+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:45:56.185+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:45:56.185+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:45:56.203+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.716 seconds
+[2025-04-04T07:46:26.254+0000] {processor.py:161} INFO - Started process (PID=491) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:46:26.255+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:46:26.257+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:46:26.257+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:46:26.768+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:46:26.839+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:46:26.838+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:46:26.848+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:46:26.848+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:46:26.867+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.617 seconds
+[2025-04-04T07:46:57.035+0000] {processor.py:161} INFO - Started process (PID=503) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:46:57.036+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:46:57.037+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:46:57.037+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:46:57.518+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:46:57.581+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:46:57.581+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:46:57.591+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:46:57.591+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:46:57.611+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.579 seconds
+[2025-04-04T07:47:27.778+0000] {processor.py:161} INFO - Started process (PID=515) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:47:27.779+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:47:27.780+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:47:27.780+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:47:28.265+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:47:28.327+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:47:28.326+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:47:28.336+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:47:28.336+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:47:28.356+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.582 seconds
+[2025-04-04T07:47:58.544+0000] {processor.py:161} INFO - Started process (PID=527) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:47:58.545+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:47:58.546+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:47:58.546+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:47:59.031+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:47:59.092+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:47:59.092+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:47:59.101+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:47:59.101+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:47:59.114+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.575 seconds
+[2025-04-04T07:48:29.296+0000] {processor.py:161} INFO - Started process (PID=539) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:48:29.296+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:48:29.298+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:48:29.298+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:48:29.827+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:48:29.890+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:48:29.889+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:48:29.899+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:48:29.899+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:48:29.915+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.625 seconds
+[2025-04-04T07:49:00.102+0000] {processor.py:161} INFO - Started process (PID=551) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:00.103+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:49:00.104+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:00.104+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:00.594+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:00.660+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:00.659+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:49:00.670+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:00.669+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:49:00.689+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.590 seconds
+[2025-04-04T07:49:30.868+0000] {processor.py:161} INFO - Started process (PID=563) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:30.868+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:49:30.869+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:30.869+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:31.350+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:31.410+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:31.410+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:49:31.418+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:31.418+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:49:31.432+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.567 seconds
+[2025-04-04T07:49:48.568+0000] {processor.py:161} INFO - Started process (PID=575) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:48.569+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:49:48.570+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:48.570+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:49.047+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:49:49.163+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:49.163+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:49:49.172+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:49:49.172+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:49:49.196+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.632 seconds
+[2025-04-04T07:50:19.372+0000] {processor.py:161} INFO - Started process (PID=587) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:50:19.373+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:50:19.374+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:50:19.374+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:50:19.875+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:50:19.910+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:50:19.910+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:50:19.919+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:50:19.919+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:50:19.936+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.569 seconds
+[2025-04-04T07:50:50.126+0000] {processor.py:161} INFO - Started process (PID=599) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:50:50.126+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:50:50.128+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:50:50.128+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:50:50.608+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:50:50.645+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:50:50.644+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:50:50.655+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:50:50.655+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:50:50.670+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.549 seconds
+[2025-04-04T07:51:20.844+0000] {processor.py:161} INFO - Started process (PID=611) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:51:20.845+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:51:20.847+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:51:20.846+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:51:21.323+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:51:21.355+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:51:21.354+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:51:21.364+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:51:21.363+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:51:21.381+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.541 seconds
+[2025-04-04T07:51:51.582+0000] {processor.py:161} INFO - Started process (PID=623) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:51:51.583+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:51:51.585+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:51:51.585+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:51:52.130+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:51:52.168+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:51:52.168+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:51:52.177+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:51:52.177+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:51:52.194+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.618 seconds
+[2025-04-04T07:52:22.381+0000] {processor.py:161} INFO - Started process (PID=635) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:22.382+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:52:22.384+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:22.383+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:22.934+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:22.976+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:22.976+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:52:22.985+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:22.985+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:52:23.004+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.628 seconds
+[2025-04-04T07:52:53.203+0000] {processor.py:161} INFO - Started process (PID=647) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:53.204+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:52:53.205+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:53.205+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:53.667+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:53.701+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:53.701+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:52:53.710+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:53.709+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:52:53.725+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.526 seconds
+[2025-04-04T07:52:55.537+0000] {processor.py:161} INFO - Started process (PID=653) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:55.538+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:52:55.539+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:55.539+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:56.049+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:52:56.085+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:56.084+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:52:56.094+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:52:56.094+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:52:56.113+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.580 seconds
+[2025-04-04T07:53:15.876+0000] {processor.py:161} INFO - Started process (PID=665) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:53:15.877+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:53:15.879+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:53:15.878+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:53:16.352+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:53:16.448+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:53:16.448+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:53:16.456+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:53:16.456+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:53:16.476+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.604 seconds
+[2025-04-04T07:53:46.640+0000] {processor.py:161} INFO - Started process (PID=677) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:53:46.641+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:53:46.643+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:53:46.642+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:53:47.141+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:53:47.188+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:53:47.188+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:53:47.198+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:53:47.198+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:53:47.216+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.580 seconds
+[2025-04-04T07:54:17.401+0000] {processor.py:161} INFO - Started process (PID=689) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:54:17.401+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:54:17.403+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:54:17.402+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:54:17.870+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:54:17.915+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:54:17.914+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:54:17.925+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:54:17.925+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:54:17.940+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.543 seconds
+[2025-04-04T07:54:48.115+0000] {processor.py:161} INFO - Started process (PID=701) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:54:48.116+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:54:48.118+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:54:48.118+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:54:48.674+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:54:48.718+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:54:48.717+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:54:48.728+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:54:48.728+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:54:48.744+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.633 seconds
+[2025-04-04T07:55:18.930+0000] {processor.py:161} INFO - Started process (PID=713) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:55:18.930+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:55:18.931+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:55:18.931+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:55:19.382+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:55:19.421+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:55:19.420+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:55:19.429+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:55:19.429+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:55:19.444+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.518 seconds
+[2025-04-04T07:55:49.614+0000] {processor.py:161} INFO - Started process (PID=725) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:55:49.615+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:55:49.616+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:55:49.616+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:55:50.069+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:55:50.108+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:55:50.108+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:55:50.116+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:55:50.116+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:55:50.131+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.521 seconds
+[2025-04-04T07:56:20.316+0000] {processor.py:161} INFO - Started process (PID=737) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:56:20.317+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:56:20.318+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:56:20.318+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:56:20.790+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:56:20.830+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:56:20.830+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:56:20.839+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:56:20.839+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:56:20.859+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.547 seconds
+[2025-04-04T07:56:50.921+0000] {processor.py:161} INFO - Started process (PID=749) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:56:50.922+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:56:50.924+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:56:50.923+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:56:51.420+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:56:51.461+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:56:51.461+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:56:51.471+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:56:51.471+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:56:51.499+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.582 seconds
+[2025-04-04T07:57:21.684+0000] {processor.py:161} INFO - Started process (PID=761) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:57:21.685+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:57:21.687+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:57:21.687+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:57:22.223+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:57:22.267+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:57:22.267+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:57:22.277+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:57:22.277+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:57:22.293+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.615 seconds
+[2025-04-04T07:57:52.462+0000] {processor.py:161} INFO - Started process (PID=773) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:57:52.463+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:57:52.465+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:57:52.464+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:57:52.981+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:57:53.023+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:57:53.022+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:57:53.032+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:57:53.031+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:57:53.054+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.596 seconds
+[2025-04-04T07:58:23.258+0000] {processor.py:161} INFO - Started process (PID=785) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:23.259+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:58:23.261+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:23.260+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:23.786+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:23.837+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:23.836+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:58:23.848+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:23.847+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:58:23.866+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.615 seconds
+[2025-04-04T07:58:54.040+0000] {processor.py:161} INFO - Started process (PID=797) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:54.041+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:58:54.042+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:54.042+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:54.572+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:54.611+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:54.611+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:58:54.620+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:54.620+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh to None, run_after=None
+[2025-04-04T07:58:54.636+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.602 seconds
+[2025-04-04T07:58:55.709+0000] {processor.py:161} INFO - Started process (PID=803) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:55.710+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:58:55.712+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:55.712+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:56.165+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:58:56.268+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:56.268+0000] {override.py:1829} INFO - Created Permission View: can read on DAG:crawl_tamanh_parallel
+[2025-04-04T07:58:56.275+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:56.275+0000] {override.py:1829} INFO - Created Permission View: can delete on DAG:crawl_tamanh_parallel
+[2025-04-04T07:58:56.280+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:56.279+0000] {override.py:1829} INFO - Created Permission View: can edit on DAG:crawl_tamanh_parallel
+[2025-04-04T07:58:56.280+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:56.280+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:58:56.290+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:56.289+0000] {dag.py:3118} INFO - Creating ORM DAG for crawl_tamanh_parallel
+[2025-04-04T07:58:56.291+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:58:56.290+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T07:58:56.304+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.601 seconds
+[2025-04-04T07:59:26.478+0000] {processor.py:161} INFO - Started process (PID=815) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:59:26.479+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:59:26.481+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:59:26.480+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:59:26.910+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:59:26.950+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:59:26.950+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:59:26.958+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:59:26.958+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T07:59:26.979+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.505 seconds
+[2025-04-04T07:59:57.194+0000] {processor.py:161} INFO - Started process (PID=877) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:59:57.195+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T07:59:57.197+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:59:57.197+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:59:57.780+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T07:59:57.828+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:59:57.827+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T07:59:57.838+0000] {logging_mixin.py:188} INFO - [2025-04-04T07:59:57.838+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T07:59:57.855+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.666 seconds
+[2025-04-04T08:00:28.040+0000] {processor.py:161} INFO - Started process (PID=889) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:00:28.041+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:00:28.044+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:00:28.043+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:00:28.659+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:00:28.708+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:00:28.707+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:00:28.717+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:00:28.717+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:00:28.735+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.701 seconds
+[2025-04-04T08:00:58.935+0000] {processor.py:161} INFO - Started process (PID=901) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:00:58.937+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:00:58.938+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:00:58.938+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:00:59.524+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:00:59.574+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:00:59.574+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:00:59.584+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:00:59.584+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:00:59.604+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.674 seconds
+[2025-04-04T08:01:29.786+0000] {processor.py:161} INFO - Started process (PID=961) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:01:29.787+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:01:29.788+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:01:29.788+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:01:30.381+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:01:30.434+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:01:30.434+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:01:30.447+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:01:30.447+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:01:30.464+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.684 seconds
+[2025-04-04T08:02:00.650+0000] {processor.py:161} INFO - Started process (PID=973) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:02:00.651+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:02:00.652+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:02:00.652+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:02:01.204+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:02:01.255+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:02:01.255+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:02:01.266+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:02:01.266+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:02:01.286+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.643 seconds
+[2025-04-04T08:02:31.358+0000] {processor.py:161} INFO - Started process (PID=1033) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:02:31.358+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:02:31.359+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:02:31.359+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:02:31.935+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:02:31.979+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:02:31.979+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:02:31.988+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:02:31.988+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:02:32.008+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.656 seconds
+[2025-04-04T08:03:02.199+0000] {processor.py:161} INFO - Started process (PID=1088) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:03:02.200+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:03:02.201+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:03:02.201+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:03:02.848+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:03:02.899+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:03:02.899+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:03:02.910+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:03:02.910+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:03:02.933+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.739 seconds
+[2025-04-04T08:03:33.144+0000] {processor.py:161} INFO - Started process (PID=1106) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:03:33.145+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:03:33.146+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:03:33.146+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:03:33.727+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:03:33.770+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:03:33.770+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:03:33.780+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:03:33.780+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:03:33.796+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.658 seconds
+[2025-04-04T08:04:04.337+0000] {processor.py:161} INFO - Started process (PID=1151) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:04:04.339+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:04:04.341+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:04:04.340+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:04:04.867+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:04:04.911+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:04:04.910+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:04:04.921+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:04:04.921+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:04:04.940+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.617 seconds
+[2025-04-04T08:04:35.124+0000] {processor.py:161} INFO - Started process (PID=1163) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:04:35.125+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:04:35.125+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:04:35.125+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:04:35.580+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:04:35.619+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:04:35.619+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:04:35.627+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:04:35.627+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:04:35.641+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.522 seconds
+[2025-04-04T08:05:05.830+0000] {processor.py:161} INFO - Started process (PID=1175) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:05:05.831+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:05:05.832+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:05:05.832+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:05:06.385+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:05:06.430+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:05:06.430+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:05:06.440+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:05:06.439+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:05:06.461+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.637 seconds
+[2025-04-04T08:05:36.686+0000] {processor.py:161} INFO - Started process (PID=1187) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:05:36.688+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:05:36.689+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:05:36.689+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:05:37.371+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:05:37.427+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:05:37.427+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:05:37.440+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:05:37.440+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:05:37.461+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.784 seconds
+[2025-04-04T08:06:07.670+0000] {processor.py:161} INFO - Started process (PID=1199) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:06:07.671+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:06:07.672+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:06:07.672+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:06:08.155+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:06:08.197+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:06:08.197+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:06:08.206+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:06:08.206+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:06:08.221+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.555 seconds
+[2025-04-04T08:06:38.382+0000] {processor.py:161} INFO - Started process (PID=1211) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:06:38.383+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:06:38.384+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:06:38.384+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:06:38.831+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:06:38.870+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:06:38.869+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:06:38.878+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:06:38.878+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:06:38.892+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.514 seconds
+[2025-04-04T08:07:09.079+0000] {processor.py:161} INFO - Started process (PID=1223) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:07:09.079+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:07:09.080+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:07:09.080+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:07:09.551+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:07:09.591+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:07:09.590+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:07:09.600+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:07:09.600+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:07:09.618+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.544 seconds
+[2025-04-04T08:07:39.681+0000] {processor.py:161} INFO - Started process (PID=1235) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:07:39.682+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:07:39.683+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:07:39.682+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:07:40.144+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:07:40.185+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:07:40.184+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:07:40.196+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:07:40.196+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:07:40.217+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.541 seconds
+[2025-04-04T08:08:10.402+0000] {processor.py:161} INFO - Started process (PID=1248) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:08:10.403+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:08:10.404+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:08:10.403+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:08:10.838+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:08:10.878+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:08:10.877+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:08:10.886+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:08:10.886+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:08:10.901+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.503 seconds
+[2025-04-04T08:08:41.402+0000] {processor.py:161} INFO - Started process (PID=1260) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:08:41.402+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:08:41.403+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:08:41.403+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:08:41.845+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:08:41.883+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:08:41.883+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:08:41.891+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:08:41.891+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:08:41.908+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.509 seconds
+[2025-04-04T08:09:12.094+0000] {processor.py:161} INFO - Started process (PID=1278) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:09:12.095+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:09:12.096+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:09:12.095+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:09:12.613+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:09:12.655+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:09:12.654+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:09:12.665+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:09:12.664+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:09:12.695+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.607 seconds
+[2025-04-04T08:09:41.731+0000] {processor.py:161} INFO - Started process (PID=1284) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:09:41.732+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:09:41.733+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:09:41.733+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:09:42.181+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:09:42.220+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:09:42.220+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:09:42.228+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:09:42.228+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:09:42.245+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.518 seconds
+[2025-04-04T08:10:12.429+0000] {processor.py:161} INFO - Started process (PID=1302) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:10:12.430+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:10:12.431+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:10:12.430+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:10:12.894+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:10:12.933+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:10:12.933+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:10:12.942+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:10:12.942+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:10:12.958+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.535 seconds
+[2025-04-04T08:10:36.555+0000] {processor.py:161} INFO - Started process (PID=1308) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:10:36.556+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:10:36.557+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:10:36.557+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:10:36.991+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:10:37.032+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:10:37.031+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:10:37.041+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:10:37.041+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:10:37.060+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.509 seconds
+[2025-04-04T08:11:07.258+0000] {processor.py:161} INFO - Started process (PID=1320) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:07.259+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:11:07.259+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:07.259+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:07.676+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:07.713+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:07.713+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:11:07.722+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:07.722+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:11:07.741+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.486 seconds
+[2025-04-04T08:11:37.863+0000] {processor.py:161} INFO - Started process (PID=1333) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:37.864+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:11:37.865+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:37.865+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:38.312+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:38.356+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:38.356+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:11:38.365+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:38.365+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:11:38.387+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.527 seconds
+[2025-04-04T08:11:48.984+0000] {processor.py:161} INFO - Started process (PID=1345) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:48.985+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:11:48.987+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:48.986+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:49.493+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:11:49.534+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:49.533+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:11:49.543+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:11:49.543+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:11:49.567+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.589 seconds
+[2025-04-04T08:12:19.628+0000] {processor.py:161} INFO - Started process (PID=1357) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:12:19.629+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:12:19.630+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:12:19.629+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:12:20.087+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:12:20.127+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:12:20.127+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:12:20.136+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:12:20.136+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:12:20.152+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.528 seconds
+[2025-04-04T08:12:50.337+0000] {processor.py:161} INFO - Started process (PID=1369) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:12:50.338+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:12:50.339+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:12:50.339+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:12:50.760+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:12:50.803+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:12:50.803+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:12:50.812+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:12:50.812+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:12:50.828+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.494 seconds
+[2025-04-04T08:13:21.022+0000] {processor.py:161} INFO - Started process (PID=1381) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:13:21.022+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:13:21.023+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:13:21.023+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:13:21.454+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:13:21.493+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:13:21.493+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:13:21.502+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:13:21.502+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:13:21.515+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.497 seconds
+[2025-04-04T08:13:51.964+0000] {processor.py:161} INFO - Started process (PID=1393) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:13:51.965+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:13:51.966+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:13:51.966+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:13:52.412+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:13:52.454+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:13:52.453+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:13:52.462+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:13:52.462+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:13:52.478+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.518 seconds
+[2025-04-04T08:14:22.665+0000] {processor.py:161} INFO - Started process (PID=1405) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:14:22.666+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:14:22.667+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:14:22.667+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:14:23.100+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:14:23.137+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:14:23.137+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:14:23.146+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:14:23.146+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:14:23.162+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.501 seconds
+[2025-04-04T08:14:53.276+0000] {processor.py:161} INFO - Started process (PID=1417) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:14:53.277+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:14:53.278+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:14:53.277+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:14:53.700+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:14:53.740+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:14:53.740+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:14:53.749+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:14:53.749+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:14:53.765+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.493 seconds
+[2025-04-04T08:15:23.953+0000] {processor.py:161} INFO - Started process (PID=1429) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:15:23.954+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:15:23.955+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:15:23.954+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:15:24.404+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:15:24.444+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:15:24.444+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:15:24.452+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:15:24.452+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:15:24.472+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.523 seconds
+[2025-04-04T08:15:54.644+0000] {processor.py:161} INFO - Started process (PID=1441) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:15:54.644+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:15:54.645+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:15:54.645+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:15:55.079+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:15:55.117+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:15:55.117+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:15:55.125+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:15:55.125+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:15:55.139+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.499 seconds
+[2025-04-04T08:16:25.335+0000] {processor.py:161} INFO - Started process (PID=1453) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:16:25.336+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:16:25.337+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:16:25.336+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:16:25.787+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:16:25.828+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:16:25.827+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:16:25.838+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:16:25.838+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:16:25.853+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.522 seconds
+[2025-04-04T08:16:55.986+0000] {processor.py:161} INFO - Started process (PID=1465) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:16:55.986+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:16:55.987+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:16:55.987+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:16:56.426+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:16:56.468+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:16:56.467+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:16:56.476+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:16:56.475+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:16:56.495+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.513 seconds
+[2025-04-04T08:17:26.689+0000] {processor.py:161} INFO - Started process (PID=1477) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:17:26.690+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:17:26.691+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:17:26.691+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:17:27.169+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:17:27.210+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:17:27.209+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:17:27.220+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:17:27.219+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:17:27.235+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.550 seconds
+[2025-04-04T08:17:57.331+0000] {processor.py:161} INFO - Started process (PID=1489) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:17:57.332+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:17:57.332+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:17:57.332+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:17:57.762+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:17:57.802+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:17:57.801+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:17:57.810+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:17:57.810+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:17:57.825+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.499 seconds
+[2025-04-04T08:18:28.003+0000] {processor.py:161} INFO - Started process (PID=1501) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:18:28.004+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:18:28.006+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:18:28.005+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:18:28.511+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:18:28.555+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:18:28.555+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:18:28.564+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:18:28.564+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:18:28.582+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.583 seconds
+[2025-04-04T08:18:59.109+0000] {processor.py:161} INFO - Started process (PID=1513) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:18:59.110+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:18:59.111+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:18:59.111+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:18:59.541+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:18:59.582+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:18:59.582+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:18:59.590+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:18:59.590+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:18:59.606+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.501 seconds
+[2025-04-04T08:19:29.790+0000] {processor.py:161} INFO - Started process (PID=1525) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:19:29.791+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:19:29.792+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:19:29.791+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:19:30.210+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:19:30.249+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:19:30.249+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:19:30.258+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:19:30.258+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:19:30.272+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.486 seconds
+[2025-04-04T08:20:00.434+0000] {processor.py:161} INFO - Started process (PID=1537) to work on /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:20:00.435+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/crawl_data_with_dag.py for tasks to queue
+[2025-04-04T08:20:00.436+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:20:00.435+0000] {dagbag.py:545} INFO - Filling up the DagBag from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:20:00.857+0000] {processor.py:840} INFO - DAG(s) 'crawl_tamanh_parallel' retrieved from /opt/airflow/dags/crawl_data_with_dag.py
+[2025-04-04T08:20:00.897+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:20:00.896+0000] {dag.py:3096} INFO - Sync 1 DAGs
+[2025-04-04T08:20:00.906+0000] {logging_mixin.py:188} INFO - [2025-04-04T08:20:00.905+0000] {dag.py:3954} INFO - Setting next_dagrun for crawl_tamanh_parallel to None, run_after=None
+[2025-04-04T08:20:00.922+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/crawl_data_with_dag.py took 0.492 seconds

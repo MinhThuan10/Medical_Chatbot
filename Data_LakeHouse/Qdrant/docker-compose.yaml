@@ -205,12 +205,6 @@ services:
       - airflow
 
 
-networks:
-  hdfs_network:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.20.0.0/16
 
 configs:
   qdrant_config:

@@ -1,0 +1,44 @@
+[2025-04-01T10:16:33.961+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-01T10:16:33.996+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crawl_tamanh.crawl_batch_157 manual__2025-04-01T10:09:11.112407+00:00 [queued]>
+[2025-04-01T10:16:34.011+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crawl_tamanh.crawl_batch_157 manual__2025-04-01T10:09:11.112407+00:00 [queued]>
+[2025-04-01T10:16:34.012+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 3
+[2025-04-01T10:16:34.024+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_batch_157> on 2025-04-01 10:09:11.112407+00:00
+[2025-04-01T10:16:34.036+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=3900) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-01T10:16:34.037+0000] {standard_task_runner.py:63} INFO - Started process 3905 to run task
+[2025-04-01T10:16:34.036+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crawl_tamanh', 'crawl_batch_157', 'manual__2025-04-01T10:09:11.112407+00:00', '--job-id', '1148', '--raw', '--subdir', 'DAGS_FOLDER/crawl_data_with_dag.py', '--cfg-path', '/tmp/tmp0tvrjnwp']
+[2025-04-01T10:16:34.038+0000] {standard_task_runner.py:91} INFO - Job 1148: Subtask crawl_batch_157
+[2025-04-01T10:16:34.079+0000] {task_command.py:426} INFO - Running <TaskInstance: crawl_tamanh.crawl_batch_157 manual__2025-04-01T10:09:11.112407+00:00 [running]> on host a2df5b4b52f3
+[2025-04-01T10:16:34.157+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crawl_tamanh' AIRFLOW_CTX_TASK_ID='crawl_batch_157' AIRFLOW_CTX_EXECUTION_DATE='2025-04-01T10:09:11.112407+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-01T10:09:11.112407+00:00'
+[2025-04-01T10:16:34.158+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-01T10:16:45.190+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-01T10:16:45.191+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_data_with_dag.py", line 101, in process_batch
+    writer.writerows(results)
+  File "/usr/local/lib/python3.12/csv.py", line 167, in writerows
+    return self.writer.writerows(map(self._dict_to_list, rowdicts))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/csv.py", line 157, in _dict_to_list
+    wrong_fields = rowdict.keys() - self.fieldnames
+                   ^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'keys'
+[2025-04-01T10:16:45.202+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=crawl_tamanh, task_id=crawl_batch_157, run_id=manual__2025-04-01T10:09:11.112407+00:00, execution_date=20250401T100911, start_date=20250401T101633, end_date=20250401T101645
+[2025-04-01T10:16:45.215+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 1148 for task crawl_batch_157 ('str' object has no attribute 'keys'; 3905)
+[2025-04-01T10:16:45.264+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-04-01T10:16:45.279+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-01T10:16:45.282+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

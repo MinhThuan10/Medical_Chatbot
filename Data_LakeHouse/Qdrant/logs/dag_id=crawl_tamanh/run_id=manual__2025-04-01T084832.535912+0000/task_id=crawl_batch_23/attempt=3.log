@@ -1,0 +1,88 @@
+[2025-04-01T09:14:08.129+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-04-01T09:14:08.157+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: crawl_tamanh.crawl_batch_23 manual__2025-04-01T08:48:32.535912+00:00 [queued]>
+[2025-04-01T09:14:08.166+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: crawl_tamanh.crawl_batch_23 manual__2025-04-01T08:48:32.535912+00:00 [queued]>
+[2025-04-01T09:14:08.167+0000] {taskinstance.py:2306} INFO - Starting attempt 3 of 3
+[2025-04-01T09:14:08.180+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_batch_23> on 2025-04-01 08:48:32.535912+00:00
+[2025-04-01T09:14:08.190+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=1446) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-04-01T09:14:08.190+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'crawl_tamanh', 'crawl_batch_23', 'manual__2025-04-01T08:48:32.535912+00:00', '--job-id', '94', '--raw', '--subdir', 'DAGS_FOLDER/crawl_data_with_dag.py', '--cfg-path', '/tmp/tmpgyf_pdtj']
+[2025-04-01T09:14:08.192+0000] {standard_task_runner.py:63} INFO - Started process 1448 to run task
+[2025-04-01T09:14:08.192+0000] {standard_task_runner.py:91} INFO - Job 94: Subtask crawl_batch_23
+[2025-04-01T09:14:08.232+0000] {task_command.py:426} INFO - Running <TaskInstance: crawl_tamanh.crawl_batch_23 manual__2025-04-01T08:48:32.535912+00:00 [running]> on host a2df5b4b52f3
+[2025-04-01T09:14:08.340+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='crawl_tamanh' AIRFLOW_CTX_TASK_ID='crawl_batch_23' AIRFLOW_CTX_EXECUTION_DATE='2025-04-01T08:48:32.535912+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-04-01T08:48:32.535912+00:00'
+[2025-04-01T09:14:08.341+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-04-01T09:15:08.730+0000] {local_task_job_runner.py:310} WARNING - State of this instance has been externally set to None. Terminating instance.
+[2025-04-01T09:15:08.732+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
+[2025-04-01T09:15:08.733+0000] {process_utils.py:132} INFO - Sending 15 to group 1448. PIDs of all processes in the group: [1448]
+[2025-04-01T09:15:08.734+0000] {process_utils.py:87} INFO - Sending the signal 15 to group 1448
+[2025-04-01T09:15:08.734+0000] {taskinstance.py:2611} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-04-01T09:15:08.737+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-04-01T09:15:08.745+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_data_with_dag.py", line 94, in process_batch
+    results.extend(get_content_from_url(url))  # Lấy dữ liệu từng URL
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/crawl_data_with_dag.py", line 40, in get_content_from_url
+    response = requests.get(url, timeout=10)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/api.py", line 73, in get
+    return request("get", url, params=params, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/api.py", line 59, in request
+    return session.request(method=method, url=url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/sessions.py", line 747, in send
+    r.content
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/models.py", line 899, in content
+    self._content = b"".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b""
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/requests/models.py", line 816, in generate
+    yield from self.raw.stream(chunk_size, decode_content=True)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 1040, in stream
+    yield from self.read_chunked(amt, decode_content=decode_content)
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 1187, in read_chunked
+    chunk = self._handle_chunk(amt)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/urllib3/response.py", line 1129, in _handle_chunk
+    value = self._fp._safe_read(amt)  # type: ignore[union-attr]
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/http/client.py", line 640, in _safe_read
+    data = self.fp.read(amt)
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 708, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ssl.py", line 1252, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ssl.py", line 1104, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 2613, in signal_handler
+    raise AirflowTaskTerminated("Task received SIGTERM signal")
+airflow.exceptions.AirflowTaskTerminated: Task received SIGTERM signal
+[2025-04-01T09:15:08.753+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=crawl_tamanh, task_id=crawl_batch_23, run_id=manual__2025-04-01T08:48:32.535912+00:00, execution_date=20250401T084832, start_date=20250401T091408, end_date=20250401T091508
+[2025-04-01T09:15:08.767+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 94 for task crawl_batch_23 ((psycopg2.errors.ForeignKeyViolation) insert or update on table "task_fail" violates foreign key constraint "task_fail_ti_fkey"
+DETAIL:  Key (dag_id, task_id, run_id, map_index)=(crawl_tamanh, crawl_batch_23, manual__2025-04-01T08:48:32.535912+00:00, -1) is not present in table "task_instance".
+
+[SQL: INSERT INTO task_fail (task_id, dag_id, run_id, map_index, start_date, end_date, duration) VALUES (%(task_id)s, %(dag_id)s, %(run_id)s, %(map_index)s, %(start_date)s, %(end_date)s, %(duration)s) RETURNING task_fail.id]
+[parameters: {'task_id': 'crawl_batch_23', 'dag_id': 'crawl_tamanh', 'run_id': 'manual__2025-04-01T08:48:32.535912+00:00', 'map_index': -1, 'start_date': datetime.datetime(2025, 4, 1, 9, 14, 8, 158672, tzinfo=Timezone('UTC')), 'end_date': datetime.datetime(2025, 4, 1, 9, 15, 8, 753440, tzinfo=Timezone('UTC')), 'duration': 60}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj); 1448)
+[2025-04-01T09:15:08.826+0000] {process_utils.py:80} INFO - Process psutil.Process(pid=1448, status='terminated', exitcode=1, started='09:14:07') (1448) terminated with exit code 1
