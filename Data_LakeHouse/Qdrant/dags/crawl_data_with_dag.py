@@ -50,6 +50,19 @@ def get_content_from_url(url):
     for i, e in enumerate(elements):
         if e.name == "h1":
             title = e.text.strip()
+            content = []
+            for e1 in elements[i + 1:]:
+                if e1.name in ["h3", "p", "li"]:
+                    content.append(e1.text.strip())
+                if e1.name == 'h2':
+                    break
+            data_content.append({
+                "url": url,
+                "title": title or "",
+                "heading": title,
+                "content": " ".join(content),
+                "error": None
+            })
         if e.name == "h2":
             heading = e.text.strip()
             content = []
@@ -65,7 +78,9 @@ def get_content_from_url(url):
                 "content": " ".join(content),
                 "error": None
             })
+        
 
+    
     if not data_content:
         return [{"url": url, "title": "", "heading": "", "content": "", "error": "No relevant content"}]
     
