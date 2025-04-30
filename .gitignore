@@ -6,3 +6,6 @@ Data_LakeHouse/Qdrant/dags/content.csv
 Data_LakeHouse/TamAnh_Hospital/data_cleaned.csv
 Data_LakeHouse/Qdrant/dags/all_url.csv
 Data_LakeHouse/TamAnh_Hospital/all_chunks_with_embeddings.jsonl
+Data_LakeHouse/Qdrant/dags/bvthucuc
+Data_LakeHouse/Qdrant/dags/ivie_split
+Data_LakeHouse/Qdrant/dags/medlatec
