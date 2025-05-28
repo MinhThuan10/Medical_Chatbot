@@ -1,0 +1,17 @@
+Data_LakeHouse/Qdrant/.docker/
+Data_LakeHouse/Qdrant/qdrant_data/
+Data_LakeHouse/Qdrant/dags/__pycache__
+Data_LakeHouse/Qdrant/logs
+Data_LakeHouse/Qdrant/dags/content.csv
+Data_LakeHouse/TamAnh_Hospital/data_cleaned.csv
+Data_LakeHouse/Qdrant/dags/all_url.csv
+Data_LakeHouse/TamAnh_Hospital/all_chunks_with_embeddings.jsonl
+Data_LakeHouse/Qdrant/dags/bvthucuc
+Data_LakeHouse/Qdrant/dags/ivie_split
+Data_LakeHouse/Qdrant/dags/medlatec
+Data_LakeHouse/Qdrant/dags/vietnamese_medical_chat_data.csv
+Data_LakeHouse/Qdrant/dags/vietnamese_medical_qa.csv
+finetune/dataset/question_answer.csv
+finetune/dataset/QA_data.csv
+finetune/T5_medium/t5-base-qa
+develop-project/.env

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chatbot HCMUTE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 sidebar p-3">
+                <div class="d-flex flex-column align-items-center">
+                    <img src="/static/images/logo.png" class="avatar mb-2" alt="HCMUTE logo">
+                    <button class="btn btn-primary mt-3 w-100" id="newConversationBtn">Cuộc trò chuyện mới +</button>
+                </div>
+                <div class="p-3" id="list_conversation">
+                    <!--  -->
+                </div>
+            </div>
+
+
+            <!-- Chat Area -->
+            <div class="col-md-9 d-flex flex-column p-3">
+                <div class="new_chat_area"  style="display: block;">
+                    <!-- Main chat area -->
+                
+                    <div class="text-center mb-4">
+                        <div class="chat-header">Chào bạn <img src="/static/images/pam.png" width="50px" alt=""></div>
+                        <div class="chat-subheader">Mình có thể giúp gì cho bạn?</div>
+                    </div>
+
+                    <div class="input-area mb-4">
+                        <form class="d-flex align-items-center w-100">
+                            <textarea id="chatInput" class="form-control me-2  p-3" rows="1" placeholder="Nhập tin nhắn..." maxlength="1000"></textarea>
+                            <button type="submit" class="btn btn-primary  p-3"><i class="bi bi-send"></i> ➤</button>
+                        </form>
+                    </div>
+
+                    <div class="related-questions mb-4">
+                        <p class="fw-semibold">✨ Các câu hỏi phổ biến</p>
+                        <div class="d-flex flex-wrap">
+                            <button class="btn btn-outline-warning popular-question">💡 Tôi muốn biết về học bổng của trường</button>
+                            <button class="btn btn-outline-info popular-question">ℹ️ Có nên học ở HCMUTE không?</button>
+                            <button class="btn btn-outline-danger popular-question">⚠️ Điểm chuẩn các ngành năm trước là bao nhiêu?</button>
+                            <button class="btn btn-outline-success popular-question">✅ Ngành Công nghệ thông tin học những gì?</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sesion_chat_area" style="display: none;">
+                    
+                <!-- Chỉ phần chat cuộn -->
+                    <div class="chat-body">
+                        <div class="d-flex justify-content-end mb-3">
+                        <div class="bg-primary text-white p-3 rounded shadow-sm">
+                            Chào bạn!
+                        </div>
+                        </div>
+
+                        <div class="d-flex mb-3">
+                        <div class="bg-light p-3 rounded shadow-sm">
+                            Chào bạn! Mình có thể giúp gì cho bạn về thông tin tuyển sinh hoặc các dịch vụ của Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh (HCMUTE) không?
+                        </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end mb-3">
+                        <div class="bg-primary text-white p-3 rounded shadow-sm">
+                            hôm nay ngày mấy
+                        </div>
+                        </div>
+
+                        <div class="d-flex mb-3">
+                        <div class="bg-light p-3 rounded shadow-sm">
+                            Kính chào bạn!<br>
+                            Hôm nay là ngày 11 tháng 5 năm 2025.<br>
+                            Nếu bạn cần thêm thông tin gì về tuyển sinh hoặc các vấn đề liên quan, xin vui lòng cho tôi biết!<br>
+                            Trân trọng!
+                        </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-3">
+                        <div class="bg-primary text-white p-3 rounded shadow-sm">
+                            Chào bạn!
+                        </div>
+                        </div>
+
+                        <div class="d-flex mb-3">
+                        <div class="bg-light p-3 rounded shadow-sm">
+                            Chào bạn! Mình có thể giúp gì cho bạn về thông tin tuyển sinh hoặc các dịch vụ của Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh (HCMUTE) không?
+                        </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end mb-3">
+                        <div class="bg-primary text-white p-3 rounded shadow-sm">
+                            hôm nay ngày mấy
+                        </div>
+                        </div>
+
+                        <div class="d-flex mb-3">
+                        <div class="bg-light p-3 rounded shadow-sm">
+                            Kính chào bạn!<br>
+                            Hôm nay là ngày 11 tháng 5 năm 2025.<br>
+                            Nếu bạn cần thêm thông tin gì về tuyển sinh hoặc các vấn đề liên quan, xin vui lòng cho tôi biết!<br>
+                            Trân trọng!
+                        </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-3">
+                        <div class="bg-primary text-white p-3 rounded shadow-sm">
+                            Chào bạn!
+                        </div>
+                        </div>
+
+                        <div class="d-flex mb-3">
+                        <div class="bg-light p-3 rounded shadow-sm">
+                            Chào bạn! Mình có thể giúp gì cho bạn về thông tin tuyển sinh hoặc các dịch vụ của Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh (HCMUTE) không?
+                        </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end mb-3">
+                        <div class="bg-primary text-white p-3 rounded shadow-sm">
+                            hôm nay ngày mấy
+                        </div>
+                        </div>
+
+                        <div class="d-flex mb-3">
+                        <div class="bg-light p-3 rounded shadow-sm">
+                            Kính chào bạn!<br>
+                            Hôm nay là ngày 11 tháng 5 năm 2025.<br>
+                            Nếu bạn cần thêm thông tin gì về tuyển sinh hoặc các vấn đề liên quan, xin vui lòng cho tôi biết!<br>
+                            Trân trọng!
+                        </div>
+                        </div>
+                    </div>
+
+                    <!-- Input cố định -->
+                    <div class="chat-input">
+                        <form class="d-flex align-items-center w-100">
+                            <textarea id="chatInput" class="form-control me-2  p-3" rows="1" placeholder="Nhập tin nhắn..." maxlength="1000"></textarea>
+                            <button type="submit" class="btn btn-primary  p-3"><i class="bi bi-send"></i> ➤</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal chỉnh sửa -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">📝 Chỉnh sửa cuộc trò chuyện</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body">
+                <label for="chatTitle" class="form-label">Tiêu đề cuộc trò chuyện:</label>
+                <input type="text" class="form-control" id="chatTitle" placeholder="Nhập tiêu đề mới...">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveChangesBtn">✅ Cập nhật</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteModalLabel">⚠️ Xác nhận xóa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa cuộc trò chuyện này không? Hành động này không thể hoàn tác.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">❌ Hủy</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">🗑️ Xóa</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="static/css/style.css">
+  <script src="static/js/script.js"></script>
+</body>
+</html>

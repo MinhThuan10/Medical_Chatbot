@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    depends_on:
+      - mysql
+
+  qdrant:
+    image: qdrant/qdrant:v1.9.0
+    container_name: qdrant
+    restart: always
+    ports:
+      - "6333:6333"    # REST API
+      - "6334:6334"    # gRPC
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+volumes:
+  mysql_data:
+  qdrant_data:
