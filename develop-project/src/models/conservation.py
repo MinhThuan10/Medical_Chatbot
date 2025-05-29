@@ -41,6 +41,7 @@ class Conservation:
         return result.rowcount > 0
     
     def delete_conservation(self, db, user_id, conservation_id):
+
         result = db.execute(
             text(
                 "DELETE FROM conservation WHERE id = :conservation_id AND user_id = :user_id"
@@ -52,3 +53,4 @@ class Conservation:
         )
         db.commit()
         return result.rowcount > 0
+    

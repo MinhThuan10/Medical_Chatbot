@@ -3,6 +3,7 @@ from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from src.database import get_db
 from src.models.conservation import Conservation
+from src.models.chat_data import Chat_data
 from datetime import datetime
 
 
@@ -90,8 +91,7 @@ def create_conservation(request: Request, db: Session = Depends(get_db)):
     return {"message": "Conversation created", "conversation_id": conversation_id}
 
 @router.put("/update/{conservation_id}")
-async def update_conservation(request: Request, db: Session = Depends(get_db)):
-    conservation_id = request.path_params.get("conservation_id")
+async def update_conservation(request: Request, conservation_id: str, db: Session = Depends(get_db)):
     data = await request.json()
     user_id = request.cookies.get("user_id")
     if not user_id:
@@ -118,13 +118,11 @@ async def update_conservation(request: Request, db: Session = Depends(get_db)):
     
 
 @router.delete("/delete/{conservation_id}")
-async def delete_conservation(request: Request, db: Session = Depends(get_db)):
+async def delete_conservation(request: Request, conservation_id: str, db: Session = Depends(get_db)):
     user_id = request.cookies.get("user_id")
     if not user_id:
         return {"error": "User ID not found in cookies"}
     
-    conservation_id = request.path_params.get("conservation_id")
-    print(f"Deleting conversation with ID: {conservation_id}")
     if not conservation_id:
         return {"error": "Missing required fields"}
     success = Conservation().delete_conservation(
@@ -137,3 +135,18 @@ async def delete_conservation(request: Request, db: Session = Depends(get_db)):
         return {"message": "Conversation deleted successfully"}
     else:
         return {"error": "Failed to delete conversation"}
+    
+
+@router.get("/{conservation_id}")
+async def get_conservation(request: Request, conservation_id: str, db: Session = Depends(get_db)):
+    user_id = request.cookies.get("user_id")
+    if not user_id:
+        return {"error": "User ID not found in cookies"}
+    print(f"Fetching conversation with ID: {conservation_id} for user ID: {user_id}")
+    chat_data =Chat_data().get_all_chat_data(
+        user_id=user_id,
+        conservation_id=conservation_id,
+        db=db
+    )
+        
+    return {"conservation": chat_data}

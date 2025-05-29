@@ -1,8 +1,19 @@
-const textarea = document.getElementById('chatInput');
-  textarea.addEventListener('input', function () {
+const chat_input_new = document.getElementById('chat_input_new');
+  chat_input_new.addEventListener('input', function () {
     this.style.height = 'auto'; // reset chiều cao
     this.style.height = this.scrollHeight + 'px'; // set theo nội dung
   });
+
+const chat_input_session = document.getElementById('chat_input_session');
+  chat_input_session.addEventListener('input', function () {
+    this.style.height = 'auto'; // reset chiều cao
+    this.style.height = this.scrollHeight + 'px'; // set theo nội dung
+  });
+
+window.addEventListener("load", function () {
+  const chatBody = document.getElementById("sesion_chat_area_body");
+  chatBody.scrollTop = chatBody.scrollHeight;
+});
 
 const apiUrl = window.location.origin;
 
@@ -30,7 +41,7 @@ fetch(`${apiUrl}/conservation`, {
         <ul class="list-unstyled">
           <li class="position-relative">
             <div class="d-flex align-items-center justify-content-between">
-              <button class="btn btn-outline-info mt-3 flex-grow-1 text-truncate text-start">
+              <button class="btn btn-outline-info mt-3 flex-grow-1 text-truncate text-start" onclick="window.location.href='${apiUrl}/chat/${item.id}'">
                 💬 ${item.name || 'Cuộc trò chuyện'}
               </button>
               <div class="dropdown mt-3 ms-2">
@@ -58,7 +69,6 @@ fetch(`${apiUrl}/conservation`, {
   });
   listDiv.innerHTML = html;
 });
-
 
 const newConversationBtn = document.getElementById('newConversationBtn');
 newConversationBtn.addEventListener('click', function () {
@@ -121,4 +131,96 @@ saveChangesBtn.addEventListener('click', function () {
   .then(data => {
     window.location.reload();
   });
+});
+
+
+
+console.log("chatData in JS:", window.chatData);
+document.addEventListener("DOMContentLoaded", function() {
+    if (!window.chatData || (Array.isArray(window.chatData) && window.chatData.length === 0)) {
+        document.getElementById("new_chat_area").style.display = "block";
+        document.getElementById("sesion_chat_area").style.display = "none";
+    } else {
+        document.getElementById("new_chat_area").style.display = "none";
+        document.getElementById("sesion_chat_area").style.display = "flex";
+
+        const chatArea = document.getElementById("sesion_chat_area_body");
+        let html = ``;
+        window.chatData.forEach(item => {
+            html += `
+                <div class="d-flex justify-content-end mb-3">
+                  <div class="bg-primary text-white p-3 rounded shadow-sm">
+                      ${item.question_text}
+                  </div>
+                </div>
+
+                <div class="d-flex mb-3">
+                  <div class="bg-light p-3 rounded shadow-sm">
+                      ${item.answer_text}
+                  </div>
+                </div>
+            `;
+        });
+        chatArea.innerHTML = html;
+    }
+});
+
+
+// Xử lý gửi tin nhắn mới
+document.addEventListener("DOMContentLoaded", function() {
+    const chatForm = document.querySelector("#sesion_chat_area .chat-input form");
+    const chatInput = document.querySelector("#sesion_chat_area #chat_input_session");
+
+    if (chatForm && chatInput) {
+        chatForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const question = chatInput.value.trim();
+            if (!question) return;
+
+            // Lấy conservation_id từ URL
+            const pathParts = window.location.pathname.split("/");
+            const conservation_id = pathParts[pathParts.length - 1];
+            fetch(`${apiUrl}/chat_data/${conservation_id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({ question_text: question })
+            })
+            .then(res => res.json())
+            .then(data => {
+                window.location.reload();
+            });
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const chatForm = document.querySelector("#new_chat_area .input-area form");
+    const chatInput = document.querySelector("#new_chat_area #chat_input_new");
+
+    if (chatForm && chatInput) {
+        chatForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            const question = chatInput.value.trim();
+            if (!question) return;
+
+            // Lấy conservation_id từ URL
+            const pathParts = window.location.pathname.split("/");
+            const conservation_id = pathParts[pathParts.length - 1];
+            fetch(`${apiUrl}/chat_data/${conservation_id}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({ question_text: question })
+            })
+            .then(res => res.json())
+            .then(data => {
+                window.location.reload();
+            });
+        });
+    }
 });
