@@ -81,7 +81,7 @@ newConversationBtn.addEventListener('click', function () {
   })
   .then(res => res.json())
   .then(data => {
-    window.location.reload();
+    window.location.href = `${apiUrl}/chat/${data.conversation_id}`;
   })
 });
 
@@ -102,7 +102,7 @@ confirmDeleteBtn.addEventListener('click', function () {
   })
   .then(res => res.json())
   .then(data => {
-    window.location.reload();
+    window.location.href = `${apiUrl}`;
   });
 });
 
@@ -201,15 +201,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const chatInput = document.querySelector("#new_chat_area #chat_input_new");
 
     if (chatForm && chatInput) {
-        chatForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-            const question = chatInput.value.trim();
-            if (!question) return;
+      chatForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const question = chatInput.value.trim();
+        if (!question) return;
 
-            // Lấy conservation_id từ URL
-            const pathParts = window.location.pathname.split("/");
-            const conservation_id = pathParts[pathParts.length - 1];
-            fetch(`${apiUrl}/chat_data/${conservation_id}`, {
+        // tạo conservation_id mới
+        fetch(`${apiUrl}/conservation/new`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          credentials: "include"
+        })
+        .then(res => res.json())
+        .then(data => {
+            const conservation_id = data.conversation_id;
+
+            // Gửi câu hỏi đến conservation_id mới
+            return fetch(`${apiUrl}/chat_data/${conservation_id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -219,8 +229,11 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(res => res.json())
             .then(data => {
-                window.location.reload();
-            });
+                window.location.href = `${apiUrl}/chat/${conservation_id}`;
+              });
+      
+          
         });
-    }
+      });
+    } 
 });

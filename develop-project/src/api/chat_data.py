@@ -23,8 +23,17 @@ async def insert_chat_data(
         return {"error": "User ID not found in cookies"}
     data = await request.json()
     question_text = data.get("question_text")
-    answer_text = ChatDataModel().model(question_text)
-    print(f"User ID: {user_id}, Conservation ID: {conservation_id}, Question: {question_text}, Answer: {answer_text}")
+    history = Chat_data().get_chat_data_history(
+        user_id=user_id,
+        conservation_id=conservation_id,
+        db=db
+    )
+    if not history:
+        history = ""
+    else:
+        history = history['answer_text']
+    answer_text = ChatDataModel().model_qa(history, question_text)
+    # print(f"User ID: {user_id}, Conservation ID: {conservation_id}, Question: {question_text}, Answer: {answer_text}")
     if answer_text:
         chat_data = Chat_data().insert_chat_data(
             db=db,

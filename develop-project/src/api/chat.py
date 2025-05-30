@@ -26,7 +26,7 @@ async def get_chat_data(
     else:
         msg = "Hello from Chatbot"
     chat_data = Chat_data().get_all_chat_data(user_id, conservation_id, db=db)
-    print(f"Chat data for conservation {conservation_id}: {chat_data}")
+    # print(f"Chat data for conservation {conservation_id}: {chat_data}")
     response = templates.TemplateResponse("index.html", {
         "request": request,
         "chat_data": chat_data,
