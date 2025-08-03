@@ -23,7 +23,7 @@
 
             <!-- Chat Area -->
             <div class="col-md-9 d-flex flex-column p-3">
-                <div class="new_chat_area"  style="display: block;">
+                <div class="new_chat_area" id="new_chat_area">
                     <!-- Main chat area -->
                 
                     <div class="text-center mb-4">
@@ -33,7 +33,7 @@
 
                     <div class="input-area mb-4">
                         <form class="d-flex align-items-center w-100">
-                            <textarea id="chatInput" class="form-control me-2  p-3" rows="1" placeholder="Nhập tin nhắn..." maxlength="1000"></textarea>
+                            <textarea id="chat_input_new" class="form-control me-2  p-3" rows="1" placeholder="Nhập tin nhắn..." maxlength="1000"></textarea>
                             <button type="submit" class="btn btn-primary  p-3"><i class="bi bi-send"></i> ➤</button>
                         </form>
                     </div>
@@ -49,94 +49,17 @@
                     </div>
                 </div>
                 
-                <div class="sesion_chat_area" style="display: none;">
-                    
-                <!-- Chỉ phần chat cuộn -->
-                    <div class="chat-body">
-                        <div class="d-flex justify-content-end mb-3">
-                        <div class="bg-primary text-white p-3 rounded shadow-sm">
-                            Chào bạn!
-                        </div>
-                        </div>
+                <div class="sesion_chat_area" id="sesion_chat_area">
+                    <!-- Chỉ phần chat cuộn --> 
+                    <div class="chat-body"  id="sesion_chat_area_body"></div>
 
-                        <div class="d-flex mb-3">
-                        <div class="bg-light p-3 rounded shadow-sm">
-                            Chào bạn! Mình có thể giúp gì cho bạn về thông tin tuyển sinh hoặc các dịch vụ của Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh (HCMUTE) không?
-                        </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end mb-3">
-                        <div class="bg-primary text-white p-3 rounded shadow-sm">
-                            hôm nay ngày mấy
-                        </div>
-                        </div>
-
-                        <div class="d-flex mb-3">
-                        <div class="bg-light p-3 rounded shadow-sm">
-                            Kính chào bạn!<br>
-                            Hôm nay là ngày 11 tháng 5 năm 2025.<br>
-                            Nếu bạn cần thêm thông tin gì về tuyển sinh hoặc các vấn đề liên quan, xin vui lòng cho tôi biết!<br>
-                            Trân trọng!
-                        </div>
-                        </div>
-                        <div class="d-flex justify-content-end mb-3">
-                        <div class="bg-primary text-white p-3 rounded shadow-sm">
-                            Chào bạn!
-                        </div>
-                        </div>
-
-                        <div class="d-flex mb-3">
-                        <div class="bg-light p-3 rounded shadow-sm">
-                            Chào bạn! Mình có thể giúp gì cho bạn về thông tin tuyển sinh hoặc các dịch vụ của Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh (HCMUTE) không?
-                        </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end mb-3">
-                        <div class="bg-primary text-white p-3 rounded shadow-sm">
-                            hôm nay ngày mấy
-                        </div>
-                        </div>
-
-                        <div class="d-flex mb-3">
-                        <div class="bg-light p-3 rounded shadow-sm">
-                            Kính chào bạn!<br>
-                            Hôm nay là ngày 11 tháng 5 năm 2025.<br>
-                            Nếu bạn cần thêm thông tin gì về tuyển sinh hoặc các vấn đề liên quan, xin vui lòng cho tôi biết!<br>
-                            Trân trọng!
-                        </div>
-                        </div>
-                        <div class="d-flex justify-content-end mb-3">
-                        <div class="bg-primary text-white p-3 rounded shadow-sm">
-                            Chào bạn!
-                        </div>
-                        </div>
-
-                        <div class="d-flex mb-3">
-                        <div class="bg-light p-3 rounded shadow-sm">
-                            Chào bạn! Mình có thể giúp gì cho bạn về thông tin tuyển sinh hoặc các dịch vụ của Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh (HCMUTE) không?
-                        </div>
-                        </div>
-
-                        <div class="d-flex justify-content-end mb-3">
-                        <div class="bg-primary text-white p-3 rounded shadow-sm">
-                            hôm nay ngày mấy
-                        </div>
-                        </div>
-
-                        <div class="d-flex mb-3">
-                        <div class="bg-light p-3 rounded shadow-sm">
-                            Kính chào bạn!<br>
-                            Hôm nay là ngày 11 tháng 5 năm 2025.<br>
-                            Nếu bạn cần thêm thông tin gì về tuyển sinh hoặc các vấn đề liên quan, xin vui lòng cho tôi biết!<br>
-                            Trân trọng!
-                        </div>
-                        </div>
+                    <div id="loadingIndicator" class="spinner-border text-primary" role="status" style="display: none;">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
 
-                    <!-- Input cố định -->
                     <div class="chat-input">
                         <form class="d-flex align-items-center w-100">
-                            <textarea id="chatInput" class="form-control me-2  p-3" rows="1" placeholder="Nhập tin nhắn..." maxlength="1000"></textarea>
+                            <textarea id="chat_input_session" class="form-control me-2  p-3" rows="1" placeholder="Nhập tin nhắn..." maxlength="1000"></textarea>
                             <button type="submit" class="btn btn-primary  p-3"><i class="bi bi-send"></i> ➤</button>
                         </form>
                     </div>
@@ -182,9 +105,15 @@
         </div>
     </div>
 
+
+    <script>
+        // Nếu chat_data là None thì gán mảng rỗng
+        window.chatData = {{ chat_data | tojson | safe }};
+    </script>
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <link rel="stylesheet" href="static/css/style.css">
-  <script src="static/js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <script src="/static/js/script.js"></script>
 </body>
 </html>

@@ -105,3 +105,15 @@ button.text-truncate {
   text-overflow: ellipsis;  
   max-width: 100%;          
 }
+
+#loadingIndicator {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  
+}
+
+.answer{
+  max-width: 80%;
+  ;
+}
