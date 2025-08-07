@@ -12,7 +12,6 @@ Data_LakeHouse/Qdrant/dags/medlatec
 Data_LakeHouse/Qdrant/dags/vietnamese_medical_chat_data.csv
 Data_LakeHouse/Qdrant/dags/vietnamese_medical_qa.csv
 finetune/dataset/question_answer.csv
-finetune
 finetune/dataset/QA_data.csv
 finetune/T5_medium/t5-base-qa
 finetune/embedding_model/sample/
