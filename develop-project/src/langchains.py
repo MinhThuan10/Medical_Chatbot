@@ -6,9 +6,9 @@ from langchain.memory import ConversationBufferMemory
 from langchain_core.prompts import PromptTemplate
 from langchain.schema import Document
 import re
-from fastapi import FastAPI, WebSocket
 from fastapi.responses import StreamingResponse
 from sentence_transformers import CrossEncoder
+from src.models.chat_data import Chat_data
 
 class LangChainRAG:
     def __init__(self):
@@ -69,10 +69,15 @@ class LangChainRAG:
 
         transform_chain = transform_prompt | self.llm_model()
 
+        print("Qestion:", question)
+
+        print("History:", history)
+
         transformed_question = transform_chain.invoke({
             "question": question,
             "chat_history": history
         })
+        print("Transform Qestion:", transformed_question)
 
         return transformed_question
 
@@ -194,7 +199,7 @@ Câu hỏi như sau:
                 all_context = [doc.page_content for doc in all_documents]
 
             all_context = self.reranking_documents(question, all_context)
-            print(all_context)
+            # print(all_context)
 
 
 

@@ -83,7 +83,7 @@ class ChatDataModel:
         cleaned_string = json_string.strip("`").strip("json\n").strip()
         query_transfor = json.loads(cleaned_string)
         query_transformed = query_transfor['rewritten_question']
-        print(f"Transformed Query: {query_transformed}")
+        # print(f"Transformed Query: {query_transformed}")
         category = query_transfor['category']
         if category == "hello":
             return "Xin chào! Tôi là trợ lý AI của bạn. Có thể giúp gì cho bạn hôm nay?"
@@ -97,6 +97,6 @@ class ChatDataModel:
             embedding = self.model_embedding(query_transformed)
             search_result = self.model_rag(embedding)
             context = "\n".join([item.payload['chunk'] for item in search_result])
-            print(f"Context: {context}")
+            # print(f"Context: {context}")
             response = self.model_gemini_chat(query_transformed, context)
             return response
