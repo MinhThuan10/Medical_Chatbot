@@ -82,7 +82,7 @@ class LangChainRAG:
 
         prompt = f"""
 Bạn hãy phân loại câu hỏi sau thành 3 loại:
-1 - Nếu câu hỏi thuộc lĩnh vực y.
+1 - Nếu câu hỏi thuộc lĩnh vực y tế.
 2 - Nếu câu hỏi giao tiếp bình thường.
 3 - Nếu câu hỏi Thuộc lĩnh vực khác.
 

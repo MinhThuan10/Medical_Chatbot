@@ -27,13 +27,19 @@ def crawl_qa_from_links():
             response = requests.get(url, timeout=10)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, 'html.parser')
-            faq_title = soup.find('div', class_='faq-item-title')
             faq_items = soup.find_all('div', class_='faq-item-desc')
 
             
-            question = faq_title.get_text(strip=True)
+            question = faq_items[0].get_text(strip=True)
 
-            answer = '\n'.join(item.get_text(strip=True) for item in faq_items[1])
+            # answer = '\n'.join(item.get_text(strip=True) for item in faq_items[1])
+
+            answer = ''
+            for item in faq_items[1]:
+                text = item.get_text(strip=True)
+                if not any(kw in text.lower() for kw in ["chào", "cảm ơn", "thân mến", "kính gửi", "chúc", "lịch khám", "mọi", "medlatec", "địa chỉ", "liên hệ", "trân trọng", "hân hạnh"]):
+                    answer += text + '\n'    
+
             all_qa.append((question, answer))
             print(f"[{idx}/{len(urls)}] OK: {url}")
 

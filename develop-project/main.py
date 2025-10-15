@@ -46,7 +46,7 @@ async def read_index(request: Request):
         key="user_id",
         value=user_id,
         httponly=False,
-        max_age=60*60*24*30 
+        max_age=60*60*24*365 
     )
 
     return response

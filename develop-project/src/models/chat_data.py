@@ -7,13 +7,15 @@ class Chat_data:
             text("SELECT user_id FROM conservation WHERE id = :conservation_id"),
             {"conservation_id": conservation_id}
         )
-        row = checked_user.fetchone()
-        if not row or row['user_id'] != user_id:
+        user_id_conservation = checked_user.fetchone()
+      
+        if not user_id_conservation or user_id_conservation[0] != user_id:
             return []
         result = db.execute(
             text("SELECT * FROM chat_data WHERE conservation_id = :conservation_id"),
             {"conservation_id": conservation_id}
         )
+        print(f"Result: {result.fetchall()}")
         return [dict(row) for row in result.fetchall()]
     
     def get_chat_data_history(self, user_id, conservation_id, db):
@@ -40,8 +42,8 @@ class Chat_data:
             text("SELECT user_id FROM conservation WHERE id = :conservation_id"),
             {"conservation_id": conservation_id}
         )
-        row = checked_user.fetchone()
-        if not row or row['user_id'] != user_id:
+        user_id_conservation = checked_user.fetchone()
+        if not user_id_conservation or user_id_conservation[0] != user_id:
             raise ValueError("User ID does not match the conservation ID")
         # Insert chat data
         result = db.execute(
@@ -49,7 +51,7 @@ class Chat_data:
             {"conservation_id": conservation_id}
         ).fetchone()
 
-        stt = result['stt'] + 1 if result['stt'] is not None else 0
+        stt = result[0] + 1 if result[0] is not None else 0
 
         print(f"stt: {stt}")
         result = db.execute(

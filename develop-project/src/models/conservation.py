@@ -22,7 +22,7 @@ class Conservation:
             text("SELECT * FROM conservation WHERE user_id = :user_id"),
             {"user_id": user_id} 
         )
-        return [dict(row) for row in result.fetchall()]
+        return result.mappings().all()
 
     def update_conservation(self, db, user_id, conservation_id, name, chat_day):
         result = db.execute(
