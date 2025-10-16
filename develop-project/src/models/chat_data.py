@@ -17,15 +17,15 @@ class Chat_data:
         rows = result.mappings().all()
         return [dict(row) for row in rows]
 
-    def get_chat_data_history(self, conservation_id, db):
-        result = db.execute(
-            text("SELECT * FROM chat_data WHERE conservation_id = :conservation_id ORDER BY stt DESC LIMIT 5"),
-            {"conservation_id": conservation_id,}
-        )
-        rows = result.mappings().all()
-        if rows:
-            return [dict(row) for row in rows]
-        return {}
+    # def get_chat_data_history(self, conservation_id, db):
+    #     result = db.execute(
+    #         text("SELECT * FROM chat_data WHERE conservation_id = :conservation_id ORDER BY stt DESC LIMIT 5"),
+    #         {"conservation_id": conservation_id,}
+    #     )
+    #     rows = result.mappings().all()
+    #     if rows:
+    #         return [dict(row) for row in rows]
+    #     return {}
     
     def insert_chat_data(self, db, user_id, conservation_id, question_text, answer_text):
         # Check if the user_id matches the conservation_id
@@ -58,3 +58,5 @@ class Chat_data:
         )
         db.commit()
         return result.lastrowid
+    
+chat_data_class = Chat_data()

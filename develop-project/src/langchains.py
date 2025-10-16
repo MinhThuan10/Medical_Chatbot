@@ -2,13 +2,14 @@ import os
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_huggingface import HuggingFaceEmbeddings
 from qdrant_client import QdrantClient
-from langchain.memory import ConversationBufferMemory
+from langchain.memory import ConversationBufferWindowMemory
 from langchain_core.prompts import PromptTemplate
 from langchain.schema import Document
 import re
 from fastapi.responses import StreamingResponse
 from sentence_transformers import CrossEncoder
-from src.models.chat_data import Chat_data
+
+
 
 class LangChainRAG:
     def __init__(self):
@@ -20,13 +21,15 @@ class LangChainRAG:
 
         os.environ["GOOGLE_API_KEY"] = self.api_key
 
+        # Load 
         self.memories = {}
 
     def get_memory(self, chat_id):
+        chat_id = str(chat_id).strip()
         if chat_id not in self.memories:
-            self.memories[chat_id] = ConversationBufferMemory(
+            self.memories[chat_id] = ConversationBufferWindowMemory(
                 memory_key="chat_history",
-                return_messages=True
+                return_messages=True, k=5
             )
         return self.memories[chat_id]
     
@@ -58,7 +61,9 @@ class LangChainRAG:
     def query_transform(self, question: str, chat_id) -> str:
         memory = self.get_memory(chat_id)
         history = memory.load_memory_variables({}).get("chat_history", "")
-
+        
+        print("Qestion:", question)
+        print("History:", history)
         transform_prompt = PromptTemplate(
             input_variables=["question", "chat_history"],
             template="""Dưới đây là lịch sử hội thoại:
@@ -69,15 +74,13 @@ class LangChainRAG:
 
         transform_chain = transform_prompt | self.llm_model()
 
-        print("Qestion:", question)
-
-        print("History:", history)
+        
 
         transformed_question = transform_chain.invoke({
             "question": question,
             "chat_history": history
         })
-        print("Transform Qestion:", transformed_question)
+        # print("Transform Qestion:", transformed_question)
 
         return transformed_question
 
@@ -205,8 +208,9 @@ Câu hỏi như sau:
 
         return self.answer_context(question, all_context)
 
-    def save_menory(self, chat_id, question, answer):
-        memory = self.get_memory(chat_id)
+    def save_menory(self, memory, question, answer):
 
         memory.chat_memory.add_user_message(question)
         memory.chat_memory.add_ai_message(answer)
+
+rag = LangChainRAG()

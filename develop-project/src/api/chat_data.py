@@ -2,12 +2,11 @@ from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
 from src.database import get_db
-from src.langchains import LangChainRAG
-from src.models.chat_data import Chat_data
+from src.langchains import rag
+from src.models.chat_data import chat_data_class
 
 
 templates = Jinja2Templates(directory="templates")
-rag = LangChainRAG()
 router = APIRouter(
     prefix="/chat_data",
     tags=["chat_data"]
@@ -39,7 +38,7 @@ async def answer_question(
     question_text = data.get("question_text")
     answer_text = data.get("answer_text")
     if answer_text:
-        chat_data = Chat_data().insert_chat_data(
+        chat_data = chat_data_class.insert_chat_data(
             db=db,
             user_id=user_id,
             conservation_id=conservation_id,
@@ -48,7 +47,7 @@ async def answer_question(
         )
 
         rag.save_menory(
-            chat_id=conservation_id,
+            memory=rag.get_memory(conservation_id),
             question=question_text,
             answer=answer_text)
     return chat_data
