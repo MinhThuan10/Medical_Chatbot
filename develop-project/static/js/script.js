@@ -133,7 +133,7 @@ saveChangesBtn.addEventListener('click', function () {
 });
 
 
-
+// Hiển thị khu vực chat dựa trên dữ liệu chatData
 document.addEventListener("DOMContentLoaded", function() {
     if (!window.chatData || (Array.isArray(window.chatData) && window.chatData.length === 0)) {
         document.getElementById("new_chat_area").style.display = "block";
@@ -164,6 +164,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+
+// Xử lý gửi và nhận tin nhắn trong khu vực chat
 document.addEventListener("DOMContentLoaded", function() {
     const chatForm = document.querySelector("#sesion_chat_area .chat-input form");
     const chatInput = document.querySelector("#sesion_chat_area #chat_input_session");
@@ -233,7 +235,7 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
             });
 
           }
@@ -258,6 +260,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+
+// Xử lý gửi và nhận tin nhắn trong khu vực chat mới
 document.addEventListener("DOMContentLoaded", function() {
     const chatForm = document.querySelector("#new_chat_area .input-area form");
     const chatInput = document.querySelector("#new_chat_area #chat_input_new");
@@ -362,3 +366,94 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }
 });
+
+
+
+
+// Xử lý khi click vào câu hỏi phổ biến
+document.querySelectorAll('.popular-question').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const chatInput = document.querySelector("#new_chat_area #chat_input_new");
+    const chatArea = document.getElementById("sesion_chat_area_body");
+    const loadingIndicator = document.getElementById("loadingIndicator");
+    const questionFull = btn.textContent.trim(); // VD: "💊 Dịch vụ khám..."
+    const question = questionFull.replace(/^[^\w\s]+/, '').trim(); // Bỏ icon đầu
+
+    if (!question) return;
+    document.getElementById("new_chat_area").style.display = "none";
+    document.getElementById("sesion_chat_area").style.display = "flex";
+
+    // Hiển thị câu hỏi người dùng ngay
+    chatArea.innerHTML += `
+      <div class="d-flex justify-content-end mb-3">
+        <div class="bg-primary text-white p-3 rounded shadow-sm">
+          ${question}
+        </div>
+      </div>
+    `;
+
+    chatArea.scrollTop = chatArea.scrollHeight;
+    chatInput.value = "";
+    loadingIndicator.style.display = "block";
+
+    try {
+      // 1️⃣ Tạo hội thoại mới
+      const res = await fetch(`${apiUrl}/conservation/new`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ question_text: question })
+      });
+      const data = await res.json();
+      const conservation_id = data.conversation_id;
+
+      // 2️⃣ Gửi câu hỏi đến hội thoại
+      const response = await fetch(`${apiUrl}/chat_data/${conservation_id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ question_text: question })
+      });
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      let answerText = "";
+      let answerContainer = document.createElement("div");
+      answerContainer.classList.add("bg-light", "p-3", "rounded", "shadow-sm");
+
+      let wrapper = document.createElement("div");
+      wrapper.classList.add("d-flex", "mb-3", "answer");
+      wrapper.appendChild(answerContainer);
+      chatArea.appendChild(wrapper);
+
+      loadingIndicator.style.display = "none";
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value);
+        answerText += chunk;
+        answerContainer.innerHTML = marked.parse(answerText);
+        chatArea.scrollTop = chatArea.scrollHeight;
+      }
+
+      // 3️⃣ Lưu vào DB
+      await fetch(`${apiUrl}/chat_data/insert/${conservation_id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({ question_text: question, answer_text: answerText })
+      });
+
+      // 4️⃣ Điều hướng
+      window.location.href = `${apiUrl}/chat/${conservation_id}`;
+
+    } catch (error) {
+      console.error("Lỗi khi xử lý câu hỏi:", error);
+      loadingIndicator.style.display = "none";
+    }
+  });
+});
+

@@ -8,7 +8,7 @@ from langchain.schema import Document
 import re
 from fastapi.responses import StreamingResponse
 from sentence_transformers import CrossEncoder
-
+import json
 
 
 class LangChainRAG:
@@ -35,7 +35,7 @@ class LangChainRAG:
     
     def llm_model(self):
         return ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash-lite",
             temperature=0.2,
             convert_system_message_to_human=True,
         )
@@ -62,26 +62,35 @@ class LangChainRAG:
         memory = self.get_memory(chat_id)
         history = memory.load_memory_variables({}).get("chat_history", "")
         
-        print("Qestion:", question)
-        print("History:", history)
         transform_prompt = PromptTemplate(
             input_variables=["question", "chat_history"],
-            template="""Dưới đây là lịch sử hội thoại:
-    {chat_history}
+            template="""Dưới đây là lịch sử hội thoại giữa người dùng và chatbot:
+            {chat_history}
 
-    Hãy viết lại câu hỏi sau để truy vấn tri thức tốt hơn: {question}"""
+            Câu hỏi hiện tại của người dùng:
+            {question}
+
+            Nhiệm vụ của bạn:
+            1. Viết lại câu hỏi sao cho rõ ràng, đầy đủ ngữ cảnh (dựa vào lịch sử hội thoại nếu cần), nhằm phục vụ tốt hơn cho việc truy vấn tri thức.
+            2. Phân loại câu hỏi thành một trong ba loại sau:
+            - 1: Câu hỏi thuộc lĩnh vực y tế (bệnh, thuốc, triệu chứng, khám chữa, dinh dưỡng...).
+            - 2: Câu hỏi giao tiếp thông thường (chào hỏi, cảm ơn, hỏi về chatbot...).
+            - 3: Câu hỏi thuộc lĩnh vực khác (công nghệ, tài chính, học tập...).
+
+            Yêu cầu:
+            - Chỉ trả về kết quả ở định dạng JSON như sau (không thêm bất kỳ văn bản nào khác):
+            {{
+                "rewritten_question": "<câu hỏi đã viết lại>",
+                "category": "<1 | 2 | 3>"
+            }}
+            """
         )
 
         transform_chain = transform_prompt | self.llm_model()
-
-        
-
         transformed_question = transform_chain.invoke({
             "question": question,
             "chat_history": history
-        })
-        # print("Transform Qestion:", transformed_question)
-
+        }).content.strip()
         return transformed_question
 
 
@@ -188,15 +197,24 @@ Câu hỏi như sau:
 
 
     def chat(self, question: str, chat_id):
-        raw_transform = self.query_transform(question, chat_id)
-        re_questions = re.findall(r'"(.*?)"', raw_transform.content)
+        content = self.query_transform(question, chat_id)
+        print("Transform Qestion:", content)
+
+        if content.startswith("{") or content.startswith("```json"):
+            # Xóa các dấu ```json ``` nếu có
+            json_str = re.sub(r"^```json|```$", "", content.strip(), flags=re.MULTILINE).strip()
+            try:
+                data = json.loads(json_str)
+                rewrite_question, category = data.get("rewritten_question", ""), data.get("category", None)
+            except json.JSONDecodeError:
+                pass    
+
+        print("Rewritten Question:", rewrite_question)
+        print("Category:", category)
         all_context = []
 
-        re_questions = re_questions[:3]
-        if re_questions:
-            label = self.query_routing(re_questions[0])
-
-            all_documents = self.search_documents(re_questions, label)
+        if rewrite_question:
+            all_documents = self.search_documents(rewrite_question, category)
 
             if all_documents:
                 all_context = [doc.page_content for doc in all_documents]

@@ -11,7 +11,9 @@ Data_LakeHouse/Qdrant/dags/ivie_split
 Data_LakeHouse/Qdrant/dags/medlatec
 Data_LakeHouse/Qdrant/dags/vietnamese_medical_chat_data.csv
 Data_LakeHouse/Qdrant/dags/vietnamese_medical_qa.csv
-/finetune/
+/finetune/T5/t5-base-qa/
+/finetune/dataset/
+/finetune/embedding_model/
 develop-project/.env
 .env
 myenv/
