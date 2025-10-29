@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from src.database import get_db
-from src.langchains import rag
-from src.models.chat_data import chat_data_class
+from app.src.database import get_db
+from app.src.langchains import rag
+from app.src.models.chat_data import chat_data_class
 
 
 templates = Jinja2Templates(directory="templates")

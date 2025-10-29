@@ -15,5 +15,6 @@ Data_LakeHouse/Qdrant/dags/vietnamese_medical_qa.csv
 /finetune/dataset/
 /finetune/embedding_model/
 develop-project/.env
+develop-project/data/
 .env
 myenv/

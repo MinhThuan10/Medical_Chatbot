@@ -9,7 +9,7 @@ import re
 from fastapi.responses import StreamingResponse
 from sentence_transformers import CrossEncoder
 import json
-
+import torch
 
 class LangChainRAG:
     def __init__(self):
@@ -23,6 +23,10 @@ class LangChainRAG:
 
         # Load 
         self.memories = {}
+        self.llm_model_var = self.llm_model()
+        self.rerank_model_var = self.rerank_model()
+        self.embedding_model_var = self.embedding_model()
+
 
     def get_memory(self, chat_id):
         chat_id = str(chat_id).strip()
@@ -46,7 +50,11 @@ class LangChainRAG:
 
     def embedding_model(self):
         model_name = "dangvantuan/vietnamese-embedding"
-        model_kwargs = {'device': 'cpu'}
+
+        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        print(f"[Startup] Using device: {device}")
+        
+        model_kwargs = {'device': device}
         encode_kwargs = {'normalize_embeddings': False}
         hf = HuggingFaceEmbeddings(
             model_name=model_name,
@@ -95,7 +103,6 @@ class LangChainRAG:
 
 
     def query_routing(self, re_questions) -> int:
-        llm = self.llm_model()
 
         prompt = f"""
 Bạn hãy phân loại câu hỏi sau thành 3 loại:
@@ -108,7 +115,7 @@ Chỉ trả về số 1, 2 hoặc 3 tương ứng.
 Câu hỏi như sau: 
 "{re_questions}"
 """
-        response = llm.invoke(prompt).content.strip()
+        response = self.llm_model_var.invoke(prompt).content.strip()
         try:
             classification = int(response)
             if classification in [1, 2, 3]:
@@ -120,8 +127,7 @@ Câu hỏi như sau:
 
     def search_documents(self, re_questions: str, lable):
         if lable == 1:
-            embedding_model = self.embedding_model()
-            embeddings = embedding_model.embed_documents(re_questions)
+            embeddings = self.embedding_model_var.embed_documents(re_questions)
             client = self.qdrant_client()
             all_documents = []
             for embedding in embeddings:
@@ -163,7 +169,7 @@ Câu hỏi như sau:
 
 
     def reranking_documents(self, question, all_documents):
-        rerank_model = self.rerank_model()
+        rerank_model = self.rerank_model_var
         tokenized_pairs = [[question, document] for document in all_documents]
         scores = rerank_model.predict(tokenized_pairs)
         sorted_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)
@@ -173,7 +179,7 @@ Câu hỏi như sau:
         return sorted_documents
 
     def answer_context(self, question, all_contexts):
-        llm = self.llm_model()
+        llm = self.llm_model_var
         combined_context = "\n".join(all_contexts)
         prompt = f"""
         Bạn là một trợ lý y tế thông minh. Dưới đây là các câu hỏi từ người dùng và ngữ cảnh được cung cấp từ cơ sở dữ liệu:

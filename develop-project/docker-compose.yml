@@ -36,6 +36,15 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
 
+
+  medical_chatbot_web:
+    image: medical_chatbot_web
+    container_name: medical_chatbot_web
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mysql
 volumes:
   mysql_data:
   qdrant_data:

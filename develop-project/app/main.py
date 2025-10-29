@@ -4,10 +4,10 @@ from fastapi.responses import HTMLResponse, Response
 from fastapi import Request
 from fastapi.staticfiles import StaticFiles
 import uuid
-from src.models.users import Users
+from app.src.models.users import Users
 from datetime import datetime
-from src.database import get_db
-from src.api import conservation, chat_data, chat
+from app.src.database import get_db
+from app.src.api import conservation, chat_data, chat
 
 app = FastAPI()
 
@@ -15,8 +15,8 @@ app.include_router(conservation.router)
 app.include_router(chat_data.router)
 app.include_router(chat.router)
 
-templates = Jinja2Templates(directory="templates")
-app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="app/templates")
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 
 @app.get("/", response_class=HTMLResponse)
