@@ -132,7 +132,7 @@ Câu hỏi như sau:
             all_documents = []
             for embedding in embeddings:
                 search_result = client.search(
-                    collection_name="tamanh-hospital",
+                    collection_name="tamanh_collection",
                     query_vector=embedding,
                     limit=10,
                     with_payload=True
