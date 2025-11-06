@@ -42,20 +42,9 @@ services:
     container_name: medical_chatbot_web
     restart: always
     ports:
-      - "8000:8000"
-    volumes:
-      - ./medical_chatbot_web:/app
+      - "5000:5000"
     depends_on:
       - mysql
-      - qdrant
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-
 volumes:
   mysql_data:
   qdrant_data:
