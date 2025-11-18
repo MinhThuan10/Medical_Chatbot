@@ -1,6 +1,7 @@
 name: CI on dev and Pull Request
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - dev
