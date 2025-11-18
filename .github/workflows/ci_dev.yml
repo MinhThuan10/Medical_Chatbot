@@ -1,0 +1,28 @@
+name: CI on dev and Pull Request
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  test_on_dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run pytest
+        run: pytest -q --disable-warnings --maxfail=1
+
