@@ -39,7 +39,7 @@ class LangChainRAG:
     
     def llm_model(self):
         return ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash-lite",
+            model="gemini-2.0-flash-lite",
             temperature=0.2,
             convert_system_message_to_human=True,
         )
@@ -132,7 +132,7 @@ Câu hỏi như sau:
             all_documents = []
             for embedding in embeddings:
                 search_result = client.search(
-                    collection_name="tamanh_collection",
+                    collection_name="tamanh-hospital",
                     query_vector=embedding,
                     limit=10,
                     with_payload=True
@@ -221,12 +221,10 @@ Câu hỏi như sau:
 
         if rewrite_question:
             all_documents = self.search_documents(rewrite_question, category)
-
             if all_documents:
                 all_context = [doc.page_content for doc in all_documents]
 
             all_context = self.reranking_documents(question, all_context)
-            # print(all_context)
 
 
 
