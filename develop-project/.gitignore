@@ -1,0 +1,76 @@
+ (Python template)
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+*.pyc.make
+*.pdb
+*.vsp
+
+# Sphinx documentation
+docs/_build/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Environments
+.venv/
+env/
+venv/
+ENV/
+bin/
+lib/
+include/
+
+# FastAPI specific additions and common files
+# Secret/config files
+.env
+.env.*
+secrets.json
+config.yaml
+
+# SQLite database files
+*.db
+test_db.db
+db.sqlite3
+
+# IDE specific files (VS Code, PyCharm, etc.)
+.idea/
+.vscode/
+.mypy_cache/
+.pytest_cache/
+htmlcov/
+.coverage*
+coverage.xml
+
+# Operating System files
+.DS_Store # macOS
+.Trashes # macOS
+Thumbs.db # Windows

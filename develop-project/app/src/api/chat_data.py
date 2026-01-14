@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from app.src.database import get_db
-from app.src.langchains import rag
-from app.src.models.chat_data import chat_data_class
+from app.src.core.database import get_db
+from app.src.services.langchains import rag
+from app.src.services.service_chatdata import Chat_data
 
 
 templates = Jinja2Templates(directory="templates")
@@ -38,7 +38,7 @@ async def answer_question(
     question_text = data.get("question_text")
     answer_text = data.get("answer_text")
     if answer_text:
-        chat_data = chat_data_class.insert_chat_data(
+        chat_data = Chat_data().insert_chat_data(
             db=db,
             user_id=user_id,
             conservation_id=conservation_id,

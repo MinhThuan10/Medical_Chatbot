@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from app.src.database import get_db
-from app.src.models.conservation import Conservation
-from app.src.models.chat_data import Chat_data
+from app.src.core.database import get_db
+from app.src.services.service_conservation import Conservation
+from app.src.services.service_chatdata import Chat_data
+
 from datetime import datetime
 
 

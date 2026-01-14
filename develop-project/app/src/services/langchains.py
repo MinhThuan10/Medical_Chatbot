@@ -10,14 +10,15 @@ from fastapi.responses import StreamingResponse
 from sentence_transformers import CrossEncoder
 import json
 import torch
+from app.src.core.config import settings
 
 class LangChainRAG:
     def __init__(self):
-        self.api_key = os.getenv("GOOGLE_API_KEY")
-        self.qdrant_url = os.getenv("QDRANT_URL")
+        self.api_key = settings.GOOGLE_API_KEY
+        self.qdrant_url = settings.QDRANT_URL
 
         if not self.api_key:
-            raise ValueError("GOOGLE_API_KEY or API_KEY is not set")
+            raise ValueError("GOOGLE_API_KEY is not set")
 
         os.environ["GOOGLE_API_KEY"] = self.api_key
 
