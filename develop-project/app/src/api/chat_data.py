@@ -4,7 +4,8 @@ from sqlalchemy.orm import Session
 from app.src.core.database import get_db
 from app.src.services.langchains import rag
 from app.src.services.service_chatdata import Chat_data
-
+from app.src.schemas.chat_data import Request_Chat_data, Request_Import_Chat_data, Response_Import_Chat_data
+from fastapi.responses import StreamingResponse
 
 templates = Jinja2Templates(directory="templates")
 router = APIRouter(
@@ -12,31 +13,31 @@ router = APIRouter(
     tags=["chat_data"]
 )
 
-@router.post("/{conservation_id}")
+@router.post("/{conservation_id}", response_class=StreamingResponse)
 async def answer_question(
     request: Request,
+    req_data: Request_Chat_data,
     conservation_id: int,
 ):
     user_id = request.cookies.get("user_id")
     if not user_id:
         return {"error": "User ID not found in cookies"}
-    data = await request.json()
-    question_text = data.get("question_text")
+    question_text = req_data.question_text
 
     return rag.chat(question_text, chat_id=conservation_id)
 
-@router.post("/insert/{conservation_id}")
+@router.post("/insert/{conservation_id}", response_model=Response_Import_Chat_data)
 async def answer_question(
     request: Request,
+    req_data: Request_Import_Chat_data,
     conservation_id: int,
     db: Session = Depends(get_db)
 ):
     user_id = request.cookies.get("user_id")
     if not user_id:
         return {"error": "User ID not found in cookies"}
-    data = await request.json()
-    question_text = data.get("question_text")
-    answer_text = data.get("answer_text")
+    question_text = req_data.question_text
+    answer_text = req_data.answer_text
     if answer_text:
         chat_data = Chat_data().insert_chat_data(
             db=db,
@@ -50,4 +51,4 @@ async def answer_question(
             memory=rag.get_memory(conservation_id),
             question=question_text,
             answer=answer_text)
-    return chat_data
+    return {"chat_id": chat_data}

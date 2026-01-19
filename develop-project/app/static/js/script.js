@@ -123,7 +123,7 @@ saveChangesBtn.addEventListener('click', function () {
       "Content-Type": "application/json"
     },
     credentials: "include",
-    body: JSON.stringify({ name: chatTitle.value })
+    body: JSON.stringify({ name_name: chatTitle.value })
     
   })
   .then(res => res.json())
@@ -405,6 +405,7 @@ document.querySelectorAll('.popular-question').forEach(btn => {
         body: JSON.stringify({ question_text: question })
       });
       const data = await res.json();
+      console.log(data);
       const conservation_id = data.conversation_id;
 
       // 2️⃣ Gửi câu hỏi đến hội thoại

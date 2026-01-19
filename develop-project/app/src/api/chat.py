@@ -4,6 +4,8 @@ from sqlalchemy.orm import Session
 from app.src.core.database import get_db
 from app.src.services.service_chatdata import Chat_data
 from app.src.services.langchains import rag
+from fastapi.responses import HTMLResponse
+
 
 templates = Jinja2Templates(directory="app/templates")
 router = APIRouter(
@@ -12,7 +14,7 @@ router = APIRouter(
 )
 
 
-@router.get("/{conservation_id}")
+@router.get("/{conservation_id}", response_class=HTMLResponse)
 async def get_chat_data(
     request: Request,
     conservation_id: str,
@@ -57,5 +59,11 @@ async def get_chat_data(
         httponly=False,
         max_age=60*60*24*30 
     )
+
+    print({
+        "request": request,
+        "chat_data": all_chat_data,
+        "msg": msg
+    })
 
     return response

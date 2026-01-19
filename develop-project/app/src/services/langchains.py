@@ -14,13 +14,12 @@ from app.src.core.config import settings
 
 class LangChainRAG:
     def __init__(self):
-        self.api_key = settings.GOOGLE_API_KEY
+        self.llm_api_keys = settings.GOOGLE_API_KEY.split(",")
+        self.llm_model_name = settings.MODEL_GEMINI
         self.qdrant_url = settings.QDRANT_URL
-
-        if not self.api_key:
-            raise ValueError("GOOGLE_API_KEY is not set")
-
-        os.environ["GOOGLE_API_KEY"] = self.api_key
+        self.qdrant_colection = settings.QDRANT_COLECTION
+        self.embedding_model_name = settings.MODEL_EMBEDDING
+        self.rerank_model_name = settings.MODEL_RERANKING
 
         # Load 
         self.memories = {}
@@ -40,25 +39,24 @@ class LangChainRAG:
     
     def llm_model(self):
         return ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash-lite",
+            model=self.llm_model_name,
             temperature=0.2,
             convert_system_message_to_human=True,
+            api_key=self.llm_api_keys[1]  # Sử dụng khóa API đầu tiên từ danh sách
         )
 
     def rerank_model(self):
-        return CrossEncoder('itdainb/PhoRanker', max_length=256)
+        return CrossEncoder(self.rerank_model_name, max_length=256)
     
 
     def embedding_model(self):
-        model_name = "dangvantuan/vietnamese-embedding"
-
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         print(f"[Startup] Using device: {device}")
         
         model_kwargs = {'device': device}
         encode_kwargs = {'normalize_embeddings': False}
         hf = HuggingFaceEmbeddings(
-            model_name=model_name,
+            model_name=self.embedding_model_name,
             model_kwargs=model_kwargs,
             encode_kwargs=encode_kwargs
         )
@@ -133,7 +131,7 @@ Câu hỏi như sau:
             all_documents = []
             for embedding in embeddings:
                 search_result = client.search(
-                    collection_name="tamanh-hospital",
+                    collection_name=self.qdrant_colection,
                     query_vector=embedding,
                     limit=10,
                     with_payload=True
