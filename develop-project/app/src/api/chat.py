@@ -59,11 +59,4 @@ async def get_chat_data(
         httponly=False,
         max_age=60*60*24*30 
     )
-
-    print({
-        "request": request,
-        "chat_data": all_chat_data,
-        "msg": msg
-    })
-
     return response

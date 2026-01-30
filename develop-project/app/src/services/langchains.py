@@ -42,7 +42,7 @@ class LangChainRAG:
             model=self.llm_model_name,
             temperature=0.2,
             convert_system_message_to_human=True,
-            api_key=self.llm_api_keys[1]  # Sử dụng khóa API đầu tiên từ danh sách
+            api_key=self.llm_api_keys[0]  # Sử dụng khóa API đầu tiên từ danh sách
         )
 
     def rerank_model(self):

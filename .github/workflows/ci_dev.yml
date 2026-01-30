@@ -6,23 +6,12 @@ on:
     branches:
       - dev
     paths:
-      - 'develop_project/**'
+      - 'develop-project/**'
 
-jobs:
+jobs:  
   test_on_dev:
+
     runs-on: ubuntu-latest
-    
-    services:
-      mysql:
-        image: mysql:8.0
-        ports:
-          - 3306:3306
-        env:
-          MYSQL_ROOT_PASSWORD: rootpassword
-          MYSQL_DATABASE: mydatabase
-          MYSQL_USER: myuser
-          MYSQL_PASSWORD: mypassword
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: Checkout code
@@ -41,7 +30,14 @@ jobs:
 
 
       - name: Run pytest
-        env:    
-          DATABASE_URL: "mysql+pymysql://myuser:mypassword@localhost:3306/mydatabase"
+        # env:    
+        #   DATABASE_URL: "mysql+pymysql://myuser:mypassword@localhost:3306/mydatabase"
+        #   QDRANT_URL: "http://localhost:6333"
+        #   QDRANT_COLECTION: "tamanh-hospital"
+        #   MYSQL_URL: "mysql+pymysql://myuser:mypassword@localhost:3306/mydatabase"
+        #   GOOGLE_API_KEY: "AIzaSyAwg37GHJeUfUhOzX6V7ddRTTdYUrpu-Qk, AIzaSyBTtbdq-kO_zq6B0IO81-QpORolRddhnQ4"
+        #   MODEL_GEMINI: "gemini-2.5-flash"
+        #   MODEL_EMBEDDING: "dangvantuan/vietnamese-embedding"
+        #   MODEL_RERANKING: "itdainb/PhoRanker"
         run: python -m pytest -q --disable-warnings --maxfail=1
         working-directory: ./develop-project

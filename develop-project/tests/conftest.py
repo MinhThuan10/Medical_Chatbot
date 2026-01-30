@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
-from app.main import app
 from app.src.core.database import get_db, Base, engine
+from app.main import app
 from unittest.mock import MagicMock
 
 # ----- Mock DB nếu muốn ----- #

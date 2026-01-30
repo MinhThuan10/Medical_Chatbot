@@ -123,7 +123,7 @@ saveChangesBtn.addEventListener('click', function () {
       "Content-Type": "application/json"
     },
     credentials: "include",
-    body: JSON.stringify({ name_name: chatTitle.value })
+    body: JSON.stringify({ name: chatTitle.value })
     
   })
   .then(res => res.json())

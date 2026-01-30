@@ -38,7 +38,7 @@ class Conservation():
             }
         )
         db.commit()
-        return result.rowcount > 0
+        return int(result.rowcount) > 0
     
     def delete_conservation(self, db, user_id, conservation_id):
 
@@ -52,5 +52,5 @@ class Conservation():
             }
         )
         db.commit()
-        return result.rowcount > 0
+        return int(result.rowcount) > 0
     
