@@ -30,14 +30,5 @@ jobs:
 
 
       - name: Run pytest
-        # env:    
-        #   DATABASE_URL: "mysql+pymysql://myuser:mypassword@localhost:3306/mydatabase"
-        #   QDRANT_URL: "http://localhost:6333"
-        #   QDRANT_COLECTION: "tamanh-hospital"
-        #   MYSQL_URL: "mysql+pymysql://myuser:mypassword@localhost:3306/mydatabase"
-        #   GOOGLE_API_KEY: "AIzaSyAwg37GHJeUfUhOzX6V7ddRTTdYUrpu-Qk, AIzaSyBTtbdq-kO_zq6B0IO81-QpORolRddhnQ4"
-        #   MODEL_GEMINI: "gemini-2.5-flash"
-        #   MODEL_EMBEDDING: "dangvantuan/vietnamese-embedding"
-        #   MODEL_RERANKING: "itdainb/PhoRanker"
         run: python -m pytest -q --disable-warnings --maxfail=1
         working-directory: ./develop-project
