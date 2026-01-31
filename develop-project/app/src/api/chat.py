@@ -1,9 +1,11 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from app.src.database import get_db
-from app.src.models.chat_data import chat_data_class
-from app.src.langchains import rag
+from app.src.core.database import get_db
+from app.src.services.service_chatdata import Chat_data
+from app.src.services.langchains import rag
+from fastapi.responses import HTMLResponse
+
 
 templates = Jinja2Templates(directory="app/templates")
 router = APIRouter(
@@ -12,7 +14,7 @@ router = APIRouter(
 )
 
 
-@router.get("/{conservation_id}")
+@router.get("/{conservation_id}", response_class=HTMLResponse)
 async def get_chat_data(
     request: Request,
     conservation_id: str,
@@ -24,7 +26,7 @@ async def get_chat_data(
         return {"error": "User ID not found in cookies"}
     else:
         msg = "Hello from Chatbot"
-    all_chat_data = chat_data_class.get_all_chat_data(user_id, conservation_id, db=db)
+    all_chat_data = Chat_data().get_all_chat_data(user_id, conservation_id, db=db)
 
     # history_chat insert to memory
     latest_chats = sorted(all_chat_data, key=lambda x: x['stt'], reverse=True)[:5]
@@ -57,5 +59,4 @@ async def get_chat_data(
         httponly=False,
         max_age=60*60*24*30 
     )
-
     return response

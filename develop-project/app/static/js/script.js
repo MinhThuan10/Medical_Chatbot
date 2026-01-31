@@ -405,6 +405,7 @@ document.querySelectorAll('.popular-question').forEach(btn => {
         body: JSON.stringify({ question_text: question })
       });
       const data = await res.json();
+      console.log(data);
       const conservation_id = data.conversation_id;
 
       // 2️⃣ Gửi câu hỏi đến hội thoại

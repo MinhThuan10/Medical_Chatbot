@@ -4,11 +4,9 @@ import csv
 INPUT_DIR1 = './Data_lakeHouse/Qdrant/dags/ivie_split'
 INPUT_DIR2 = './Data_lakeHouse/Qdrant/dags/bvthucuc/bvthucuc_qa.csv'
 INPUT_DIR3 = './Data_lakeHouse/Qdrant/dags/medlatec/medlatec_qa.csv'
-INPUT_DIR4 = './Data_lakeHouse/Qdrant/dags/vietnamese_medical_chat_data.csv'
-INPUT_DIR5 = './Data_lakeHouse/Qdrant/dags/vietnamese_medical_qa.csv'
 
 
-OUTPUT_FILE = 'finetune/dataset/question_answer.csv'
+OUTPUT_FILE = 'finetune/dataset/merged_med_qa.csv'
 
 def merge_csv_files(input_dir, output_file):
     csv_files = [f for f in os.listdir(input_dir) if f.endswith('.csv')]
@@ -37,19 +35,6 @@ def merge_csv_files(input_dir, output_file):
             next(reader)  
             for row in reader:
                 writer.writerow(row)
-
-        with open(INPUT_DIR4, 'r', encoding='utf-8') as fin:
-            reader = csv.reader(fin)
-            next(reader)  
-            for row in reader:
-                writer.writerow(row)
-
-        with open(INPUT_DIR5, 'r', encoding='utf-8') as fin:
-            reader = csv.reader(fin)
-            next(reader)  
-            for row in reader:
-                writer.writerow(row)
-        
 
     print(f"Đã gộp {len(csv_files)} file thành công vào {output_file}.")
 

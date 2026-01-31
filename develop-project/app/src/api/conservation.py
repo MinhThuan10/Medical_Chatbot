@@ -1,10 +1,12 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-from app.src.database import get_db
-from app.src.models.conservation import Conservation
-from app.src.models.chat_data import Chat_data
+from app.src.core.database import get_db
+from app.src.services.service_conservation import Conservation
+from app.src.services.service_chatdata import Chat_data
+
 from datetime import datetime
+from app.src.schemas.conservation import ConservationDetailResponse, Respone_Conservation, ConservationCreateRequest, ConservationCreateResponse, ConservationUpdateRequest, ConservationUpdateResponse, ConservationDeleteResponse
 
 
 templates = Jinja2Templates(directory="templates")
@@ -14,7 +16,7 @@ router = APIRouter(
     tags=["conservation"]
 )
 
-@router.get("/")
+@router.get("/", response_model=Respone_Conservation)
 def get_all_conservations(request: Request, db: Session = Depends(get_db)):
     user_id = request.cookies.get("user_id")
     if not user_id:
@@ -71,18 +73,16 @@ def get_all_conservations(request: Request, db: Session = Depends(get_db)):
             for item in sorted_conservations
         ]
         list_conservations.append({"label": label, "items": cleaned_items})
-
     return {"list_conservations": list_conservations}
 
-@router.post("/new")
-async def create_conservation(request: Request, db: Session = Depends(get_db)):
+@router.post("/new", response_model=ConservationCreateResponse)
+async def create_conservation(request: Request, req: ConservationCreateRequest, db: Session = Depends(get_db)):
 
     user_id = request.cookies.get("user_id")
     if not user_id:
         return {"error": "User ID not found in cookies"}
-    
-    data = await request.json()
-    conversation_name = data.get("question_text").strip()[:50]
+
+    conversation_name = req.question_text.strip()[:50]
     conversation_id = Conservation().create_conservation(
         db=db,
         user_id=user_id,
@@ -92,13 +92,13 @@ async def create_conservation(request: Request, db: Session = Depends(get_db)):
     )
     return {"message": "Conversation created", "conversation_id": conversation_id}
 
-@router.put("/update/{conservation_id}")
+@router.put("/update/{conservation_id}", response_model=ConservationUpdateResponse)
 async def update_conservation(request: Request, conservation_id: str, db: Session = Depends(get_db)):
-    data = await request.json()
     user_id = request.cookies.get("user_id")
     if not user_id:
         return {"error": "User ID not found in cookies"}
-    
+    data = await request.json()
+    print("Update data received:", data)
     name = data.get("name")
     chat_day = datetime.now()
     if not conservation_id or not name:
@@ -111,14 +111,13 @@ async def update_conservation(request: Request, conservation_id: str, db: Sessio
         name=name,
         chat_day=chat_day
     )
-    
     if success:
         return {"message": "Conversation updated successfully"}
     else:
-        return {"error": "Failed to update conversation"}
+        return {"message": "Failed to update conversation"}
     
 
-@router.delete("/delete/{conservation_id}")
+@router.delete("/delete/{conservation_id}", response_model=ConservationDeleteResponse)
 async def delete_conservation(request: Request, conservation_id: str, db: Session = Depends(get_db)):
     user_id = request.cookies.get("user_id")
     if not user_id:
@@ -135,10 +134,10 @@ async def delete_conservation(request: Request, conservation_id: str, db: Sessio
     if success:
         return {"message": "Conversation deleted successfully"}
     else:
-        return {"error": "Failed to delete conversation"}
+        return {"message": "Failed to delete conversation"}
     
 
-@router.get("/{conservation_id}")
+@router.get("/{conservation_id}", response_model=ConservationDetailResponse)
 async def get_conservation(request: Request, conservation_id: str, db: Session = Depends(get_db)):
     user_id = request.cookies.get("user_id")
     if not user_id:

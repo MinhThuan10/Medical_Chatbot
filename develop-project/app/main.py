@@ -4,9 +4,9 @@ from fastapi.responses import HTMLResponse, Response
 from fastapi import Request
 from fastapi.staticfiles import StaticFiles
 import uuid
-from app.src.models.users import Users
+from app.src.services.service_users import Users
 from datetime import datetime
-from app.src.database import get_db
+from app.src.core.database import get_db
 from app.src.api import conservation, chat_data, chat
 
 app = FastAPI()

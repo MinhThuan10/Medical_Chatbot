@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
+      MYSQL_DATABASE: chatbot
       MYSQL_USER: myuser
       MYSQL_PASSWORD: mypassword
     ports:
@@ -37,15 +37,17 @@ services:
       - qdrant_data:/qdrant/storage
 
 
-  medical_chatbot_web:
-    image: medical_chatbot_web
-    container_name: medical_chatbot_web
-    restart: always
-    ports:
-      - "5000:5000"
-    depends_on:
-      - mysql
+  # medical_chatbot_web:
+  #   image: minhthuan2003/medical_chatbot_web
+  #   container_name: medical_chatbot_web
+  #   restart: always
+  #   ports:
+  #     - "8000:8000"
+  #   depends_on:
+  #     - mysql
+  #   env_file:
+  #     - .env
 volumes:
   mysql_data:
   qdrant_data:
-  medical_chatbot_web:
+  # medical_chatbot_web:
