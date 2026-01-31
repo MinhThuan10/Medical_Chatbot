@@ -38,13 +38,15 @@ services:
 
 
   # medical_chatbot_web:
-  #   image: medical_chatbot_web
+  #   image: minhthuan2003/medical_chatbot_web
   #   container_name: medical_chatbot_web
   #   restart: always
   #   ports:
-  #     - "5000:5000"
+  #     - "8000:8000"
   #   depends_on:
   #     - mysql
+  #   env_file:
+  #     - .env
 volumes:
   mysql_data:
   qdrant_data:

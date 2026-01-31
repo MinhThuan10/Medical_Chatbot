@@ -1,15 +1,14 @@
-name: CI on dev and Pull Request
+name: Pull Request on dev/main - Develop Project
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - dev
+  pull_request:
+    branches: [dev, main]
     paths:
       - 'develop-project/**'
 
 jobs:  
-  test_on_dev:
+  test_on_dev_main:
 
     runs-on: ubuntu-latest
 
@@ -30,5 +29,13 @@ jobs:
 
 
       - name: Run pytest
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          QDRANT_URL: ${{ secrets.QDRANT_URL }}
+          QDRANT_COLECTION: ${{ secrets.QDRANT_COLECTION }}
+          GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+          MODEL_GEMINI: ${{ secrets.MODEL_GEMINI }}
+          MODEL_EMBEDDING: ${{ secrets.MODEL_EMBEDDING }}
+          MODEL_RERANKING: ${{ secrets.MODEL_RERANKING }}
         run: python -m pytest -q --disable-warnings --maxfail=1
         working-directory: ./develop-project
