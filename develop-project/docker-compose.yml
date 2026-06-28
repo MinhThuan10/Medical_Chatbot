@@ -27,7 +27,7 @@ services:
       - mysql
 
   qdrant:
-    image: qdrant/qdrant:v1.9.0
+    image: qdrant/qdrant:latest
     container_name: qdrant
     restart: always
     ports:

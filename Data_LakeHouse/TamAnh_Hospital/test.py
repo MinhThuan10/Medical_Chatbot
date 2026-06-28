@@ -8,7 +8,7 @@ query = "Triệu chứng của bệnh viêm gan là gì?"
 
 query_vector = model.encode(query).tolist()
 
-client = QdrantClient(host="localhost", port=6333)  # Sửa lại nếu bạn dùng cloud
+client = QdrantClient(host="localhost", port=6333) 
 
 hits = client.search(
     collection_name="tamanh-crawl",

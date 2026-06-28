@@ -7,10 +7,10 @@ import torch
 import re
 import json
 BUFFER_SIZE = 1
-SIM_THRESHOLD = 0.8
+SIM_THRESHOLD = 0.7
 
 model = SentenceTransformer('bkai-foundation-models/vietnamese-bi-encoder', trust_remote_code=True, device="cuda")
-df = pd.read_csv("./Medical_Chatbot/Data_LakeHouse/TamAnh_Hospital/data_cleaned.csv")
+df = pd.read_csv("./data_cleaned.csv")
 
 all_chunks = []
 
@@ -28,7 +28,7 @@ def process_row(row):
     url = row["url"]
     title = row["title"]
     heading = row["heading"]
-    content = row["content"]
+    content = str(row["heading"]) + " " + str(row["content"])
     print(url)
     sentences = split_vietnamese_sentences(content)
     chunk_dicts = []
@@ -102,7 +102,7 @@ for _, row in df.iterrows():
     all_chunks.extend(chunks)
 
 
-with open("./Medical_Chatbot/Data_LakeHouse/TamAnh_Hospital/chunks_embeddings.jsonl", "w", encoding="utf-8") as f:
+with open("./chunks_embeddings.jsonl", "w", encoding="utf-8") as f:
     for chunk in all_chunks:
         f.write(json.dumps(chunk, ensure_ascii=False) + "\n")
 

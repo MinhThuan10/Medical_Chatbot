@@ -126,42 +126,39 @@ Câu hỏi như sau:
 
     def search_documents(self, re_questions: str, lable):
         if lable == 1:
-            embeddings = self.embedding_model_var.embed_documents(re_questions)
+            embedding = self.embedding_model_var.embed_query(re_questions)
             client = self.qdrant_client()
             all_documents = []
-            for embedding in embeddings:
-                search_result = client.search(
-                    collection_name=self.qdrant_colection,
-                    query_vector=embedding,
-                    limit=10,
-                    with_payload=True
-                )
+            search_result = client.search(
+                collection_name=self.qdrant_colection,
+                query_vector=embedding,
+                limit=5,
+                with_payload=True
+            )
 
-                if not search_result:
-                    continue
 
-                for hit in search_result:
-                    payload = hit.payload or {}
-                    content = payload.get("chunk")
+            for hit in search_result:
+                payload = hit.payload or {}
+                content = payload.get("chunk")
 
-                    if isinstance(content, str) and content.strip():
-                        all_documents.append(Document(
-                            page_content=content,
-                            metadata={
-                                "heading": payload.get("heading", ""),
-                                "title": payload.get("title", ""),
-                                "url": payload.get("url", "")
-                            }
-                        ))
+                if isinstance(content, str) and content.strip():
+                    all_documents.append(Document(
+                        page_content=content,
+                        metadata={
+                            "heading": payload.get("heading", ""),
+                            "title": payload.get("title", ""),
+                            "url": payload.get("url", "")
+                        }
+                    ))
 
             seen = set()
-            unique_documents = []
+            relevant_documents = []
             for doc in all_documents:
                 if doc.page_content not in seen:
-                    unique_documents.append(doc)
+                    relevant_documents.append(doc)
                     seen.add(doc.page_content)
-
-            return unique_documents
+            print("Relevant Documents:", relevant_documents)
+            return relevant_documents
 
         else:
             return []
@@ -173,15 +170,17 @@ Câu hỏi như sau:
         scores = rerank_model.predict(tokenized_pairs)
         sorted_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)
         sorted_documents = [all_documents[i] for i in sorted_indices]
-        sorted_documents = sorted_documents[:10]
+        sorted_documents = sorted_documents[:3]
 
         return sorted_documents
 
     def answer_context(self, question, all_contexts):
         llm = self.llm_model_var
         combined_context = "\n".join(all_contexts)
+        print("All Contexts:", combined_context)
+
         prompt = f"""
-        Bạn là một trợ lý y tế thông minh. Dưới đây là các câu hỏi từ người dùng và ngữ cảnh được cung cấp từ cơ sở dữ liệu:
+        Bạn là một trợ lý y tế thông minh, chỉ trả lời các câu hỏi liên quan đến y tế. Dưới đây là các câu hỏi từ người dùng và ngữ cảnh được cung cấp từ cơ sở dữ liệu:
 
         Câu hỏi:
         {question}
@@ -189,7 +188,7 @@ Câu hỏi như sau:
         Ngữ cảnh:
         {combined_context}
 
-        Dựa trên ngữ cảnh, hãy tổng hợp và đưa ra một câu trả lời chung, rõ ràng, ngắn gọn để trả lời tất cả các câu hỏi trên. Nếu ngữ cảnh không đủ nội dung thì có thể trả lời là do không đủ thông tin.
+        Dựa trên câu hỏi và ngữ cảnh, hãy tổng hợp và đưa ra một câu trả lời rõ ràng, chính xác. Nếu không có đủ thông tin trong ngữ cảnh, hãy trả lời dựa trên kiến thức chung của bạn. Trả lời bằng tiếng Việt.
         """
 
         async def generate():
