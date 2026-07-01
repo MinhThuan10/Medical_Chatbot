@@ -51,3 +51,6 @@ async def read_index(request: Request):
 
     return response
 
+@app.get("/health")
+def health():
+    return {"status": "ok"}

@@ -7,7 +7,7 @@ WORKDIR /app
 
 COPY ./requirements.txt /code/requirements.txt
 
-RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+# RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
