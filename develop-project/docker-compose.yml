@@ -36,6 +36,25 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
 
+#   neo4j:
+#     image: neo4j:latest
+#     container_name: neo4j
+#     volumes:
+#         - neo4j_logs:/logs
+#         - neo4j_conf:/conf
+#         - neo4j_data:/data
+#         - neo4j_plugins:/plugins
+#     environment:
+#         - NEO4J_AUTH_FILE=/run/secrets/neo4j_auth_file
+#     ports:
+#       - "7474:7474"
+#       - "7687:7687"
+#     restart: always
+#     secrets:
+#       - neo4j_auth_file
+# secrets:
+#   neo4j_auth_file:
+#     file: ./neo4j_auth.txt
 
   # medical_chatbot_web:
   #   image: minhthuan2003/medical_chatbot_web
@@ -48,6 +67,10 @@ services:
   #   env_file:
   #     - .env
 volumes:
+  # neo4j_logs:
+  # neo4j_conf:
+  # neo4j_data:
+  # neo4j_plugins:
   mysql_data:
   qdrant_data:
   # medical_chatbot_web:
