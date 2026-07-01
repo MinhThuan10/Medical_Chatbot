@@ -46,20 +46,20 @@ class LangChainRAG:
         return self.memories[chat_id]
     
     def llm_model(self):
-        # return ChatGoogleGenerativeAI(
-        #     model=self.model_llm,
-        #     convert_system_message_to_human=True,
-        #     temperature=self.llm_temperature,
-        #     top_p=self.llm_top_p,
-        #     api_key=self.llm_api_keys[0]  # Sử dụng khóa API đầu tiên từ danh sách
-        # )
-        return ChatOpenAI(
+        return ChatGoogleGenerativeAI(
             model=self.model_llm,
+            convert_system_message_to_human=True,
             temperature=self.llm_temperature,
             top_p=self.llm_top_p,
-            api_key=self.llm_api_keys[0],  # Sử dụng khóa API đầu tiên từ danh sách
-            base_url=self.llm_url
+            api_key=self.llm_api_keys[0]  # Sử dụng khóa API đầu tiên từ danh sách
         )
+        # return ChatOpenAI(
+        #     model=self.model_llm,
+        #     temperature=self.llm_temperature,
+        #     top_p=self.llm_top_p,
+        #     api_key=self.llm_api_keys[0],  # Sử dụng khóa API đầu tiên từ danh sách
+        #     base_url=self.llm_url
+        # )
     
 
 
