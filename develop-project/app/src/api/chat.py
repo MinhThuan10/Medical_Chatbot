@@ -35,16 +35,12 @@ async def get_chat_data(
     history = memory.load_memory_variables({}).get("chat_history", "")
 
     if not history:
-        print("❌ Chưa có gì trong memory")
         for chat in reversed(latest_chats):
             rag.save_menory(
                 memory=memory,
                 question=chat['question_text'],
                 answer=chat['answer_text']
             )
-    else:
-        print("✅ Có dữ liệu memory:")
-        print(history)
 
 
     response = templates.TemplateResponse("index.html", {

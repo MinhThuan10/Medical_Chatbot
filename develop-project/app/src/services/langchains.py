@@ -1,5 +1,6 @@
 import os
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from langchain_huggingface import HuggingFaceEmbeddings
 from qdrant_client import QdrantClient
 from langchain.memory import ConversationBufferWindowMemory
@@ -14,12 +15,19 @@ from app.src.core.config import settings
 
 class LangChainRAG:
     def __init__(self):
-        self.llm_api_keys = settings.GOOGLE_API_KEY.split(",")
-        self.llm_model_name = settings.MODEL_GEMINI
         self.qdrant_url = settings.QDRANT_URL
         self.qdrant_colection = settings.QDRANT_COLECTION
         self.embedding_model_name = settings.MODEL_EMBEDDING
         self.rerank_model_name = settings.MODEL_RERANKING
+        self.llm_url = settings.LLM_URL
+        self.model_llm = settings.MODEL_LLM
+        self.llm_api_keys = settings.LLM_API_KEY.split(",")
+        self.llm_temperature = settings.LLM_TEMPERATURE
+        self.llm_top_p = settings.LLM_TOP_P
+        self.limit_search_results = settings.LIMIT_SEARCH_RESULTS
+        self.min_score = settings.MIN_SCORE
+        self.top_k_rerank = settings.TOP_K_RERANK
+
 
         # Load 
         self.memories = {}
@@ -38,15 +46,25 @@ class LangChainRAG:
         return self.memories[chat_id]
     
     def llm_model(self):
-        return ChatGoogleGenerativeAI(
-            model=self.llm_model_name,
-            temperature=0.2,
-            convert_system_message_to_human=True,
-            api_key=self.llm_api_keys[0]  # Sử dụng khóa API đầu tiên từ danh sách
+        # return ChatGoogleGenerativeAI(
+        #     model=self.model_llm,
+        #     convert_system_message_to_human=True,
+        #     temperature=self.llm_temperature,
+        #     top_p=self.llm_top_p,
+        #     api_key=self.llm_api_keys[0]  # Sử dụng khóa API đầu tiên từ danh sách
+        # )
+        return ChatOpenAI(
+            model=self.model_llm,
+            temperature=self.llm_temperature,
+            top_p=self.llm_top_p,
+            api_key=self.llm_api_keys[0],  # Sử dụng khóa API đầu tiên từ danh sách
+            base_url=self.llm_url
         )
+    
+
 
     def rerank_model(self):
-        return CrossEncoder(self.rerank_model_name, max_length=256)
+        return CrossEncoder(self.rerank_model_name)
     
 
     def embedding_model(self):
@@ -101,38 +119,38 @@ class LangChainRAG:
         return transformed_question
 
 
-    def query_routing(self, re_questions) -> int:
+#     def query_routing(self, re_questions) -> int:
 
-        prompt = f"""
-Bạn hãy phân loại câu hỏi sau thành 3 loại:
-1 - Nếu câu hỏi thuộc lĩnh vực y tế.
-2 - Nếu câu hỏi giao tiếp bình thường.
-3 - Nếu câu hỏi Thuộc lĩnh vực khác.
+#         prompt = f"""
+# Bạn hãy phân loại câu hỏi sau thành 3 loại:
+# 1 - Nếu câu hỏi thuộc lĩnh vực y tế.
+# 2 - Nếu câu hỏi giao tiếp bình thường.
+# 3 - Nếu câu hỏi Thuộc lĩnh vực khác.
 
-Chỉ trả về số 1, 2 hoặc 3 tương ứng.
+# Chỉ trả về số 1, 2 hoặc 3 tương ứng.
 
-Câu hỏi như sau: 
-"{re_questions}"
-"""
-        response = self.llm_model_var.invoke(prompt).content.strip()
-        try:
-            classification = int(response)
-            if classification in [1, 2, 3]:
-                return classification
-            else:
-                return 3
-        except:
-            return 3
+# Câu hỏi như sau: 
+# "{re_questions}"
+# """
+#         response = self.llm_model_var.invoke(prompt).content.strip()
+#         try:
+#             classification = int(response)
+#             if classification in [1, 2, 3]:
+#                 return classification
+#             else:
+#                 return 3
+#         except:
+#             return 3
 
     def search_documents(self, re_questions: str, lable):
-        if lable == 1:
+        if str(lable) == "1":
             embedding = self.embedding_model_var.embed_query(re_questions)
             client = self.qdrant_client()
             all_documents = []
             search_result = client.search(
                 collection_name=self.qdrant_colection,
                 query_vector=embedding,
-                limit=5,
+                limit=self.limit_search_results,
                 with_payload=True
             )
 
@@ -147,37 +165,49 @@ Câu hỏi như sau:
                         metadata={
                             "heading": payload.get("heading", ""),
                             "title": payload.get("title", ""),
-                            "url": payload.get("url", "")
+                            "url": payload.get("url", ""),
+                            "id": hit.id,
                         }
                     ))
-
+            print("ID Documents Relevant:", [doc.metadata.get("id") for doc in all_documents])
             seen = set()
             relevant_documents = []
             for doc in all_documents:
                 if doc.page_content not in seen:
                     relevant_documents.append(doc)
                     seen.add(doc.page_content)
-            print("Relevant Documents:", relevant_documents)
             return relevant_documents
 
         else:
+            print("No relevant documents found for non-medical questions.")
             return []
 
 
-    def reranking_documents(self, question, all_documents):
+    def reranking_documents(self, question, all_documents, min_score=settings.MIN_SCORE, top_k=settings.TOP_K_RERANK):
+        if not all_documents:
+            return []
+
         rerank_model = self.rerank_model_var
         tokenized_pairs = [[question, document] for document in all_documents]
         scores = rerank_model.predict(tokenized_pairs)
-        sorted_indices = sorted(range(len(scores)), key=lambda i: scores[i], reverse=True)
-        sorted_documents = [all_documents[i] for i in sorted_indices]
-        sorted_documents = sorted_documents[:3]
 
-        return sorted_documents
+        ranked_pairs = sorted(
+            zip(all_documents, scores),
+            key=lambda item: item[1],
+            reverse=True
+        )
+
+        filtered_documents = [
+            doc
+            for doc, score in ranked_pairs
+            if score >= min_score
+        ]
+        print("Scores of Reranked Documents:", [score for _, score in ranked_pairs])
+        return filtered_documents[:top_k]
 
     def answer_context(self, question, all_contexts):
         llm = self.llm_model_var
         combined_context = "\n".join(all_contexts)
-        print("All Contexts:", combined_context)
 
         prompt = f"""
         Bạn là một trợ lý y tế thông minh, chỉ trả lời các câu hỏi liên quan đến y tế. Dưới đây là các câu hỏi từ người dùng và ngữ cảnh được cung cấp từ cơ sở dữ liệu:
@@ -188,12 +218,14 @@ Câu hỏi như sau:
         Ngữ cảnh:
         {combined_context}
 
-        Dựa trên câu hỏi và ngữ cảnh, hãy tổng hợp và đưa ra một câu trả lời rõ ràng, chính xác. Nếu không có đủ thông tin trong ngữ cảnh, hãy trả lời dựa trên kiến thức chung của bạn. Trả lời bằng tiếng Việt.
+        Dựa trên câu hỏi và ngữ cảnh, hãy tổng hợp và đưa ra một câu trả lời rõ ràng, chính xác. Nếu không có đủ thông tin trong ngữ cảnh, hãy trả lời dựa trên kiến thức chung của bạn. 
+        Trả lời bằng tiếng Việt và format câu trả lời theo dạng markdown một cách dễ đọc, không có các ký tự khoảng trắng thừa.
         """
 
         async def generate():
             async for chunk in llm.astream(prompt):  # Sử dụng `astream()` để đảm bảo async streaming
-                yield chunk.content + "\n"  # Gửi từng phần phản hồi ngay lập tức
+                # yield chunk.content + "\n"  # Gửi từng phần phản hồi ngay lập tức
+                yield chunk.content  # Gửi từng phần phản hồi ngay lập tức
 
         return StreamingResponse(generate(), media_type="text/plain")
 
@@ -202,8 +234,6 @@ Câu hỏi như sau:
 
     def chat(self, question: str, chat_id):
         content = self.query_transform(question, chat_id)
-        print("Transform Qestion:", content)
-
         if content.startswith("{") or content.startswith("```json"):
             # Xóa các dấu ```json ``` nếu có
             json_str = re.sub(r"^```json|```$", "", content.strip(), flags=re.MULTILINE).strip()
@@ -221,9 +251,7 @@ Câu hỏi như sau:
             all_documents = self.search_documents(rewrite_question, category)
             if all_documents:
                 all_context = [doc.page_content for doc in all_documents]
-
             all_context = self.reranking_documents(question, all_context)
-
 
 
         return self.answer_context(question, all_context)
