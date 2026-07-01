@@ -9,7 +9,7 @@ import uuid
 client = QdrantClient(host="localhost", port=6333) 
 
 client.recreate_collection(
-    collection_name="tamanh-hospital-v2",
+    collection_name="tamanh-hospital-v1",
     vectors_config=VectorParams(size=768, distance=Distance.COSINE),
 )
 
@@ -21,7 +21,8 @@ with open("./chunks_embeddings.jsonl", "r", encoding="utf-8") as f:
     for i, line in enumerate(tqdm(f)):
         item = json.loads(line)
         point = PointStruct(
-            id=str(uuid.uuid4()),  # random id
+            # id=str(uuid.uuid4()),  # random id
+            id=item["id"],  # id từ dữ liệu
             vector=item["embedding"],
             payload={
                 "chunk": item["chunk"],
@@ -34,11 +35,11 @@ with open("./chunks_embeddings.jsonl", "r", encoding="utf-8") as f:
 
         # Insert theo batch size
         if len(batch) == 100:
-            client.upsert(collection_name="tamanh-hospital-v2", points=batch)
+            client.upsert(collection_name="tamanh-hospital-v1", points=batch)
             batch = []
 
 # Insert phần còn lại
 if batch:
-    client.upsert(collection_name="tamanh-hospital-v2", points=batch)
+    client.upsert(collection_name="tamanh-hospital-v1", points=batch)
 
 print("✅ Đã lưu toàn bộ embedding vào Qdrant")

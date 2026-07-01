@@ -12,12 +12,13 @@ Data_LakeHouse/CrawlData/dags/ivie_split
 Data_LakeHouse/CrawlData/dags/medlatec
 Data_LakeHouse/CrawlData/dags/vietnamese_medical_chat_data.csv
 Data_LakeHouse/CrawlData/dags/vietnamese_medical_qa.csv
-Data_LakeHouse/TamAnh_Hospital/chunks_embeddings.jsonl
+Data_LakeHouse/TamAnh_Hospital/RAG/files
 Data_LakeHouse/TamAnh_Hospital/data_cleaned.csv
 /finetune/T5/t5-base-qa/
 /finetune/dataset/
 /finetune/embedding_model/
 develop-project/.env
+develop-project/neo4j_auth.txt
 develop-project/data/
 .env
 .secrets
