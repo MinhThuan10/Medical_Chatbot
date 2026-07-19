@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, Request
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
 from app.src.core.database import get_db
-from app.src.services.langchains import rag
+from app.src.services.langchains_graphRAG import GraphRAG
 from app.src.services.service_chatdata import Chat_data
 from app.src.schemas.chat_data import Request_Chat_data, Request_Import_Chat_data, Response_Import_Chat_data
-from fastapi.responses import StreamingResponse
 
 templates = Jinja2Templates(directory="templates")
 router = APIRouter(
@@ -24,7 +24,7 @@ async def answer_question(
         return {"error": "User ID not found in cookies"}
     question_text = req_data.question_text
 
-    return rag.chat(question_text, chat_id=conservation_id)
+    return GraphRAG.chat(question_text, chat_id=conservation_id)
 
 @router.post("/insert/{conservation_id}", response_model=Response_Import_Chat_data)
 async def answer_question(
@@ -47,8 +47,8 @@ async def answer_question(
             answer_text=answer_text
         )
 
-        rag.save_menory(
-            memory=rag.get_memory(conservation_id),
+        GraphRAG.save_menory(
+            memory=GraphRAG.get_memory(conservation_id),
             question=question_text,
             answer=answer_text)
     return {"chat_id": chat_data}

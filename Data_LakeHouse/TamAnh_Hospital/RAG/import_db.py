@@ -3,7 +3,6 @@ from qdrant_client.models import VectorParams, Distance
 import json
 from qdrant_client.models import PointStruct
 from tqdm import tqdm
-import uuid
 
 
 client = QdrantClient(host="localhost", port=6333) 

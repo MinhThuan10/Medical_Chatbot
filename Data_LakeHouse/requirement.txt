@@ -1,0 +1,17 @@
+apache-airflow==2.10.5
+selenium==4.45.0
+webdriver-manager==4.1.2
+bs4==0.0.2
+pandas==3.0.3
+datasets==5.0.0
+sentence-transformers==5.1.0
+rouge-score==0.1.2
+qdrant-client==1.15.1
+openai==2.44.0
+neo4j==6.2.0
+langchain-openai==1.3.3
+langchain-text-splitters==1.1.2
+langchain-experimental==0.4.2
+langchain-neo4j==0.10.0
+langchain==1.3.11
+graphdatascience==1.22
