@@ -38,13 +38,21 @@ async def answer_question(
         return {"error": "User ID not found in cookies"}
     question_text = req_data.question_text
     answer_text = req_data.answer_text
+
     if answer_text:
+        chunk_map = GraphRAG.get_chunk_memory(conservation_id)
+        clean_answer, citations_json = GraphRAG.parse_answer_and_citations(
+            answer_text,
+            chunk_map
+        )
+        # print(chunk_map)
         chat_data = Chat_data().insert_chat_data(
             db=db,
             user_id=user_id,
             conservation_id=conservation_id,
             question_text=question_text,
-            answer_text=answer_text
+            answer_text=clean_answer,
+            citations_json=citations_json,
         )
 
         GraphRAG.save_menory(

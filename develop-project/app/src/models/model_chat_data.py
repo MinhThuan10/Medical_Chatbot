@@ -1,5 +1,5 @@
 from app.src.core.database import Base
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer, ForeignKey, Text
 
 
 class Model_chat_data(Base):
@@ -9,5 +9,6 @@ class Model_chat_data(Base):
     chat_id = Column(Integer, primary_key=True, index=True)
     conservation_id = Column(Integer, ForeignKey("conservation.id"))
     question_text = Column(String(5000))
-    answer_text = Column(String(1000))
+    answer_text = Column(Text)
+    citations_json = Column(String(10000))
     stt = Column(Integer)

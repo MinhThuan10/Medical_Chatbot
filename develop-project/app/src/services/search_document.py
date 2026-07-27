@@ -36,14 +36,9 @@
 
 from app.src.services.base_service import base_service
 from pydantic import BaseModel, Field  
-from langsmith import traceable
 
 class DriftEvidence(BaseModel):
-    seed_entities: list
-    related_entities: list
-    relationships: list
     chunks: list
-    communities: list
 
 class LocalSearch():
     def hybrid_search(
@@ -338,6 +333,39 @@ class LocalSearch():
 
         return chunks
     
+    def retrieve_document_info(self, chunks):
+        """
+        Query document information for the given chunks.
+        """
+        if not chunks:
+            return {}
+
+        chunk_ids = [chunk["chunk_id"] for chunk in chunks]
+
+        cypher = """
+        MATCH (d:Document)-[:HAS_CHUNK]->(c:Chunk)
+        WHERE elementId(c) IN $chunk_ids
+        RETURN
+            elementId(c) AS chunk_id,
+            elementId(d) AS doc_id,
+            d.title AS doc_title,
+            d.url AS doc_url
+        """
+
+        records, _, _ = base_service.graphdb_var.execute_query(
+            cypher,
+            chunk_ids=chunk_ids,
+        )
+
+        doc_info = {}
+        for record in records:
+            doc_info[record["chunk_id"]] = {
+                "doc_id": record["doc_id"],
+                "doc_title": record["doc_title"],
+                "doc_url": record["doc_url"]
+            }
+        return doc_info
+
     def retrieve_communities(
         self,
         seed_entities,
@@ -553,6 +581,8 @@ class LocalSearch():
             context["chunks"].append({
                 "text": chunk["text"],
                 "matched_entities": chunk["matched_entity_count"],
+                "doc_title": chunk.get("doc_title"),
+                "doc_url": chunk.get("doc_url"),
             })
 
         # ------------------------------------------------
@@ -571,48 +601,53 @@ class LocalSearch():
         return context
 
     def format_context_for_llm(self, context):
-
         sections = []
+        chunk_map = {}
 
-        # ---------------- Entity ----------------
+        # # ---------------- Entity ----------------
+        # sections.append("# Entities")
+        # for entity in context["entities"]:
+        #     sections.append(
+        #         f"- {entity['name']}: {entity['description']}"
+        #     )
 
-        sections.append("# Entities")
+        # # ---------------- Relationship ----------------
+        # sections.append("\n# Relationships")
+        # for relation in context["relationships"]:
+        #     sections.append(
+        #         f"- {relation['description']}"
+        #     )
 
-        for entity in context["entities"]:
-
-            sections.append(
-                f"- {entity['name']}: {entity['description']}"
-            )
-
-        # ---------------- Relationship ----------------
-
-        sections.append("\n# Relationships")
-
-        for relation in context["relationships"]:
-
-            sections.append(
-                f"- {relation['description']}"
-            )
-
-        # ---------------- Community ----------------
-
-        sections.append("\n# Communities")
-
-        for community in context["communities"]:
-
-            sections.append(
-                f"- {community['summary']}"
-            )
+        # # ---------------- Community ----------------
+        # sections.append("\n# Communities")
+        # for community in context["communities"]:
+        #     sections.append(
+        #         f"- {community['summary']}"
+        #     )
 
         # ---------------- Chunk ----------------
-
         sections.append("\n# Chunks")
 
-        for chunk in context["chunks"]:
+        for chunk_id, chunk in enumerate(context["chunks"]):
+            sections.append(
+                                f"""
+                    =====================
+                    Chunk ID: {chunk_id}
 
-            sections.append(chunk["text"])
+                    {chunk['text']}
+                    """.strip()
+                            )
 
-        return "\n".join(sections)
+            chunk_map[str(chunk_id)] = {
+                "chunk_id": chunk_id,
+                "title": chunk.get("doc_title", ""),
+                "url": chunk.get("doc_url", ""),
+                "text": chunk["text"]
+            }
+
+        llm_context = "\n".join(sections)
+
+        return llm_context, chunk_map
 
     def local_search(self, query):
         seed_entities = self.hybrid_search(query)
@@ -627,11 +662,19 @@ class LocalSearch():
 
         ranked_chunks, ranked_communities = self.ranking_filter_chunks_and_community(seed_entities, related_entities, chunks, communities)
 
+        doc_info = self.retrieve_document_info(ranked_chunks)
+        for chunk in ranked_chunks:
+            info = doc_info.get(chunk["chunk_id"], {})
+            chunk["doc_title"] = info.get("doc_title")
+            chunk["doc_url"] = info.get("doc_url")
+
         context = self.build_context(seed_entities, related_entities, filtered_relationships, ranked_chunks, ranked_communities)
 
-        format_context = self.format_context_for_llm(context)
-
-        return format_context
+        format_context, chunk_map = self.format_context_for_llm(context)
+        return {
+            "context": format_context,
+            "chunk_map": chunk_map
+        }
 
     def drift_local_search(self, query):
         seed_entities = self.hybrid_search(query)
@@ -645,11 +688,7 @@ class LocalSearch():
         communities = self.retrieve_communities(seed_entities, filtered_entities)
 
         return DriftEvidence(
-                    seed_entities=seed_entities,
-                    related_entities=filtered_entities,
-                    relationships=filtered_relationships,
                     chunks=chunks,
-                    communities=communities,
                 )
     
     
@@ -829,21 +868,13 @@ class GlobalSearch():
     ) -> str:
 
         contexts = []
-
+        contexts.append("\n# Community")
         for idx, finding in enumerate(findings, start=1):
 
             contexts.append(f"""
-    Finding {idx}
-
-    Community ID:
-    {finding.community_id}
-
-    Importance:
-    {finding.importance}
-
-    Content:
-    {finding.summary}
-    """.strip())
+                    Content:
+                    {finding.summary}
+                    """.strip())
 
         return "\n\n-----------------------------\n\n".join(contexts)
 
@@ -907,7 +938,9 @@ class GlobalSearch():
 
         context = self.build_findings_context(top_findings)
 
-        return context
+        return {
+            "context": context,
+        }
 
 
 global_search = GlobalSearch()
@@ -1024,15 +1057,6 @@ Current Intermediate Answer:
 
 Evidence:
 
-Entities:
-{entities}
-
-Relationships:
-{relationships}
-
-Communities:
-{communities}
-
 Chunks:
 {chunks}
 """  
@@ -1135,11 +1159,11 @@ class DriftSearch():
         Merge evidence from multiple follow-up queries.
         """
 
-        seed_entities = {}
-        related_entities = {}
-        relationships = {}
+        # seed_entities = {}
+        # related_entities = {}
+        # relationships = {}
         chunks = {}
-        communities = {}
+        # communities = {}
 
         def relationship_key(relationship: dict):
             if relationship.get("relationship_id"):
@@ -1154,37 +1178,123 @@ class DriftSearch():
 
         for evidence in evidences:
 
-            for entity in evidence.seed_entities or []:
-                entity_id = entity.get("entity_id")
-                if entity_id:
-                    seed_entities[entity_id] = entity
+            # for entity in evidence.seed_entities or []:
+            #     entity_id = entity.get("entity_id")
+            #     if entity_id:
+            #         seed_entities[entity_id] = entity
 
-            for entity in evidence.related_entities or []:
-                entity_id = entity.get("entity_id")
-                if entity_id:
-                    related_entities[entity_id] = entity
+            # for entity in evidence.related_entities or []:
+            #     entity_id = entity.get("entity_id")
+            #     if entity_id:
+            #         related_entities[entity_id] = entity
 
-            for relationship in evidence.relationships or []:
-                relationships[relationship_key(relationship)] = relationship
+            # for relationship in evidence.relationships or []:
+            #     relationships[relationship_key(relationship)] = relationship
 
             for chunk in evidence.chunks or []:
-                chunk_id = chunk.get("chunk_id") or chunk.get("id")
-                if chunk_id:
+                chunk_id = chunk.get("chunk_id")
+                if chunk_id is None:
+                    chunk_id = chunk.get("id")
+                if chunk_id is not None:
                     chunks[chunk_id] = chunk
 
-            for community in evidence.communities or []:
-                community_id = community.get("community_id") or community.get("id")
-                if community_id:
-                    communities[community_id] = community
+            # for community in evidence.communities or []:
+            #     community_id = community.get("community_id") or community.get("id")
+            #     if community_id:
+            #         communities[community_id] = community
 
         return DriftEvidence(
-            seed_entities=list(seed_entities.values()),
-            related_entities=list(related_entities.values()),
-            relationships=list(relationships.values()),
             chunks=list(chunks.values()),
-            communities=list(communities.values()),
         )
+
+    def attach_document_info(self, evidence: DriftEvidence) -> DriftEvidence:
+        """
+        Enrich drift chunks with their source document metadata.
+        """
+        chunks = [chunk.copy() for chunk in (evidence.chunks or [])]
+        doc_info = local_search.retrieve_document_info(chunks)
+
+        for chunk in chunks:
+            info = doc_info.get(chunk.get("chunk_id"), {})
+            chunk["doc_title"] = info.get("doc_title")
+            chunk["doc_url"] = info.get("doc_url")
+
+        return DriftEvidence(chunks=chunks)
+
+    def format_context_for_llm(self, evidence: DriftEvidence):
+        """
+        Format DRIFT evidence like local search so citations can reuse chunk_map.
+        """
+        sections = ["\n# Chunks"]
+        chunk_map = {}
+
+        for chunk_id, chunk in enumerate(evidence.chunks or []):
+            sections.append(
+                f"""
+                    =====================
+                    Chunk ID: {chunk_id}
+
+                    {chunk.get('text', '')}
+                    """.strip()
+            )
+
+            chunk_map[str(chunk_id)] = {
+                "chunk_id": chunk_id,
+                "title": chunk.get("doc_title", ""),
+                "url": chunk.get("doc_url", ""),
+                "text": chunk.get("text", "")
+            }
+
+        return "\n".join(sections), chunk_map
    
+    def build_context(self, evidence: DriftEvidence) -> dict[str, str]:
+        """
+        Build a compact evidence summary that is short enough for the
+        reasoning prompt while preserving the most useful information.
+        """
+
+
+        def build_section(items, section_name: str) -> str:
+            if not items:
+                return f"{section_name}: Không có dữ liệu."
+
+            compact_items = []
+            # limited_items = items[:max_items]
+
+            for idx, item in enumerate(items, start=1):
+                if isinstance(item, dict):
+                    # if section_name == "Entities":
+                    #     name = item.get("name") or item.get("entity_id") or ""
+                    #     description = compact_text(item.get("description") or "")
+                    #     entry = f"{idx}. {name}"
+                    #     if description:
+                    #         entry += f": {description}"
+                    #     compact_items.append(entry)
+                    # elif section_name == "Relationships":
+                    #     description = compact_text(
+                    #         item.get("description")
+                    #         or item.get("type")
+                    #         or ""
+                    #     )
+                    #     compact_items.append(f"{idx}. {description}")
+                    # elif section_name == "Communities":
+                    #     title = compact_text(item.get("title") or "")
+                    #     summary = compact_text(item.get("summary") or "")
+                    #     entry = title or summary or str(item)
+                    #     if summary and title and summary != title:
+                    #         entry = f"{title}: {summary}"
+                    #     compact_items.append(f"{idx}. {entry}")
+                
+                    if section_name == "Chunks":
+                        text = item.get("text")
+                        compact_items.append(f"{idx}. {text}")
+                    
+            return f"{section_name}:\n" + "\n".join(compact_items)
+
+        return {
+            "chunks": build_section(evidence.chunks or [], "Chunks"),
+        }
+    
     def reason_over_evidence(
         self,
         query: str,
@@ -1204,9 +1314,6 @@ class DriftSearch():
         prompt = REASON_OVER_EVIDENCE_PROMPT.format(
             query=query,
             intermediate_answer=intermediate_answer,
-            entities=compact_context["entities"],
-            relationships=compact_context["relationships"],
-            communities=compact_context["communities"],
             chunks=compact_context["chunks"],
         )
 
@@ -1232,75 +1339,7 @@ class DriftSearch():
                 follow_up_queries=[],
             )
 
-    def build_context(self, evidence: DriftEvidence) -> dict[str, str]:
-        """
-        Build a compact evidence summary that is short enough for the
-        reasoning prompt while preserving the most useful information.
-        """
-
-        max_items = 6
-        max_chars = 220
-
-        def compact_text(text: str, limit: int = max_chars) -> str:
-            if not text:
-                return ""
-            text = str(text).strip()
-            if len(text) <= limit:
-                return text
-            return text[: limit - 3].rstrip() + "..."
-
-        def build_section(items, section_name: str) -> str:
-            if not items:
-                return f"{section_name}: Không có dữ liệu."
-
-            compact_items = []
-            limited_items = items[:max_items]
-
-            for idx, item in enumerate(limited_items, start=1):
-                if isinstance(item, dict):
-                    if section_name == "Entities":
-                        name = item.get("name") or item.get("entity_id") or ""
-                        description = compact_text(item.get("description") or "")
-                        entry = f"{idx}. {name}"
-                        if description:
-                            entry += f": {description}"
-                        compact_items.append(entry)
-                    elif section_name == "Relationships":
-                        description = compact_text(
-                            item.get("description")
-                            or item.get("type")
-                            or ""
-                        )
-                        compact_items.append(f"{idx}. {description}")
-                    elif section_name == "Communities":
-                        title = compact_text(item.get("title") or "")
-                        summary = compact_text(item.get("summary") or "")
-                        entry = title or summary or str(item)
-                        if summary and title and summary != title:
-                            entry = f"{title}: {summary}"
-                        compact_items.append(f"{idx}. {entry}")
-                    elif section_name == "Chunks":
-                        text = compact_text(item.get("text") or item.get("chunk_text") or "")
-                        compact_items.append(f"{idx}. {text}")
-                    else:
-                        compact_items.append(f"{idx}. {compact_text(str(item))}")
-                else:
-                    compact_items.append(f"{idx}. {compact_text(str(item))}")
-
-            if len(items) > max_items:
-                compact_items.append(f"... và {len(items) - max_items} mục khác")
-
-            return f"{section_name}:\n" + "\n".join(compact_items)
-
-        return {
-            "entities": build_section(
-                (evidence.seed_entities or []) + (evidence.related_entities or []),
-                "Entities",
-            ),
-            "relationships": build_section(evidence.relationships or [], "Relationships"),
-            "communities": build_section(evidence.communities or [], "Communities"),
-            "chunks": build_section(evidence.chunks or [], "Chunks"),
-        }
+    
 
     def drift_loop(
         self,
@@ -1317,11 +1356,7 @@ class DriftSearch():
         current_answer = intermediate_answer or ""
         current_queries = list(follow_up_queries or [])
         merged_evidence = DriftEvidence(
-            seed_entities=[],
-            related_entities=[],
-            relationships=[],
-            chunks=[],
-            communities=[],
+            chunks=[]
         )
 
         for _ in range(max_depth):
@@ -1335,11 +1370,7 @@ class DriftSearch():
             current_evidence = self.merge_drift_evidence(evidences)
             if not any(
                 [
-                    current_evidence.seed_entities,
-                    current_evidence.related_entities,
-                    current_evidence.relationships,
                     current_evidence.chunks,
-                    current_evidence.communities,
                 ]
             ):
                 break
@@ -1369,8 +1400,12 @@ class DriftSearch():
             intermediate_answer=primer_reasoning.intermediate_answer,
             follow_up_queries=primer_reasoning.follow_up_queries,
         )
+        merged_evidence = self.attach_document_info(merged_evidence)
+        context, chunk_map = self.format_context_for_llm(merged_evidence)
+        return {
+            "context": context,
+            "chunk_map": chunk_map,
+        }
 
-        context = self.build_context(merged_evidence)
-        return context
     
 drift_search = DriftSearch()

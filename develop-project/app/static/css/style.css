@@ -117,3 +117,14 @@ button.text-truncate {
   max-width: 80%;
   ;
 }
+.citation-link {
+    font-size: 0.75rem;
+    vertical-align: super;
+    margin-left: 2px;
+    padding: 2px 4px;
+    cursor: pointer;
+}
+/* Tùy chỉnh độ rộng của khung hover nếu nội dung quá dài */
+.popover {
+    max-width: 350px;
+}

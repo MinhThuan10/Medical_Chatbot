@@ -7,13 +7,14 @@ import uuid
 from app.src.services.service_users import Users
 from datetime import datetime
 from app.src.core.database import get_db
-from app.src.api import conservation, chat_data, chat
+from app.src.api import admin, conservation, chat_data, chat
 
 app = FastAPI()
 
 app.include_router(conservation.router)
 app.include_router(chat_data.router)
 app.include_router(chat.router)
+app.include_router(admin.router)
 
 templates = Jinja2Templates(directory="app/templates")
 app.mount("/static", StaticFiles(directory="app/static"), name="static")

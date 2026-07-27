@@ -10,6 +10,7 @@ class Response_Chat_data(BaseModel):
 class Request_Import_Chat_data(BaseModel):
     question_text: str
     answer_text: str
+    citations: list[dict] | None = None
 
 class Response_Import_Chat_data(BaseModel):
     chat_id: int

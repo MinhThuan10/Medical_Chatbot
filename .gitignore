@@ -12,11 +12,12 @@ Data_LakeHouse/CrawlData/dags/medlatec
 Data_LakeHouse/CrawlData/dags/vietnamese_medical_chat_data.csv
 Data_LakeHouse/CrawlData/dags/vietnamese_medical_qa.csv
 Data_LakeHouse/TamAnh_Hospital/RAG/files
-Data_LakeHouse/TamAnh_Hospital/data_cleaned.csv
+Data_LakeHouse/TamAnh_Hospital/Data/
 Data_LakeHouse/TamAnh_Hospital/GraphRAG/chunk_extracted
 develop-project/.env
 develop-project/neo4j_auth.txt
 develop-project/data/
+develop-project/app/data/imports
 .env
 .secrets
 myenv/

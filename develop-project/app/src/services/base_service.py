@@ -2,14 +2,15 @@ import torch
 from langchain_huggingface import HuggingFaceEmbeddings
 from neo4j import GraphDatabase
 from langchain_openai import ChatOpenAI
+from graphdatascience import GraphDataScience
 
 from app.src.core.config import settings
 import os
 
-os.environ["LANGCHAIN_TRACING"] = settings.LANGSMITH_TRACING
-os.environ["LANGCHAIN_ENDPOINT"] = settings.LANGSMITH_ENDPOINT
-os.environ["LANGCHAIN_API_KEY"] = settings.LANGSMITH_API_KEY
-os.environ["LANGCHAIN_PROJECT"] = settings.LANGSMITH_PROJECT
+# os.environ["LANGCHAIN_TRACING"] = settings.LANGSMITH_TRACING
+# os.environ["LANGCHAIN_ENDPOINT"] = settings.LANGSMITH_ENDPOINT
+# os.environ["LANGCHAIN_API_KEY"] = settings.LANGSMITH_API_KEY
+# os.environ["LANGCHAIN_PROJECT"] = settings.LANGSMITH_PROJECT
 class BaseService:
     def __init__(self):
         self.qdrant_url = settings.QDRANT_URL
@@ -31,6 +32,7 @@ class BaseService:
         self.embedding_model_var = self.embedding_model()
         self.graphdb_var = self.graphdb()
         self.llm_model_var = self.llm_model()
+        self.gds_var = self.gds()
 
 
     def embedding_model(self):
@@ -48,7 +50,11 @@ class BaseService:
             self.neo4j_url,
             auth=(self.neo4j_user, self.neo4j_password)
         )
-    
+    def gds(self):
+        return GraphDataScience(
+            self.neo4j_url,
+            auth=(self.neo4j_user, self.neo4j_password)
+        )
     def llm_model(self):
         # return ChatGoogleGenerativeAI(
         #     model=self.model_llm,
@@ -68,6 +74,8 @@ class BaseService:
                     "enable_thinking": False
                 }
             },
+            timeout=120,
+            max_retries=0
         )
     
 
