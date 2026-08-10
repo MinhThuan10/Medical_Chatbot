@@ -18,6 +18,8 @@ develop-project/.env
 develop-project/neo4j_auth.txt
 develop-project/data/
 develop-project/app/data/imports
+develop-project/evaluate/datas
+develop-project/evaluate/results
 .env
 .secrets
 myenv/

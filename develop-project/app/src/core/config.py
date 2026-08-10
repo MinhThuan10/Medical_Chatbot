@@ -22,8 +22,9 @@ class Settings(BaseSettings):
     LANGSMITH_ENDPOINT: str
     LANGSMITH_API_KEY: str
     LANGSMITH_PROJECT: str
-    ADMIN_USERNAME: str = "admin"
-    ADMIN_PASSWORD: str = "admin"
+    ADMIN_USERNAME: str
+    ADMIN_PASSWORD: str
+    MAX_WORKERS: int
     
     model_config = SettingsConfigDict(
         env_file=".env" if os.path.exists(".env") else None,

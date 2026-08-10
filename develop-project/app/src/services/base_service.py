@@ -28,6 +28,9 @@ class BaseService:
         self.neo4j_url = settings.NEO4J_URL
         self.neo4j_user = settings.NEO4J_USERNAME
         self.neo4j_password = settings.NEO4J_PASSWORD
+        self.admin_username = settings.ADMIN_USERNAME
+        self.admin_password = settings.ADMIN_PASSWORD
+        self.max_workers_var = settings.MAX_WORKERS
 
         self.embedding_model_var = self.embedding_model()
         self.graphdb_var = self.graphdb()

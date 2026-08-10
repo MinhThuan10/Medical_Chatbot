@@ -12,29 +12,12 @@ import uuid
 from app.src.services.base_service import base_service
 
 
-DEFAULT_ENTITY_TYPES = [
-    "disease",
-    "symptom",
-    "drug",
-    "treatment",
-    "procedure",
-    "test",
-    "body_part",
-    "department",
-    "doctor",
-    "organization",
-    "risk_factor",
-    "condition",
-    "other",
-]
-
-
 GRAPH_EXTRACTION_PROMPT = """
 Extract entities and relationships from the Vietnamese medical text below.
 
 ENTITY:
 - entity_name: Exact name or phrase mentioned in the text.
-- entity_type: Must be one of [{entity_types}].
+- entity_type: Must be one of ["disease", "symptom", "drug", "treatment", "procedure", "test", "body_part", "department", "doctor", "organization", "risk_factor", "condition", "other"].
 - entity_description: Brief description based only on the text.
 
 RELATIONSHIP:
@@ -53,11 +36,7 @@ RULES:
 7. Do not create self-relationships or duplicate relationships.
 
 Text:
-{input_text}
 """
-
-MAX_WORKERS = 16
-
 
 
 class ImportedChunk(BaseModel):
@@ -114,18 +93,16 @@ class ImportDocument:
         self,
         chunk_size: int = 1024,
         chunk_overlap: int = 256,
-        entity_types: list[str] | None = None,
     ):
         self.chunk_size = chunk_size
         self.chunk_overlap = chunk_overlap
-        self.entity_types = entity_types or DEFAULT_ENTITY_TYPES
         self.graphdb = base_service.graphdb_var
         self.llm = base_service.llm_model_var
         self.embedding_model = base_service.embedding_model_var
         self.gds = base_service.gds_var
         self.structured_llm_extraction_result = self.llm.with_structured_output(ExtractionResult)
         self.structured_llm_community_report = self.llm.with_structured_output(CommunityReport)
-
+        self.max_workers = base_service.max_workers_var
 
 
     def import_db(
@@ -158,14 +135,16 @@ class ImportDocument:
             self.create_document(document)
             stats["documents"] += 1
         
-        for chunk in chunks:
-            self.create_chunk(chunk)
-            stats["chunks"] += 1
+        batch_size = 5000
+        for i in range(0, len(chunks), batch_size):
+            chunk_batch = chunks[i : i + batch_size]
+            self.create_chunks_batch(chunk_batch)
+            stats["chunks"] += len(chunk_batch)
 
         results = []
 
         print("Call LLM")
-        with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
 
             futures = {
                 executor.submit(self.extract_graph, idx, row): idx
@@ -186,20 +165,12 @@ class ImportDocument:
         print(
             f"[Entity Update] "
             f"Saving {len(results)} extracted chunks..."
-                )
-        for graph in results:
-            mention_lookup = self.create_entities(
-                graph["chunk_id"],
-                graph["extracted_text"]["entities"],
-            )
-
-            stats["entities"] += len(mention_lookup)
-
-            stats["relationships"] += self.create_relationships(
-                graph["chunk_id"],
-                graph["extracted_text"]["relationships"],
-                mention_lookup,
-            )
+        )
+        for i in range(0, len(results), batch_size):
+            results_batch = results[i : i + batch_size]
+            entities_count, relationships_count = self.create_entities_and_relationships_batch(results_batch)
+            stats["entities"] += entities_count
+            stats["relationships"] += relationships_count
         
         self.build_entity_mention_wcc()
 
@@ -565,14 +536,11 @@ class ImportDocument:
             response = self.structured_llm_extraction_result.invoke([
                 {
                     "role": "system",
-                    "content": "You are an expert in information extraction."
+                    "content": GRAPH_EXTRACTION_PROMPT
                 },
                 {
                     "role": "user",
-                    "content": GRAPH_EXTRACTION_PROMPT.format(
-                        entity_types=", ".join(self.entity_types),
-                        input_text=text,
-                    ),
+                    "content": (f"Input text:\n{text}\n\n")
                 }
             ])
             # response là một object của ExtractionResult
@@ -627,284 +595,424 @@ class ImportDocument:
             heading=chunk.heading,
         )
 
-    # def create_entities(self, chunk_id: str, entities: list[Entity]) -> dict[str, str]:
-    #     mention_lookup = {}
-    #     for idx, entity in enumerate(entities):
-    #         name = entity["entity_name"].strip()
-    #         if not name:
-    #             continue
-    #         mention_id = f"{chunk_id}_{idx}"
-    #         embedding = self.embed_entity(entity)
-    #         query = """
-    #         MATCH (c:Chunk {chunk_id: $chunk_id})
-    #         MERGE (e:EntityMention {mention_id: $mention_id})
-    #         SET e.name = $name,
-    #             e.type = $type,
-    #             e.description = $description,
-    #             e.frequency = 1,
-    #             e.degree = coalesce(e.degree, 0),
-    #             e.embedding = $embedding
-    #         MERGE (c)-[:MENTIONS]->(e)
-    #         """
-    #         self.graphdb.execute_query(
-    #             query,
-    #             chunk_id=chunk_id,
-    #             mention_id=mention_id,
-    #             name=name,
-    #             type=entity["entity_type"],
-    #             description=entity["entity_description"],
-    #             embedding=embedding
-    #         )
-    #         mention_lookup[self.normalize_name(name)] = mention_id
+    def create_chunks_batch(self, chunks: list[ImportedChunk]) -> None:
+        if not chunks:
+            return
+        rows = []
+        for chunk in chunks:
+            rows.append({
+                "file_name": chunk.file_name,
+                "chunk_id": chunk.chunk_id,
+                "url": chunk.url,
+                "title": chunk.title,
+                "chunk_text": chunk.chunk_text,
+                "heading": chunk.heading,
+            })
+        query = """
+        UNWIND $rows AS row
+        MATCH (d:Document {file_name: row.file_name})
+        MERGE (c:Chunk {chunk_id: row.chunk_id})
+        SET c.chunk_id = row.chunk_id,
+            c.url = row.url,
+            c.title = row.title,
+            c.chunk_text = row.chunk_text,
+            c.heading = row.heading
+        MERGE (d)-[:HAS_CHUNK]->(c)
+        """
+        self.graphdb.execute_query(query, rows=rows)
 
-    #     return mention_lookup
 
-    def create_entities(
+    def create_entities_and_relationships_batch(
         self,
-        chunk_id: str,
-        entities: list[Entity],
-    ) -> dict[str, str]:
+        results: list[dict],
+        embed_batch_size: int = 1000,
+    ) -> tuple[int, int]:
+        if not results:
+            return 0, 0
 
-        if not entities:
-            return {}
-
-        mention_lookup = {}
-        entity_rows = []
-
-        # =========================================================
-        # 1. Prepare entities + embeddings
-        # =========================================================
-
-        for idx, entity in enumerate(entities):
-
-            name = entity["entity_name"].strip()
-
-            if not name:
-                continue
-
-            mention_id = f"{chunk_id}_{idx}"
-
-            # Generate embedding
-            embedding = self.embed_entity(entity)
-
-            entity_rows.append(
-                {
+        # 1. Prepare entities and texts for embedding
+        entity_prepare_rows = []
+        for graph in results:
+            chunk_id = graph["chunk_id"]
+            extracted_text = graph["extracted_text"]
+            entities = extracted_text.get("entities", [])
+            for idx, entity in enumerate(entities):
+                name = entity["entity_name"].strip()
+                if not name:
+                    continue
+                mention_id = f"{chunk_id}_{idx}"
+                text = f"{name}. {entity['entity_type']}. {entity['entity_description']}"
+                entity_prepare_rows.append({
                     "chunk_id": chunk_id,
                     "mention_id": mention_id,
                     "name": name,
                     "type": entity["entity_type"],
                     "description": entity["entity_description"],
-                    "embedding": embedding,
-                }
-            )
+                    "text": text,
+                })
 
-            mention_lookup[
-                self.normalize_name(name)
-            ] = mention_id
+        if not entity_prepare_rows:
+            return 0, 0
 
-        if not entity_rows:
-            return {}
+        # 2. Batch embedding
+        embeddings = []
+        texts_to_embed = [r["text"] for r in entity_prepare_rows]
+        for i in range(0, len(texts_to_embed), embed_batch_size):
+            batch_texts = texts_to_embed[i : i + embed_batch_size]
+            batch_embeddings = self.embedding_model.embed_documents(batch_texts)
+            embeddings.extend(batch_embeddings)
 
-        # =========================================================
-        # 2. Batch insert entities
-        # =========================================================
+        # 3. Build entity rows for Neo4j and build mention_lookups
+        entity_rows = []
+        mention_lookups = {}
+        for row, embedding in zip(entity_prepare_rows, embeddings):
+            chunk_id = row["chunk_id"]
+            name = row["name"]
+            mention_id = row["mention_id"]
+            
+            entity_rows.append({
+                "chunk_id": chunk_id,
+                "mention_id": mention_id,
+                "name": name,
+                "type": row["type"],
+                "description": row["description"],
+                "embedding": embedding,
+            })
+            
+            if chunk_id not in mention_lookups:
+                mention_lookups[chunk_id] = {}
+            mention_lookups[chunk_id][self.normalize_name(name)] = mention_id
 
-        query = """
-        UNWIND $rows AS row
+        # 4. Save entities to Neo4j
+        if entity_rows:
+            entity_query = """
+            UNWIND $rows AS row
+            MATCH (c:Chunk {chunk_id: row.chunk_id})
+            MERGE (e:EntityMention {mention_id: row.mention_id})
+            SET e.name = row.name,
+                e.type = row.type,
+                e.description = row.description,
+                e.frequency = coalesce(e.frequency, 0) + 1,
+                e.degree = coalesce(e.degree, 0),
+                e.embedding = row.embedding
+            MERGE (c)-[:MENTIONS]->(e)
+            """
+            self.graphdb.execute_query(entity_query, rows=entity_rows)
 
-        MATCH (c:Chunk {
-            chunk_id: row.chunk_id
-        })
-
-        MERGE (e:EntityMention {
-            mention_id: row.mention_id
-        })
-
-        SET
-            e.name = row.name,
-            e.type = row.type,
-            e.description = row.description,
-            e.frequency = coalesce(e.frequency, 0) + 1,
-            e.degree = coalesce(e.degree, 0),
-            e.embedding = row.embedding
-
-        MERGE (c)-[:MENTIONS]->(e)
-        """
-
-        self.graphdb.execute_query(
-            query,
-            rows=entity_rows,
-        )
-
-        return mention_lookup
-
-    # def create_relationships(
-    #     self,
-    #     chunk_id: str,
-    #     relationships: list[Relationship],
-    #     mention_lookup: dict[str, str],
-    # ) -> int:
-    #     created = 0
-    #     for idx, relationship in enumerate(relationships):
-    #         source = mention_lookup.get(self.normalize_name(relationship["source_entity"]))
-    #         target = mention_lookup.get(self.normalize_name(relationship["target_entity"]))
-    #         if not source or not target or source == target:
-    #             continue
-
-    #         relationship_id = f"{chunk_id}_rel_{idx}"
-    #         query = """
-    #         MATCH (c:Chunk {chunk_id: $chunk_id})
-    #         MATCH (s:EntityMention {mention_id: $source})
-    #         MATCH (t:EntityMention {mention_id: $target})
-    #         MERGE (s)-[r:RELATED_TO {relationship_id: $relationship_id}]->(t)
-    #         SET r.source = $source,
-    #             r.target = $target,
-    #             r.description = $description,
-    #             r.weight = $weight,
-    #             r.combined_degree = coalesce(r.combined_degree, 0),
-    #             r.chunk_ids = [$chunk_id]
-    #         """
-    #         self.graphdb.execute_query(
-    #             query,
-    #             chunk_id=chunk_id,
-    #             source=source,
-    #             target=target,
-    #             relationship_id=relationship_id,
-    #             description=relationship["relationship_description"],
-    #             weight=float(relationship["relationship_strength"] or 1.0),
-    #         )
-    #         created += 1
-
-    #     return created
-
-    def create_relationships(
-        self,
-        chunk_id: str,
-        relationships: list[Relationship],
-        mention_lookup: dict[str, str],
-    ) -> int:
-
-        if not relationships:
-            return 0
-
+        # 5. Prepare relationships
         relationship_rows = []
-
-        # =========================================================
-        # 1. Prepare relationships
-        # =========================================================
-
-        for idx, relationship in enumerate(relationships):
-
-            source = mention_lookup.get(
-                self.normalize_name(
-                    relationship["source_entity"]
+        for graph in results:
+            chunk_id = graph["chunk_id"]
+            extracted_text = graph["extracted_text"]
+            relationships = extracted_text.get("relationships", [])
+            mention_lookup = mention_lookups.get(chunk_id, {})
+            
+            for idx, relationship in enumerate(relationships):
+                source = mention_lookup.get(
+                    self.normalize_name(relationship["source_entity"])
                 )
-            )
-
-            target = mention_lookup.get(
-                self.normalize_name(
-                    relationship["target_entity"]
+                target = mention_lookup.get(
+                    self.normalize_name(relationship["target_entity"])
                 )
-            )
+                if not source or not target or source == target:
+                    continue
 
-            # Skip invalid relationships
-            if (
-                not source
-                or not target
-                or source == target
-            ):
-                continue
-
-            relationship_id = (
-                f"{chunk_id}_rel_{idx}"
-            )
-
-            relationship_rows.append(
-                {
+                relationship_id = f"{chunk_id}_rel_{idx}"
+                relationship_rows.append({
                     "chunk_id": chunk_id,
                     "source": source,
                     "target": target,
                     "relationship_id": relationship_id,
-                    "description": relationship[
-                        "relationship_description"
-                    ],
-                    "weight": float(
-                        relationship[
-                            "relationship_strength"
-                        ] or 1.0
-                    ),
-                }
-            )
+                    "description": relationship["relationship_description"],
+                    "weight": float(relationship["relationship_strength"] or 1.0),
+                })
 
-        if not relationship_rows:
-            return 0
+        # 6. Save relationships to Neo4j
+        if relationship_rows:
+            relationship_query = """
+            UNWIND $rows AS row
+            MATCH (s:EntityMention {mention_id: row.source})
+            MATCH (t:EntityMention {mention_id: row.target})
+            MERGE (s)-[r:RELATED_TO {relationship_id: row.relationship_id}]->(t)
+            SET r.source = row.source,
+                r.target = row.target,
+                r.description = row.description,
+                r.weight = row.weight,
+                r.combined_degree = coalesce(r.combined_degree, 0) + 1,
+                r.chunk_ids = CASE
+                    WHEN r.chunk_ids IS NULL THEN [row.chunk_id]
+                    WHEN NOT row.chunk_id IN r.chunk_ids THEN r.chunk_ids + row.chunk_id
+                    ELSE r.chunk_ids
+                END
+            """
+            self.graphdb.execute_query(relationship_query, rows=relationship_rows)
 
-        # =========================================================
-        # 2. Batch insert relationships
-        # =========================================================
-
-        query = """
-        UNWIND $rows AS row
-
-        MATCH (s:EntityMention {
-            mention_id: row.source
-        })
-
-        MATCH (t:EntityMention {
-            mention_id: row.target
-        })
-
-        MERGE (s)-[r:RELATED_TO {
-            relationship_id: row.relationship_id
-        }]->(t)
-
-        SET
-            r.source = row.source,
-            r.target = row.target,
-            r.description = row.description,
-            r.weight = row.weight,
-            r.combined_degree = coalesce(
-                r.combined_degree,
-                0
-            ) + 1,
-
-            r.chunk_ids = CASE
-                WHEN r.chunk_ids IS NULL
-                    THEN [row.chunk_id]
-
-                WHEN NOT row.chunk_id IN r.chunk_ids
-                    THEN r.chunk_ids + row.chunk_id
-
-                ELSE r.chunk_ids
-            END
-        """
-
-        self.graphdb.execute_query(
-            query,
-            rows=relationship_rows,
-        )
-
-        return len(relationship_rows)
+        return len(entity_rows), len(relationship_rows)
 
     def embed_entity(self, entity: Entity) -> list[float]:
         text = f"{entity["entity_name"]}. {entity["entity_type"]}. {entity["entity_description"]}"
         return self.embedding_model.embed_query(text)
 
+    # def build_entity_mention_wcc(
+    #     self,
+    #     graph_name: str = "entity_mentions",
+    #     similarity_cutoff: float = 0.80,
+    # ):
+    #     # =========================================================
+    #     # 1. Drop old GDS projection
+    #     # =========================================================
+
+    #     if self.gds.graph.exists(graph_name)["exists"]:
+    #         self.gds.graph.drop(graph_name)
+
+    #     # =========================================================
+    #     # 2. Project EntityMention
+    #     # =========================================================
+
+    #     G, project_result = self.gds.graph.project(
+    #         graph_name,
+    #         "EntityMention",
+    #         "*",
+    #         nodeProperties=["embedding"],
+    #     )
+
+    #     print(
+    #         f"[Entity Resolution] "
+    #         f"Projected {project_result}"
+    #     )
+
+    #     # =========================================================
+    #     # 3. KNN similarity
+    #     # =========================================================
+
+    #     knn_result = self.gds.knn.mutate(
+    #         G,
+    #         nodeProperties=["embedding"],
+    #         mutateRelationshipType="SIMILAR",
+    #         mutateProperty="score",
+    #         similarityCutoff=similarity_cutoff,
+    #     )
+
+    #     print(
+    #         f"[Entity Resolution] "
+    #         f"KNN completed: {knn_result}"
+    #     )
+
+    #     # =========================================================
+    #     # 4. WCC
+    #     # =========================================================
+
+    #     wcc_result = self.gds.wcc.write(
+    #         G,
+    #         relationshipTypes=["SIMILAR"],
+    #         writeProperty="wcc",
+    #     )
+
+    #     print(
+    #         f"[Entity Resolution] "
+    #         f"WCC completed: {wcc_result}"
+    #     )
+
+    #     # =========================================================
+    #     # 5. Merge EntityMention
+    #     #
+    #     # Chỉ merge khi:
+    #     #
+    #     #   - cùng wcc
+    #     #   - cùng type
+    #     #
+    #     # Mỗi group phải có ít nhất 2 EntityMention
+    #     # =========================================================
+
+    #     merge_query = """
+    #     MATCH (e:EntityMention)
+    #     WHERE e.wcc IS NOT NULL
+    #     AND e.type IS NOT NULL
+
+    #     WITH
+    #         e.wcc AS wcc,
+    #         e.type AS entity_type,
+    #         collect(e) AS nodes
+
+    #     WHERE size(nodes) > 1
+
+    #     CALL apoc.refactor.mergeNodes(
+    #         nodes,
+    #         {
+    #             properties: {
+    #                 `.*`: 'discard'
+    #             },
+    #             mergeRels: true
+    #         }
+    #     )
+    #     YIELD node
+
+    #     RETURN
+    #         wcc,
+    #         entity_type,
+    #         size(nodes) AS merged_count,
+    #         node.mention_id AS canonical_mention_id
+    #     """
+
+    #     merge_result = self.gds.run_cypher(
+    #         merge_query
+    #     )
+
+    #     print(
+    #         "[Entity Resolution] "
+    #         "EntityMention merge completed:"
+    #     )
+
+    #     print(merge_result)
+
+    #     # =========================================================
+    #     # 6. Merge duplicate relationships
+    #     #
+    #     # Sau khi merge node có thể xuất hiện:
+    #     #
+    #     # A ──RELATED_TO(weight=2)──> B
+    #     # A ──RELATED_TO(weight=3)──> B
+    #     #
+    #     # Kết quả:
+    #     #
+    #     # A ──RELATED_TO(weight=5)──> B
+    #     #
+    #     # =========================================================
+
+    #     merge_relationship_query = """
+    #     MATCH (a:EntityMention)-[r:RELATED_TO]->(b:EntityMention)
+
+    #     WITH
+    #         a,
+    #         b,
+    #         collect(r) AS relationships
+
+    #     WHERE size(relationships) > 1
+
+    #     WITH
+    #         a,
+    #         b,
+    #         relationships,
+    #         reduce(
+    #             total = 0.0,
+    #             rel IN relationships |
+    #             total + coalesce(toFloat(rel.weight), 0.0)
+    #         ) AS total_weight
+
+    #     CALL apoc.refactor.mergeRelationships(
+    #         relationships,
+    #         {
+    #             properties: 'discard'
+    #         }
+    #     )
+    #     YIELD rel
+
+    #     SET rel.weight = total_weight
+
+    #     RETURN count(*) AS merged_relationships
+    #     """
+
+    #     relationship_result = self.gds.run_cypher(
+    #         merge_relationship_query
+    #     )
+
+    #     print(
+    #         "[Entity Resolution] "
+    #         "Relationship merge completed:"
+    #     )
+
+    #     print(relationship_result)
+
+    #     # =========================================================
+    #     # 7. Get WCC statistics
+    #     # =========================================================
+
+    #     stats = self.gds.run_cypher(
+    #         """
+    #         MATCH (e:EntityMention)
+    #         WHERE e.wcc IS NOT NULL
+
+    #         WITH
+    #             e.wcc AS community,
+    #             e.type AS entity_type,
+    #             count(*) AS size
+
+    #         RETURN
+    #             community,
+    #             entity_type,
+    #             size
+
+    #         ORDER BY size DESC
+    #         LIMIT 20
+    #         """
+    #     )
+
+    #     print(
+    #         "[Entity Resolution] "
+    #         "Top WCC communities:"
+    #     )
+
+    #     print(stats)
+
+    #     # =========================================================
+    #     # 8. Return result
+    #     # =========================================================
+
+    #     return {
+    #         "graph": G,
+    #         "project": project_result,
+    #         "knn": knn_result,
+    #         "wcc": wcc_result,
+    #         "merge": merge_result,
+    #         "relationship_merge": relationship_result,
+    #         "stats": stats,
+    #     }
+
     def build_entity_mention_wcc(
         self,
         graph_name: str = "entity_mentions",
         similarity_cutoff: float = 0.90,
+        max_cluster_size: int = 100,
+        merge_batch_size: int = 100,
     ):
+        """
+        Entity Resolution pipeline:
+
+        1. Project EntityMention + embeddings
+        2. KNN similarity
+        3. WCC trên SIMILAR
+        4. Merge EntityMention theo (wcc, type)
+        5. Chỉ merge cluster có size <= max_cluster_size
+        6. Merge duplicate RELATED_TO relationships
+        7. Return statistics
+
+        Lưu ý:
+        - Không merge các cluster quá lớn để tránh OOM.
+        - Không dùng collect() cho toàn bộ graph.
+        """
+
         # =========================================================
-        # 1. Drop old GDS projection
+        # 1. DROP OLD GDS PROJECTION
         # =========================================================
 
         if self.gds.graph.exists(graph_name)["exists"]:
+
+            print(
+                f"[Entity Resolution] "
+                f"Dropping old graph: {graph_name}"
+            )
+
             self.gds.graph.drop(graph_name)
 
+
         # =========================================================
-        # 2. Project EntityMention
+        # 2. PROJECT ENTITY MENTION
         # =========================================================
+
+        print(
+            "[Entity Resolution] "
+            "Projecting EntityMention graph..."
+        )
 
         G, project_result = self.gds.graph.project(
             graph_name,
@@ -914,13 +1022,19 @@ class ImportDocument:
         )
 
         print(
-            f"[Entity Resolution] "
-            f"Projected {project_result}"
+            "[Entity Resolution] "
+            f"Projected: {project_result}"
         )
 
+
         # =========================================================
-        # 3. KNN similarity
+        # 3. KNN SIMILARITY
         # =========================================================
+
+        print(
+            "[Entity Resolution] "
+            "Running KNN..."
+        )
 
         knn_result = self.gds.knn.mutate(
             G,
@@ -931,13 +1045,19 @@ class ImportDocument:
         )
 
         print(
-            f"[Entity Resolution] "
+            "[Entity Resolution] "
             f"KNN completed: {knn_result}"
         )
+
 
         # =========================================================
         # 4. WCC
         # =========================================================
+
+        print(
+            "[Entity Resolution] "
+            "Running WCC..."
+        )
 
         wcc_result = self.gds.wcc.write(
             G,
@@ -946,153 +1066,214 @@ class ImportDocument:
         )
 
         print(
-            f"[Entity Resolution] "
+            "[Entity Resolution] "
             f"WCC completed: {wcc_result}"
         )
 
+
         # =========================================================
-        # 5. Merge EntityMention
-        #
-        # Chỉ merge khi:
-        #
-        #   - cùng wcc
-        #   - cùng type
-        #
-        # Mỗi group phải có ít nhất 2 EntityMention
+        # 5. WCC STATISTICS
         # =========================================================
-
-        merge_query = """
-        MATCH (e:EntityMention)
-        WHERE e.wcc IS NOT NULL
-        AND e.type IS NOT NULL
-
-        WITH
-            e.wcc AS wcc,
-            e.type AS entity_type,
-            collect(e) AS nodes
-
-        WHERE size(nodes) > 1
-
-        CALL apoc.refactor.mergeNodes(
-            nodes,
-            {
-                properties: {
-                    `.*`: 'discard'
-                },
-                mergeRels: true
-            }
-        )
-        YIELD node
-
-        RETURN
-            wcc,
-            entity_type,
-            size(nodes) AS merged_count,
-            node.mention_id AS canonical_mention_id
-        """
-
-        merge_result = self.gds.run_cypher(
-            merge_query
-        )
 
         print(
             "[Entity Resolution] "
-            "EntityMention merge completed:"
+            "Analyzing WCC clusters..."
         )
 
-        print(merge_result)
-
-        # =========================================================
-        # 6. Merge duplicate relationships
-        #
-        # Sau khi merge node có thể xuất hiện:
-        #
-        # A ──RELATED_TO(weight=2)──> B
-        # A ──RELATED_TO(weight=3)──> B
-        #
-        # Kết quả:
-        #
-        # A ──RELATED_TO(weight=5)──> B
-        #
-        # =========================================================
-
-        merge_relationship_query = """
-        MATCH (a:EntityMention)-[r:RELATED_TO]->(b:EntityMention)
-
-        WITH
-            a,
-            b,
-            collect(r) AS relationships
-
-        WHERE size(relationships) > 1
-
-        WITH
-            a,
-            b,
-            relationships,
-            reduce(
-                total = 0.0,
-                rel IN relationships |
-                total + coalesce(toFloat(rel.weight), 0.0)
-            ) AS total_weight
-
-        CALL apoc.refactor.mergeRelationships(
-            relationships,
-            {
-                properties: 'discard'
-            }
-        )
-        YIELD rel
-
-        SET rel.weight = total_weight
-
-        RETURN count(*) AS merged_relationships
-        """
-
-        relationship_result = self.gds.run_cypher(
-            merge_relationship_query
-        )
-
-        print(
-            "[Entity Resolution] "
-            "Relationship merge completed:"
-        )
-
-        print(relationship_result)
-
-        # =========================================================
-        # 7. Get WCC statistics
-        # =========================================================
-
-        stats = self.gds.run_cypher(
+        cluster_stats = self.gds.run_cypher(
             """
             MATCH (e:EntityMention)
-            WHERE e.wcc IS NOT NULL
-
-            WITH
-                e.wcc AS community,
-                e.type AS entity_type,
-                count(*) AS size
+            WHERE
+                e.wcc IS NOT NULL
+                AND e.type IS NOT NULL
 
             RETURN
-                community,
-                entity_type,
-                size
+                e.wcc AS wcc,
+                e.type AS entity_type,
+                count(*) AS cluster_size
 
-            ORDER BY size DESC
-            LIMIT 20
+            ORDER BY cluster_size DESC
             """
         )
 
         print(
             "[Entity Resolution] "
-            "Top WCC communities:"
+            f"Found {len(cluster_stats)} WCC/type clusters"
         )
 
-        print(stats)
 
         # =========================================================
-        # 8. Return result
+        # 6. FILTER CLUSTERS
+        # =========================================================
+
+        valid_clusters = cluster_stats[
+            cluster_stats["cluster_size"] > 1
+        ]
+
+        oversized_clusters = valid_clusters[
+            valid_clusters["cluster_size"] > max_cluster_size
+        ]
+
+        mergeable_clusters = valid_clusters[
+            valid_clusters["cluster_size"] <= max_cluster_size
+        ]
+
+        print(
+            "[Entity Resolution] "
+            f"Mergeable clusters: "
+            f"{len(mergeable_clusters)}"
+        )
+
+        print(
+            "[Entity Resolution] "
+            f"Oversized clusters skipped: "
+            f"{len(oversized_clusters)}"
+        )
+
+
+        # =========================================================
+        # 7. MERGE SMALL CLUSTERS
+        # =========================================================
+
+        merge_results = []
+
+        for idx, row in mergeable_clusters.iterrows():
+
+            wcc = row["wcc"]
+            entity_type = row["entity_type"]
+            cluster_size = row["cluster_size"]
+
+            print(
+                f"[Entity Resolution] "
+                f"Merging cluster "
+                f"{idx + 1}/{len(mergeable_clusters)} "
+                f"| wcc={wcc} "
+                f"| type={entity_type} "
+                f"| size={cluster_size}"
+            )
+
+            merge_query = """
+            MATCH (e:EntityMention)
+            WHERE
+                e.wcc = $wcc
+                AND e.type = $entity_type
+
+            WITH collect(e) AS nodes
+
+            CALL apoc.refactor.mergeNodes(
+                nodes,
+                {
+                    properties: {
+                        `.*`: 'discard'
+                    },
+                    mergeRels: true
+                }
+            )
+            YIELD node
+
+            RETURN
+                size(nodes) AS merged_count,
+                node.mention_id AS canonical_mention_id
+            """
+
+            result = self.gds.run_cypher(
+                merge_query,
+                params={
+                    "wcc": int(wcc),
+                    "entity_type": entity_type,
+                },
+            )
+
+            merge_results.append(result)
+
+        print(
+            "[Entity Resolution] "
+            "EntityMention merge completed."
+        )
+
+
+        # =========================================================
+        # 8. MERGE DUPLICATE RELATED_TO
+        # =========================================================
+
+        print(
+            "[Entity Resolution] "
+            "Merging duplicate RELATED_TO relationships..."
+        )
+
+        relationship_result = self.gds.run_cypher(
+            """
+            MATCH (a:EntityMention)
+                -[r:RELATED_TO]->
+                (b:EntityMention)
+
+            WITH
+                a,
+                b,
+                collect(r) AS relationships
+
+            WHERE size(relationships) > 1
+
+            WITH
+                a,
+                b,
+                relationships,
+                reduce(
+                    total = 0.0,
+                    rel IN relationships |
+                    total + coalesce(
+                        toFloat(rel.weight),
+                        0.0
+                    )
+                ) AS total_weight
+
+            CALL apoc.refactor.mergeRelationships(
+                relationships,
+                {
+                    properties: 'discard'
+                }
+            )
+            YIELD rel
+
+            SET rel.weight = total_weight
+
+            RETURN count(*) AS merged_groups
+            """
+        )
+
+        print(
+            "[Entity Resolution] "
+            f"Relationship merge completed: "
+            f"{relationship_result}"
+        )
+
+
+        # =========================================================
+        # 9. FINAL GRAPH STATISTICS
+        # =========================================================
+
+        final_stats = self.gds.run_cypher(
+            """
+            MATCH (e:EntityMention)
+
+            OPTIONAL MATCH (e)-[r:RELATED_TO]-()
+
+            RETURN
+                count(DISTINCT e) AS entity_count,
+                count(DISTINCT r) AS relationship_count
+            """
+        )
+
+        print(
+            "[Entity Resolution] "
+            "Final graph statistics:"
+        )
+
+        print(final_stats)
+
+
+        # =========================================================
+        # 10. RETURN
         # =========================================================
 
         return {
@@ -1100,9 +1281,12 @@ class ImportDocument:
             "project": project_result,
             "knn": knn_result,
             "wcc": wcc_result,
-            "merge": merge_result,
+            "cluster_stats": cluster_stats,
+            "mergeable_clusters": mergeable_clusters,
+            "oversized_clusters": oversized_clusters,
+            "merge_results": merge_results,
             "relationship_merge": relationship_result,
-            "stats": stats,
+            "final_stats": final_stats,
         }
 
     def update_entity(self) -> dict[str, int]:
@@ -1192,7 +1376,7 @@ class ImportDocument:
         )
 
         with ThreadPoolExecutor(
-            max_workers=MAX_WORKERS
+            max_workers=self.max_workers
         ) as executor:
 
             futures = {
@@ -1251,46 +1435,12 @@ class ImportDocument:
             f"Saving {len(results)} extracted chunks..."
         )
 
-        for graph in results:
-
-            chunk_id = graph["chunk_id"]
-
-            extracted_text = graph["extracted_text"]
-
-            entities = extracted_text.get(
-                "entities",
-                [],
-            )
-
-            relationships = extracted_text.get(
-                "relationships",
-                [],
-            )
-
-            # -----------------------------------------------------
-            # Create EntityMention
-            # -----------------------------------------------------
-
-            mention_lookup = self.create_entities(
-                chunk_id,
-                entities,
-            )
-
-            stats["entities"] += len(
-                mention_lookup
-            )
-
-            # -----------------------------------------------------
-            # Create RELATED_TO
-            # -----------------------------------------------------
-
-            stats["relationships"] += (
-                self.create_relationships(
-                    chunk_id,
-                    relationships,
-                    mention_lookup,
-                )
-            )
+        batch_size = 5000
+        for i in range(0, len(results), batch_size):
+            results_batch = results[i : i + batch_size]
+            entities_count, relationships_count = self.create_entities_and_relationships_batch(results_batch)
+            stats["entities"] += entities_count
+            stats["relationships"] += relationships_count
 
         # =========================================================
         # 4. UPDATE ENTITY RESOLUTION
@@ -1394,14 +1544,12 @@ class ImportDocument:
         result = self.graphdb.execute_query(
             """
             MATCH (e:EntityMention)
-
             WHERE e.communities IS NOT NULL
-                AND size(e.communities) > 0
+            AND size(e.communities) > 0
 
             UNWIND range(0, size(e.communities) - 1) AS level
 
-            WITH
-                e,
+            WITH DISTINCT
                 level,
                 e.communities[level] AS leiden_id
 
@@ -1416,11 +1564,34 @@ class ImportDocument:
                 c.is_active = true,
                 c.updated_at = datetime()
 
+            RETURN count(*) AS communities
+            """
+        )
+        result = self.graphdb.execute_query(
+            """
+            MATCH (e:EntityMention)
+            WHERE e.communities IS NOT NULL
+            AND size(e.communities) > 0
+
+            UNWIND range(0, size(e.communities) - 1) AS level
+
+            WITH
+                e,
+                level,
+                e.communities[level] AS leiden_id
+
+            MATCH (c:Community {
+                community_id:
+                    toString(level) + "-" + toString(leiden_id)
+            })
+
             MERGE (e)-[:IN_COMMUNITY]->(c)
 
             RETURN count(*) AS entity_community_links
             """
         )
+
+
 
         count = result.records[0]["entity_community_links"]
 
@@ -1541,7 +1712,7 @@ class ImportDocument:
         updated_reports = []
 
         with ThreadPoolExecutor(
-            max_workers=8
+            max_workers=self.max_workers
         ) as executor:
 
             futures = {
@@ -1678,7 +1849,7 @@ class ImportDocument:
         updated_reports = []
 
         with ThreadPoolExecutor(
-            max_workers=8
+            max_workers=self.max_workers
         ) as executor:
 
             futures = {

@@ -1,6 +1,30 @@
 
 # ---Create Index---
 
+# // Document
+# CREATE CONSTRAINT document_file_name_unique IF NOT EXISTS
+# FOR (d:Document)
+# REQUIRE d.file_name IS UNIQUE;
+
+
+# // Chunk
+# CREATE CONSTRAINT chunk_chunk_id_unique IF NOT EXISTS
+# FOR (c:Chunk)
+# REQUIRE c.chunk_id IS UNIQUE;
+
+
+# // EntityMention
+# CREATE CONSTRAINT entity_mention_id_unique IF NOT EXISTS
+# FOR (e:EntityMention)
+# REQUIRE e.mention_id IS UNIQUE;
+
+
+# // Community
+# CREATE CONSTRAINT community_id_unique IF NOT EXISTS
+# FOR (c:Community)
+# REQUIRE c.community_id IS UNIQUE;
+
+
 # CREATE VECTOR INDEX `entity-embeddings`
 # FOR (e:EntityMention) ON (e.embedding)
 # OPTIONS {indexConfig: {
@@ -23,6 +47,13 @@
 #     }
 # }
 
+
+
+
+# MATCH (e:EntityMention)
+# WHERE NOT (e)-[:RELATED_TO]-()
+# RETURN count(e) AS isolated_entities;
+
 # import os
 # import sys
 
@@ -34,6 +65,8 @@
 # if PROJECT_ROOT not in sys.path:
 #     sys.path.insert(0, PROJECT_ROOT)
 
+from torch import chunk
+
 from app.src.services.base_service import base_service
 from pydantic import BaseModel, Field  
 
@@ -44,8 +77,8 @@ class LocalSearch():
     def hybrid_search(
         self,
         query,
-        top_k=10,
-        source_k=30,
+        top_k=15,
+        source_k=20,
         rrf_constant=60
     ):
 
@@ -209,7 +242,7 @@ class LocalSearch():
             if source_id not in seed_scores:
                 continue
 
-            score = seed_scores[source_id] * rel["weight"]
+            score = seed_scores[source_id] * rel["weight"] / 10
 
             entity_scores[target_id] = (
                 entity_scores.get(target_id, 0)
@@ -229,7 +262,6 @@ class LocalSearch():
                 entity["entity_id"],
                 0.0
             )
-
             ranked_entities.append(entity)
 
         # ------------------------------------
@@ -453,7 +485,11 @@ class LocalSearch():
         # ----------------------------------------------------
         # Candidate entity ids
         # ----------------------------------------------------
-
+        seed_entity_ids = {
+            e["entity_id"]
+            for e in seed_entities
+        }
+        
         candidate_entity_ids = {
             e["entity_id"]
             for e in (seed_entities + related_entities)
@@ -466,24 +502,32 @@ class LocalSearch():
         ranked_chunks = []
 
         for chunk in chunks:
+            matched_seed = set(chunk["entity_ids"]) & seed_entity_ids
 
-            matched_entities = list(
+            matched_related = (
                 set(chunk["entity_ids"]) & candidate_entity_ids
-            )
+            ) - seed_entity_ids
+
+            if len(matched_seed) < 2:
+                continue
 
             chunk = chunk.copy()
-            chunk["matched_entity_ids"] = matched_entities
-            chunk["matched_entity_count"] = len(matched_entities)
+            chunk["seed_match_count"] = len(matched_seed)
+            chunk["related_match_count"] = len(matched_related)
 
             ranked_chunks.append(chunk)
 
         ranked_chunks.sort(
-            key=lambda x: x["matched_entity_count"],
+            key=lambda x: (
+                x["seed_match_count"],
+                x["related_match_count"],
+            ),
             reverse=True,
-        )
+        )      
+        
 
         ranked_chunks = ranked_chunks[:chunk_top_k]
-
+        print(f"Ranked chunks: {[ (x['seed_match_count'], x['related_match_count']) for x in ranked_chunks ]}")
         # ----------------------------------------------------
         # Rank Communities
         # ----------------------------------------------------
@@ -491,20 +535,27 @@ class LocalSearch():
         ranked_communities = []
 
         for community in communities:
+            matched_seed = set(community["entity_ids"]) & seed_entity_ids
 
-            matched_entities = list(
+            matched_related = (
                 set(community["entity_ids"]) & candidate_entity_ids
-            )
+            ) - seed_entity_ids
+
+            if len(matched_seed) < 2:
+                continue
+
+
 
             community = community.copy()
-            community["matched_entity_ids"] = matched_entities
-            community["matched_entity_count"] = len(matched_entities)
+            community["seed_match_count"] = len(matched_seed)
+            community["related_match_count"] = len(matched_related)
 
             ranked_communities.append(community)
 
         ranked_communities.sort(
             key=lambda x: (
-                x["matched_entity_count"],
+                x["seed_match_count"],
+                x["related_match_count"],
                 x["level"],
             ),
             reverse=True,
@@ -580,7 +631,6 @@ class LocalSearch():
 
             context["chunks"].append({
                 "text": chunk["text"],
-                "matched_entities": chunk["matched_entity_count"],
                 "doc_title": chunk.get("doc_title"),
                 "doc_url": chunk.get("doc_url"),
             })
@@ -595,7 +645,6 @@ class LocalSearch():
                 "title": community["title"],
                 "summary": community["summary"],
                 "level": community["level"],
-                "matched_entities": community["matched_entity_count"],
             })
 
         return context
@@ -660,7 +709,7 @@ class LocalSearch():
 
         communities = self.retrieve_communities(seed_entities, filtered_entities)
 
-        ranked_chunks, ranked_communities = self.ranking_filter_chunks_and_community(seed_entities, related_entities, chunks, communities)
+        ranked_chunks, ranked_communities = self.ranking_filter_chunks_and_community(seed_entities, filtered_entities, chunks, communities)
 
         doc_info = self.retrieve_document_info(ranked_chunks)
         for chunk in ranked_chunks:
@@ -668,12 +717,13 @@ class LocalSearch():
             chunk["doc_title"] = info.get("doc_title")
             chunk["doc_url"] = info.get("doc_url")
 
-        context = self.build_context(seed_entities, related_entities, filtered_relationships, ranked_chunks, ranked_communities)
+        context = self.build_context(seed_entities, filtered_entities, filtered_relationships, ranked_chunks, ranked_communities)
 
         format_context, chunk_map = self.format_context_for_llm(context)
         return {
             "context": format_context,
-            "chunk_map": chunk_map
+            "chunk_map": chunk_map,
+            "raw_context": context
         }
 
     def drift_local_search(self, query):
@@ -681,14 +731,15 @@ class LocalSearch():
 
         related_entities, relationships = self.expand_graph(seed_entities)
 
-        filtered_entities, filtered_relationships = self.ranking_filter_entity_relationship(seed_entities, related_entities, relationships)
+        filtered_entities, _ = self.ranking_filter_entity_relationship(seed_entities, related_entities, relationships)
 
         chunks = self.retrieve_chunks(seed_entities, filtered_entities)
 
-        communities = self.retrieve_communities(seed_entities, filtered_entities)
+
+        ranked_chunks, _ = self.ranking_filter_chunks_and_community(seed_entities, filtered_entities, chunks, communities=[], chunk_top_k=5, community_top_k=3)
 
         return DriftEvidence(
-                    chunks=chunks,
+                    chunks=ranked_chunks,
                 )
     
     
@@ -789,9 +840,6 @@ class GlobalSearch():
                 finding_text += f"{i}. {text}\n"
 
         return f"""
-    Community ID:
-    {community["id"]}
-
     Title:
     {community.get("title","")}
 
@@ -881,7 +929,7 @@ class GlobalSearch():
     def global_search(
         self,
         query: str,
-        top_k: int = 10,
+        top_k: int = 15,
     ):
 
         # 1. Retrieve relevant communities
@@ -902,7 +950,7 @@ class GlobalSearch():
         try:
             from concurrent.futures import ThreadPoolExecutor
 
-            with ThreadPoolExecutor(max_workers=min(8, len(batches))) as executor:
+            with ThreadPoolExecutor(max_workers=min(2, len(batches))) as executor:
                 batch_results = list(
                     executor.map(
                         lambda batch: self.map_search(query=query, communities=batch),
@@ -934,12 +982,26 @@ class GlobalSearch():
             reverse=True,
         )
 
-        top_findings = all_findings[:top_k]
+        seen = set()
+        unique_findings = []
+
+        for finding in all_findings:
+            # Skip findings with low importance
+            print(f"Finding: {finding.summary}, Importance: {finding.importance}")
+            if finding.importance <= 60:
+                continue
+
+            if finding.summary not in seen:
+                seen.add(finding.summary)
+                unique_findings.append(finding)
+
+        top_findings = unique_findings[:top_k]
 
         context = self.build_findings_context(top_findings)
 
         return {
             "context": context,
+            "raw_context": top_findings
         }
 
 
@@ -964,7 +1026,7 @@ HYDE_PROMPT = """
     - Không được bịa thông tin ngoài phạm vi hợp lý của câu hỏi.
 
     Question:
-    {query}"""
+"""
 
 class PrimerReasoningResult(BaseModel):
     intermediate_answer: str = Field(
@@ -1003,13 +1065,8 @@ Guidelines:
 - The follow-up questions should be specific.
 - Avoid duplicate questions.
 - If the reports already provide sufficient information, return an empty list.
+- Answer in User Question Language.
 
-User Question:
-{query}
-
-Community Reports:
-
-{community_reports}
 """
 
 
@@ -1048,17 +1105,6 @@ Your tasks are:
 3. Decide whether the evidence is sufficient.
 4. If more information is needed, generate up to 3 follow-up queries.
 5. If the evidence is sufficient, set stop=true and return an empty follow_up_queries list.
-
-Original Question:
-{query}
-
-Current Intermediate Answer:
-{intermediate_answer}
-
-Evidence:
-
-Chunks:
-{chunks}
 """  
 # Hàm build_context đang bị cắt bớt thông tin tại vì context lenght của model LLM có giới hạn
 class DriftSearch():
@@ -1084,11 +1130,11 @@ class DriftSearch():
             response = base_service.llm_model_var.invoke([
                 {
                     "role": "system",
-                    "content": "You are an expert in information extraction."
+                    "content": HYDE_PROMPT
                 },
                 {
                     "role": "user",
-                    "content": HYDE_PROMPT.format(query=query)
+                    "content": ( f"Question:\n{query}\n\n")
                 }
             ])
             return getattr(response, "content", "") or ""
@@ -1098,7 +1144,6 @@ class DriftSearch():
 
     def primer_search(self, hyde_generation: str, top_k: int = 5):
         communities = global_search.retrieve_communities(hyde_generation, top_k=top_k)
-
         return communities
 
     def primer_reasoning(self, query: str, communities: list,):
@@ -1111,20 +1156,17 @@ class DriftSearch():
             global_search.build_community_context(c)
             for c in communities
         )
-
         try:
             structured_llm = base_service.llm_model_var.with_structured_output(PrimerReasoningResult)
             response = structured_llm.invoke([
                 {
                     "role": "system",
-                    "content": ""
+                    "content": PRIMER_REASONING_PROMPT
                 },
                 {
                     "role": "user",
-                    "content": PRIMER_REASONING_PROMPT.format(
-                        query=query,
-                        community_reports=community_context,
-                    )
+                    "content": (f"User Question:\n{query}\n\n"
+                                f"Community Reports:\n{community_context}\n\n")
                 }
             ])
             return response
@@ -1158,38 +1200,9 @@ class DriftSearch():
         """
         Merge evidence from multiple follow-up queries.
         """
-
-        # seed_entities = {}
-        # related_entities = {}
-        # relationships = {}
         chunks = {}
-        # communities = {}
-
-        def relationship_key(relationship: dict):
-            if relationship.get("relationship_id"):
-                return ("relationship_id", relationship["relationship_id"])
-            if relationship.get("element_id"):
-                return ("element_id", relationship["element_id"])
-            return (
-                relationship.get("source_id") or relationship.get("source"),
-                relationship.get("target_id") or relationship.get("target"),
-                relationship.get("type") or relationship.get("relationship_type"),
-            )
 
         for evidence in evidences:
-
-            # for entity in evidence.seed_entities or []:
-            #     entity_id = entity.get("entity_id")
-            #     if entity_id:
-            #         seed_entities[entity_id] = entity
-
-            # for entity in evidence.related_entities or []:
-            #     entity_id = entity.get("entity_id")
-            #     if entity_id:
-            #         related_entities[entity_id] = entity
-
-            # for relationship in evidence.relationships or []:
-            #     relationships[relationship_key(relationship)] = relationship
 
             for chunk in evidence.chunks or []:
                 chunk_id = chunk.get("chunk_id")
@@ -1197,11 +1210,6 @@ class DriftSearch():
                     chunk_id = chunk.get("id")
                 if chunk_id is not None:
                     chunks[chunk_id] = chunk
-
-            # for community in evidence.communities or []:
-            #     community_id = community.get("community_id") or community.get("id")
-            #     if community_id:
-            #         communities[community_id] = community
 
         return DriftEvidence(
             chunks=list(chunks.values()),
@@ -1311,22 +1319,18 @@ class DriftSearch():
 
         compact_context = self.build_context(evidence)
 
-        prompt = REASON_OVER_EVIDENCE_PROMPT.format(
-            query=query,
-            intermediate_answer=intermediate_answer,
-            chunks=compact_context["chunks"],
-        )
-
         try:
             structured_llm = base_service.llm_model_var.with_structured_output(ReasoningResult)
             response = structured_llm.invoke([
                 {
                     "role": "system",
-                    "content": "You are an expert reasoning agent for DRIFT Search. Use the compact evidence summary only."
+                    "content": REASON_OVER_EVIDENCE_PROMPT
                 },
                 {
                     "role": "user",
-                    "content": prompt,
+                    "content": (f"User Question:\n{query}\n\n"
+                                f"Current Intermediate Answer:\n{intermediate_answer}\n\n"
+                                f"Evidence:\n{compact_context['chunks']}\n\n")
                 }
             ])
             return response
@@ -1405,6 +1409,7 @@ class DriftSearch():
         return {
             "context": context,
             "chunk_map": chunk_map,
+            "raw_context": merged_evidence
         }
 
     

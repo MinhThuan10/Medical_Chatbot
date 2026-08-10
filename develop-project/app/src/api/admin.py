@@ -6,7 +6,7 @@ from fastapi import APIRouter, File, Form, Request, UploadFile
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import BackgroundTasks
-from app.src.core.config import settings
+from app.src.services.base_service import base_service
 from app.src.services.import_document import import_document
 
 
@@ -59,7 +59,7 @@ async def admin_page(request: Request):
 
 @router.post("/login")
 async def admin_login(username: str = Form(...), password: str = Form(...)):
-    if username != settings.ADMIN_USERNAME or password != settings.ADMIN_PASSWORD:
+    if username != base_service.admin_username or password != base_service.admin_password:
         return RedirectResponse(url="/admin?error=login_failed", status_code=303)
 
     response = RedirectResponse(url="/admin", status_code=303)
@@ -130,7 +130,7 @@ async def update_community(
     }
 
 @router.get("/update-comunities-big-context")
-async def update_community(
+async def update_community_bigcontext(
     background_tasks: BackgroundTasks,
 ):
     background_tasks.add_task(

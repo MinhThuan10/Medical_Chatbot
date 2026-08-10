@@ -15,11 +15,6 @@ Your tasks are:
    - Clear and unambiguous.
    - Complete by incorporating relevant context from the conversation history when necessary.
    - Suitable for knowledge retrieval.
-Conversation history:
-{chat_history}
-
-Current user question:
-{query}
 """
 
 
@@ -48,18 +43,10 @@ Your tasks are:
     Any general question or informational query that is completely unrelated to the medical, healthcare, or pharmaceutical domain, and does not require graph-based medical retrieval.
     Example: "What is the capital city of France?" or "How do I fix a leaking water pipe?"
 Question:
-{question}
 """
 
 ANSWER_QUESTION_PROMPT = """
 You are an intelligent medical assistant. Your role is to answer ONLY medical-related questions using the provided context.
-
-# Question
-{question}
-
-# Context
-{context}
-
 Instructions:
 
 1. Answer ONLY based on the provided context.
@@ -97,7 +84,7 @@ class SearchType(str, Enum):
     GLOBAL = "global"
     LOCAL = "local"
     CHAT = "chat"
-    ORDER = "order"
+    OTHER = "other"
 
 class RoutingQuestion(BaseModel):
     search_type: SearchType = Field(
@@ -142,14 +129,11 @@ class LangChainRAG():
             response = structured_llm.invoke([
                 {
                     "role": "system",
-                    "content": "You are an expert in Transform Question"
+                    "content": REWRITE_QUESTION_PROMPT
                 },
                 {
                     "role": "user",
-                    "content": REWRITE_QUESTION_PROMPT.format(
-                        chat_history=history,
-                        query=question
-                    )
+                    "content": (f"Conversation history:\n{history}\n\nQuestion:\n{question}\n\n")
                 }
             ])
             return response
@@ -166,13 +150,11 @@ class LangChainRAG():
             response = structured_llm.invoke([
                 {
                     "role": "system",
-                    "content": "You are an expert in Routing Question."
+                    "content": TRANSFORM_QUESTION_PROMPT
                 },
                 {
                     "role": "user",
-                    "content": TRANSFORM_QUESTION_PROMPT.format(
-                        question=question
-                    )
+                    "content": (f"Question:\n{question}\n\n")
                 }
             ])
             return response
@@ -181,30 +163,54 @@ class LangChainRAG():
             return RoutingQuestion(
                 search_type=SearchType.CHAT,
             )
+
+        
     @traceable(run_type="chain", name="Search Documents")
-    def search_documents(self, query_transform, quwery_routing):
-        print(f"Category: {query_transform}, {quwery_routing}")
+    def search_documents(self, query_transform, query_routing):
+        print(f"Category: {query_transform}, {query_routing}")
         context = ''
         chunk_map = {}
-        match quwery_routing:
+        raw_context = []
+        match query_routing:
             case SearchType.LOCAL:
                 result = local_search.local_search(query_transform)
                 context = result["context"]
                 chunk_map = result["chunk_map"]
+                raw_context = [
+                    chunk["text"]
+                    for chunk in result["raw_context"].get("chunks", [])
+                    if chunk.get("text")
+                ]
+                
             case SearchType.GLOBAL:
+                print("Search Global")
                 result = global_search.global_search(query_transform)
                 context = result["context"]
+                raw_context = [
+                    finding.summary
+                    for finding in result["raw_context"]
+                    if finding.summary
+                ]
+
+
+
             case SearchType.DRIFT:
                 result = drift_search.drift_search(query_transform)
                 context = result["context"]
                 chunk_map = result["chunk_map"]
+                raw_context = [
+                    chunk.get("text")
+                    for chunk in result["raw_context"].chunks
+                    if chunk.get("text")
+                ]
+
             case SearchType.CHAT:
                 context = "Xin chào bạn, mình là trợ lý Medical AI. Mình có thể giúp gì cho bạn"
             case SearchType.OTHER:
                 context = ""
                 
 
-        return context, chunk_map
+        return context, chunk_map, raw_context
 
     def answer_context(self, question, context):
         context = context[:8196]
@@ -212,14 +218,11 @@ class LangChainRAG():
             messages = [
                 {
                     "role": "system",
-                    "content": "You are a physician's assistant; please answer the following question accurately."
+                    "content": ANSWER_QUESTION_PROMPT
                 },
                 {
                     "role": "user",
-                    "content": ANSWER_QUESTION_PROMPT.format(
-                        question=question,
-                        context=context
-                    )
+                    "content": (f"Question:\n{question}\n\nContext:\n{context}\n\n")
                 }
             ]
 
@@ -242,7 +245,7 @@ class LangChainRAG():
         query_routing = self.query_routing(query_transform.rewrite_question)
         context = ''
         if query_transform:
-            context, chunk_map = self.search_documents(query_transform.rewrite_question, query_routing.search_type)
+            context, chunk_map, _ = self.search_documents(query_transform.rewrite_question, query_routing.search_type)
             self.get_chunk_memory(chat_id).update(chunk_map)
         return self.answer_context(question, context)
     
