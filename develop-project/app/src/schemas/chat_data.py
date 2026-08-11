@@ -14,3 +14,5 @@ class Request_Import_Chat_data(BaseModel):
 
 class Response_Import_Chat_data(BaseModel):
     chat_id: int
+    answer_text: str | None = None
+    citations_json: str | None = None

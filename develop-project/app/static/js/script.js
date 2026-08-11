@@ -133,7 +133,107 @@ saveChangesBtn.addEventListener('click', function () {
 });
 
 
-// Hiển thị khu vực chat dựa trên dữ liệu chatData
+// Hàm định dạng tin nhắn và trích dẫn sang HTML
+function formatAnswerWithCitations(answer_text, citations_json) {
+    let formattedAnswer = marked.parse(answer_text);
+    const citations = typeof citations_json === 'string' ? JSON.parse(citations_json || '[]') : (citations_json || []);
+
+    citations.forEach(cite => {
+        const sources = cite.sources || [];
+        if (sources.length > 0) {
+            const tooltipContent = sources.map((src, index) => {
+                const title = src.title ? src.title.replace(/"/g, '&quot;') : "Nguồn tham khảo";
+                const text = src.text ? src.text.replace(/"/g, '&quot;').replace(/\n/g, ' ') : "";
+                const url = src.url || "#";
+                const chunkId = src.chunk_id;
+                
+                return `
+                    <div class="source-item ${index > 0 ? 'mt-2 pt-2 border-top' : ''}">
+                        <a href="${url}" target="_blank" class="fw-bold text-decoration-none text-primary d-block mb-1">
+                            📄 [Chunk ${src.chunk_id}] ${title} ↗
+                        </a>
+                        <small class="text-muted d-block" style="font-size: 0.85em; line-height: 1.3;">
+                            ${text.substring(0, 120)}...
+                        </small>
+                    </div>
+                `.replace(/\n/g, '');
+            }).join('');
+
+            const markerRegex = new RegExp(`\\[\\[${cite.display}\\]\\]`, 'g');
+            const citationHtml = `
+                <span class="citation-badge badge bg-secondary text-white" 
+                      style="cursor: pointer;"
+                      data-bs-toggle="popover" 
+                      data-bs-html="true" 
+                      data-bs-content='${tooltipContent}'>
+                    [${cite.display}]
+                </span>
+            `.replace(/\n/g, '');
+            
+            formattedAnswer = formattedAnswer.replace(markerRegex, citationHtml);
+        }
+    });
+    return formattedAnswer;
+}
+
+// Hàm khởi tạo và quản lý sự kiện hover cho Popover (tránh bị mất khi di chuyển chuột từ nút vào khung popover)
+function initPopovers(container = document) {
+    const popoverElements = container.querySelectorAll('[data-bs-toggle="popover"]');
+
+    popoverElements.forEach(el => {
+        if (bootstrap.Popover.getInstance(el)) return; // Tránh khởi tạo trùng lặp
+
+        const popover = new bootstrap.Popover(el, {
+            trigger: 'manual'
+        });
+
+        let timeoutId;
+
+        el.addEventListener('mouseenter', () => {
+            clearTimeout(timeoutId);
+            // Ẩn các popover khác
+            document.querySelectorAll('[data-bs-toggle="popover"]').forEach(otherEl => {
+                if (otherEl !== el) {
+                    const instance = bootstrap.Popover.getInstance(otherEl);
+                    if (instance) instance.hide();
+                }
+            });
+            popover.show();
+
+            setTimeout(() => {
+                const popoverChunk = document.querySelector('.popover');
+                if (popoverChunk) {
+                    popoverChunk.addEventListener('mouseenter', () => {
+                        clearTimeout(timeoutId);
+                    });
+                    popoverChunk.addEventListener('mouseleave', () => {
+                        timeoutId = setTimeout(() => {
+                            popover.hide();
+                        }, 200);
+                    });
+                }
+            }, 50);
+        });
+
+        el.addEventListener('mouseleave', () => {
+            timeoutId = setTimeout(() => {
+                popover.hide();
+            }, 200);
+        });
+    });
+}
+
+
+function renderAnswer(container, answerText, citationsJson) {
+    container.innerHTML = formatAnswerWithCitations(
+        answerText,
+        citationsJson
+    );
+
+    initPopovers(container);
+}
+
+// Hiển thị khu vực chat dựa trên dữ liệu chatData khi tải trang
 document.addEventListener("DOMContentLoaded", function() {
     if (!window.chatData || (Array.isArray(window.chatData) && window.chatData.length === 0)) {
         document.getElementById("new_chat_area").style.display = "block";
@@ -145,133 +245,26 @@ document.addEventListener("DOMContentLoaded", function() {
         const chatArea = document.getElementById("sesion_chat_area_body");
         let html = '';
         window.chatData.forEach(item => {
-          console.log(item);
-          
-          // 1. Chuyển Markdown sang HTML TRƯỚC
-          let formattedAnswer = marked.parse(item.answer_text);
-          
-          // 2. Giải mã chuỗi citations_json
-          const citations = JSON.parse(item.citations_json || '[]');
-          
-          // 3. Duyệt qua từng trích dẫn
-          citations.forEach(cite => {
-              const sources = cite.sources || [];
-              
-              if (sources.length > 0) {
-                  // ĐƯA TẤT CẢ CHUNK VÀO POPOVER - MỖI CHUNK CÓ LINK RÊNG
-                  const tooltipContent = sources.map((src, index) => {
-                      const title = src.title ? src.title.replace(/"/g, '&quot;') : "Nguồn tham khảo";
-                      const text = src.text ? src.text.replace(/"/g, '&quot;').replace(/\n/g, ' ') : "";
-                      const url = src.url || "#";
-                      
-                      return `
-                          <div class="source-item ${index > 0 ? 'mt-2 pt-2 border-top' : ''}">
-                              <a href="${url}" target="_blank" class="fw-bold text-decoration-none text-primary d-block mb-1">
-                                  📄 [Chunk ${src.chunk_id || index + 1}] ${title} ↗
-                              </a>
-                              <small class="text-muted d-block" style="font-size: 0.85em; line-height: 1.3;">
-                                  ${text.substring(0, 120)}...
-                              </small>
-                          </div>
-                      `.replace(/\n/g, '');
-                  }).join('');
-
-                  const markerRegex = new RegExp(`\\[\\[${cite.display}\\]\\]`, 'g');
-                  
-                  // Bỏ data-bs-trigger mặc định để tự quản lý hover bằng Javascript bên dưới
-                  const citationHtml = `
-                      <span class="citation-badge badge bg-secondary text-white" 
-                            style="cursor: pointer;"
-                            data-bs-toggle="popover" 
-                            data-bs-html="true" 
-                            data-bs-content='${tooltipContent}'>
-                          [${cite.display}]
-                      </span>
-                  `.replace(/\n/g, '');
-                  
-                  formattedAnswer = formattedAnswer.replace(markerRegex, citationHtml);
-              }
-          });
-
-          // 4. Cộng dồn chuỗi HTML giao diện
-          html += `
-              <div class="d-flex justify-content-end mb-3">
-                <div class="bg-primary text-white p-3 rounded shadow-sm">
-                    ${item.question_text}
+            const formattedAnswer = formatAnswerWithCitations(item.answer_text, item.citations_json);
+            html += `
+                <div class="d-flex justify-content-end mb-3">
+                  <div class="bg-primary text-white p-3 rounded shadow-sm">
+                      ${item.question_text}
+                  </div>
                 </div>
-              </div>
 
-              <div class="d-flex mb-3 answer">
-                <div class="bg-light p-3 rounded shadow-sm">
-                    ${formattedAnswer}
+                <div class="d-flex mb-3 answer">
+                  <div class="bg-light p-3 rounded shadow-sm">
+                      ${formattedAnswer}
+                  </div>
                 </div>
-              </div>
-          `;
-      });
-
-      
-
-        // Đẩy HTML vào giao diện
-        chatArea.innerHTML = html;
-
-        // Kích hoạt Popover của Bootstrap
-        const popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
-        popoverTriggerList.map(function (popoverTriggerEl) {
-            return new bootstrap.Popover(popoverTriggerEl);
+            `;
         });
+
+        chatArea.innerHTML = html;
+        initPopovers(chatArea);
     }
 });
-
-
-// 5. THÊM ĐOẠN SCRIPT QUẢN LÝ HOVER KHÔNG BỊ MẤT KHI RÊ CHUỘT VÀO POPOVER
-// Thực thi sau khi HTML đã được render vào DOM (ví dụ: document.getElementById('chat-container').innerHTML = html;)
-setTimeout(() => {
-    const popoverElements = document.querySelectorAll('[data-bs-toggle="popover"]');
-
-    popoverElements.forEach(el => {
-        const popover = new bootstrap.Popover(el, {
-            trigger: 'manual' // Tự quản lý ẩn hiện bằng code
-        });
-
-        let timeoutId;
-
-        // Khi di chuột vào nút [1]
-        el.addEventListener('mouseenter', () => {
-            clearTimeout(timeoutId);
-            // Ẩn tất cả popover khác đang mở (nếu có)
-            popoverElements.forEach(otherEl => {
-                if (otherEl !== el) {
-                    const instance = bootstrap.Popover.getInstance(otherEl);
-                    if (instance) instance.hide();
-                }
-            });
-            popover.show();
-
-            // Khi Popover hiện ra, gán sự kiện hover cho chính khung Popover đó
-            setTimeout(() => {
-                const popoverChunk = document.querySelector('.popover');
-                if (popoverChunk) {
-                    popoverChunk.addEventListener('mouseenter', () => {
-                        clearTimeout(timeoutId); // Giữ popover mở khi chuột nằm trong Popover
-                    });
-
-                    popoverChunk.addEventListener('mouseleave', () => {
-                        timeoutId = setTimeout(() => {
-                            popover.hide(); // Rời chuột khỏi Popover thì ẩn sau 200ms
-                        }, 200);
-                    });
-                }
-            }, 50);
-        });
-
-        // Khi rời chuột khỏi nút [1]
-        el.addEventListener('mouseleave', () => {
-            timeoutId = setTimeout(() => {
-                popover.hide(); // Chờ 200ms để người dùng kịp di chuột vào Popover
-            }, 200);
-        });
-    });
-}, 100);
 
 // Xử lý gửi và nhận tin nhắn trong khu vực chat
 document.addEventListener("DOMContentLoaded", function() {
@@ -343,7 +336,18 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                if (data.answer_text) {
+                  console.log("Saved data:", data);
+
+                  // Render lại bằng dữ liệu ĐÃ CHUẨN HÓA từ backend
+                  renderAnswer(
+                      answerContainer,
+                      data.answer_text,
+                      data.citations_json
+                  );
+
+                  chatArea.scrollTop = chatArea.scrollHeight;
+                }
             });
 
           }

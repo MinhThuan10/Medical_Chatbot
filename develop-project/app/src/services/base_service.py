@@ -7,10 +7,10 @@ from graphdatascience import GraphDataScience
 from app.src.core.config import settings
 import os
 
-# os.environ["LANGCHAIN_TRACING"] = settings.LANGSMITH_TRACING
-# os.environ["LANGCHAIN_ENDPOINT"] = settings.LANGSMITH_ENDPOINT
-# os.environ["LANGCHAIN_API_KEY"] = settings.LANGSMITH_API_KEY
-# os.environ["LANGCHAIN_PROJECT"] = settings.LANGSMITH_PROJECT
+os.environ["LANGCHAIN_TRACING"] = settings.LANGSMITH_TRACING
+os.environ["LANGCHAIN_ENDPOINT"] = settings.LANGSMITH_ENDPOINT
+os.environ["LANGCHAIN_API_KEY"] = settings.LANGSMITH_API_KEY
+os.environ["LANGCHAIN_PROJECT"] = settings.LANGSMITH_PROJECT
 class BaseService:
     def __init__(self):
         self.qdrant_url = settings.QDRANT_URL

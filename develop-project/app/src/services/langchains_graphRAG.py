@@ -19,31 +19,31 @@ Your tasks are:
 
 
 TRANSFORM_QUESTION_PROMPT = """
-Your tasks are:
+Your task is to:
 
-1. Analyze the user's question and classify it into exactly one of the following routing types based on its medical intent and the required retrieval method:
+1. Analyze the user's question and classify it into exactly one of the following navigation categories, based on the medical intent and the required information retrieval method:
+
+- drift_search (extended/linked search): Multi-part or complex questions requiring a multi-step medical reasoning process; questions necessitating the use of multiple information sources and an expanded search scope. This type of question involves connecting disparate pieces of information, exploring causal relationships, or understanding indirect clinical impacts.
+Examples: "How does prolonged insulin deficiency indirectly affect emergency hospital admission rates for patients with renal failure?", "Based on case studies, explain how untreated hypertension can lead to chronic kidney disease over time," or comparing different issues.
 
 - local_search:
-    The question focuses on specific, well-defined medical entities (e.g., a specific disease, a particular medication/drug name, a distinct symptom, a specific medical department, or a doctor) and requires detailed, narrow-scope information directly linked to those entities.
-    Example: "What are the side effects of Metformin?", "Who is the head of the Cardiology department?", or "What are the primary symptoms of Type 2 Diabetes?"
+Questions focusing on a specific, clearly defined medical entity (e.g., a specific disease, drug name, distinct symptom, medical specialty, or doctor) and requiring detailed, narrowly scoped information directly related to those entities.
+Examples: "What are the side effects of Metformin?", "Who is the Head of Cardiology?", or "What are the main symptoms of type 2 diabetes?"
 
 - global_search:
-    The question asks for high-level medical summaries, broad themes, epidemiological trends, comparisons across multiple disease categories, or overall medical guidelines across the entire dataset without focusing on one single entity.
-    Example: "Summarize the general prevention strategies for chronic respiratory diseases mentioned in the guidelines", "What are the common health risks associated with aging according to these documents?", or "Provide an overview of the hospital's treatment protocols for infectious diseases."
-
-- drift_search:
-    The question is complex and requires multi-hop medical reasoning, connecting separate pieces of information, exploring cause-and-effect relationships, or understanding indirect clinical impacts (e.g., how a shortage of drug A affects the treatment outcome of disease B, or how disease X correlates with condition Y over time).
-    Example: "How does a prolonged shortage of insulin indirectly affect the emergency admission rates for kidney failure patients?", or "Explain how untreated hypertension might over time lead to chronic kidney disease based on the case studies."
+Questions requiring general medical summaries, broad topics, epidemiological trends, or overarching medical guidelines across the entire dataset, without focusing on any single entity.
+Examples: "Summarize general prevention strategies for chronic respiratory diseases mentioned in the guidelines," "What are the common health risks associated with aging?", or "Provide an overview of the hospital's treatment protocols for infectious diseases."
 
 - chat:
-    Casual conversation, small talk, greetings, expressions of gratitude, introductions, or questions about the chatbot identity itself.
-    Example: "Hello Doctor!", "Thank you for explaining the diagnosis", or "Are you an AI medical assistant?"
+Casual conversations, pleasantries, greetings, or remarks. ...expressions of gratitude, self-introductions, or questions regarding the chatbot's own identity.
+Examples: "Hello, Doctor!", "Thank you for explaining the diagnosis," or "Are you an AI medical assistant?"
 
 - other:
-    Any general question or informational query that is completely unrelated to the medical, healthcare, or pharmaceutical domain, and does not require graph-based medical retrieval.
-    Example: "What is the capital city of France?" or "How do I fix a leaking water pipe?"
+Any general questions or information queries completely unrelated to the fields of medicine, healthcare, or pharmaceuticals, and which do not require graph-based medical information retrieval.
+Examples: "What is the capital of France?" or "How do I fix a leaking pipe?"
 Question:
 """
+
 
 ANSWER_QUESTION_PROMPT = """
 You are an intelligent medical assistant. Your role is to answer ONLY medical-related questions using the provided context.
@@ -60,20 +60,11 @@ Instructions:
 6. Remove unnecessary whitespace.
 7. Identify the type of the provided context to apply the correct citation rule:
 
-- CASE A: If the context consists of Text Chunks (each having a unique Chunk ID):
+- If Search Type: is "local_search" or "drift_search", use the citation format: <cite:0,1,2,..> where Chunk IDs correspond to the relevant context chunks.
+- If Search Type: is "global_search", do not include any citations in the answer.
   You MUST append a citation tag on a new line immediately after every factual paragraph using exactly this format:
   <cite:0,1,2>
   (Replace 0,1,2 with the actual Chunk IDs used).
-
-- CASE B: If the context consists of Community Summaries (or any format other than Text Chunks):
-  Do NOT include any citation tags anywhere in the answer.
-
-Rules for citations (Only applicable for CASE A):
-- Only use Chunk IDs that explicitly appear in the provided context.
-- Never invent a Chunk ID.
-- Every factual paragraph must have exactly one citation tag.
-- Do not explain the citation tags.
-- Preserve the exact Chunk IDs as they appear in the context.
 
 Return only the final answer.
 """
@@ -121,7 +112,7 @@ class LangChainRAG():
 
         return self.citation_memories[conversation_id]
 
-    @traceable(run_type="chain", name="Query Transform")
+    # @traceable(run_type="chain", name="Query Transform")
     def query_transform(self, question: str, history) -> str:
         structured_llm = base_service.llm_model_var.with_structured_output(RewriteQuestion)
 
@@ -207,13 +198,14 @@ class LangChainRAG():
             case SearchType.CHAT:
                 context = "Xin chào bạn, mình là trợ lý Medical AI. Mình có thể giúp gì cho bạn"
             case SearchType.OTHER:
-                context = ""
+                context = "Mình không thể trả lời câu hỏi này vì nó không liên quan đến lĩnh vực y tế. Bạn có thể hỏi về các bệnh, thuốc, triệu chứng, chuyên khoa hoặc bác sĩ."
                 
 
         return context, chunk_map, raw_context
 
-    def answer_context(self, question, context):
-        context = context[:8196]
+    @traceable(run_type="chain", name="Answer Context")
+    def answer_context(self, question, context, search_type):
+        context = context[:16392]
         async def generate():
             messages = [
                 {
@@ -222,7 +214,7 @@ class LangChainRAG():
                 },
                 {
                     "role": "user",
-                    "content": (f"Question:\n{question}\n\nContext:\n{context}\n\n")
+                    "content": (f"Search Type: {search_type}\n Question:\n{question}\n\nContext:\n{context}\n\n")
                 }
             ]
 
@@ -247,7 +239,7 @@ class LangChainRAG():
         if query_transform:
             context, chunk_map, _ = self.search_documents(query_transform.rewrite_question, query_routing.search_type)
             self.get_chunk_memory(chat_id).update(chunk_map)
-        return self.answer_context(question, context)
+        return self.answer_context(question, context, query_routing.search_type)
     
     def save_menory(self, memory, question, answer):
 

@@ -320,6 +320,8 @@ class LocalSearch():
                 {
                     "chunk_id": ...,
                     "text": ...,
+                    "title": ...,
+                    "url": ...,
                     "entity_ids": [...]
                 }
             ]
@@ -345,6 +347,8 @@ class LocalSearch():
         RETURN
             elementId(c) AS chunk_id,
             c.chunk_text AS chunk_text,
+            c.title AS chunk_title,
+            c.url AS chunk_url,
             collect(DISTINCT elementId(e)) AS entity_ids
         """
 
@@ -360,43 +364,46 @@ class LocalSearch():
             chunks.append({
                 "chunk_id": record["chunk_id"],
                 "text": record["chunk_text"],
+                "title": record["chunk_title"],
+                "url": record["chunk_url"],
                 "entity_ids": record["entity_ids"],
             })
 
         return chunks
     
-    def retrieve_document_info(self, chunks):
-        """
-        Query document information for the given chunks.
-        """
-        if not chunks:
-            return {}
+    # def retrieve_document_info(self, chunks):
+    #     """
+    #     Query document information for the given chunks.
+    #     """
+    #     if not chunks:
+    #         return {}
 
-        chunk_ids = [chunk["chunk_id"] for chunk in chunks]
+    #     chunk_ids = [chunk["chunk_id"] for chunk in chunks]
 
-        cypher = """
-        MATCH (d:Document)-[:HAS_CHUNK]->(c:Chunk)
-        WHERE elementId(c) IN $chunk_ids
-        RETURN
-            elementId(c) AS chunk_id,
-            elementId(d) AS doc_id,
-            d.title AS doc_title,
-            d.url AS doc_url
-        """
+    #     cypher = """
+    #     MATCH (d:Document)-[:HAS_CHUNK]->(c:Chunk)
+    #     WHERE elementId(c) IN $chunk_ids
+    #     RETURN
+    #         elementId(c) AS chunk_id,
+    #         elementId(d) AS doc_id,
+    #         d.title AS doc_title,
+    #         d.url AS doc_url
+    #     """
 
-        records, _, _ = base_service.graphdb_var.execute_query(
-            cypher,
-            chunk_ids=chunk_ids,
-        )
+    #     records, _, _ = base_service.graphdb_var.execute_query(
+    #         cypher,
+    #         chunk_ids=chunk_ids,
+    #     )
 
-        doc_info = {}
-        for record in records:
-            doc_info[record["chunk_id"]] = {
-                "doc_id": record["doc_id"],
-                "doc_title": record["doc_title"],
-                "doc_url": record["doc_url"]
-            }
-        return doc_info
+    #     doc_info = {}
+    #     for record in records:
+    #         doc_info[record["chunk_id"]] = {
+    #             "doc_id": record["doc_id"],
+    #             "doc_title": record["doc_title"],
+    #             "doc_url": record["doc_url"]
+    #         }
+    #         print(f"Retrieved document info for chunk_id {record['chunk_id']}: {doc_info[record['chunk_id']]}")
+    #     return doc_info
 
     def retrieve_communities(
         self,
@@ -628,12 +635,12 @@ class LocalSearch():
         # ------------------------------------------------
 
         for chunk in chunks:
-
             context["chunks"].append({
                 "text": chunk["text"],
-                "doc_title": chunk.get("doc_title"),
-                "doc_url": chunk.get("doc_url"),
+                "title": chunk.get("title"),
+                "url": chunk.get("url"),
             })
+
 
         # ------------------------------------------------
         # Communities
@@ -646,6 +653,7 @@ class LocalSearch():
                 "summary": community["summary"],
                 "level": community["level"],
             })
+        
 
         return context
 
@@ -689,8 +697,8 @@ class LocalSearch():
 
             chunk_map[str(chunk_id)] = {
                 "chunk_id": chunk_id,
-                "title": chunk.get("doc_title", ""),
-                "url": chunk.get("doc_url", ""),
+                "title": chunk.get("title", ""),
+                "url": chunk.get("url", ""),
                 "text": chunk["text"]
             }
 
@@ -711,11 +719,12 @@ class LocalSearch():
 
         ranked_chunks, ranked_communities = self.ranking_filter_chunks_and_community(seed_entities, filtered_entities, chunks, communities)
 
-        doc_info = self.retrieve_document_info(ranked_chunks)
-        for chunk in ranked_chunks:
-            info = doc_info.get(chunk["chunk_id"], {})
-            chunk["doc_title"] = info.get("doc_title")
-            chunk["doc_url"] = info.get("doc_url")
+        # doc_info = self.retrieve_document_info(ranked_chunks)
+        
+        # for chunk in ranked_chunks:
+        #     info = doc_info.get(chunk["chunk_id"], {})
+        #     chunk["doc_title"] = info.get("doc_title")
+        #     chunk["doc_url"] = info.get("doc_url")
 
         context = self.build_context(seed_entities, filtered_entities, filtered_relationships, ranked_chunks, ranked_communities)
 
@@ -1215,17 +1224,17 @@ class DriftSearch():
             chunks=list(chunks.values()),
         )
 
-    def attach_document_info(self, evidence: DriftEvidence) -> DriftEvidence:
-        """
-        Enrich drift chunks with their source document metadata.
-        """
-        chunks = [chunk.copy() for chunk in (evidence.chunks or [])]
-        doc_info = local_search.retrieve_document_info(chunks)
+    # def attach_document_info(self, evidence: DriftEvidence) -> DriftEvidence:
+    #     """
+    #     Enrich drift chunks with their source document metadata.
+    #     """
+    #     chunks = [chunk.copy() for chunk in (evidence.chunks or [])]
+    #     # doc_info = local_search.retrieve_document_info(chunks)
 
-        for chunk in chunks:
-            info = doc_info.get(chunk.get("chunk_id"), {})
-            chunk["doc_title"] = info.get("doc_title")
-            chunk["doc_url"] = info.get("doc_url")
+    #     for chunk in chunks:
+    #         info = doc_info.get(chunk.get("chunk_id"), {})
+    #         chunk["doc_title"] = info.get("doc_title")
+    #         chunk["doc_url"] = info.get("doc_url")
 
         return DriftEvidence(chunks=chunks)
 
@@ -1248,8 +1257,8 @@ class DriftSearch():
 
             chunk_map[str(chunk_id)] = {
                 "chunk_id": chunk_id,
-                "title": chunk.get("doc_title", ""),
-                "url": chunk.get("doc_url", ""),
+                "title": chunk.get("title", ""),
+                "url": chunk.get("url", ""),
                 "text": chunk.get("text", "")
             }
 
@@ -1404,7 +1413,7 @@ class DriftSearch():
             intermediate_answer=primer_reasoning.intermediate_answer,
             follow_up_queries=primer_reasoning.follow_up_queries,
         )
-        merged_evidence = self.attach_document_info(merged_evidence)
+        # merged_evidence = self.attach_document_info(merged_evidence)
         context, chunk_map = self.format_context_for_llm(merged_evidence)
         return {
             "context": context,
